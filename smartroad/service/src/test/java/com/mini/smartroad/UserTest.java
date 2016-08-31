@@ -19,7 +19,7 @@ public class UserTest {
 
     @BeforeClass
     public static void configure() {
-        sessionFactory = HibernateUtil.getSessionFactory();
+        sessionFactory = HibernateUtils.getSessionFactory();
     }
 
     @Test

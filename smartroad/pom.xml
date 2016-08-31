@@ -10,7 +10,7 @@
     <name>SMART_ROAD</name>
 
     <modules>
-        <module>common</module>
         <module>service</module>
+        <module>common</module>
     </modules>
 </project>

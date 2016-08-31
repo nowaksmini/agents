@@ -1,13 +1,13 @@
-package com.mini.smartroad.dto;
+package com.mini.smartroad.dto.in;
 
 import java.io.Serializable;
 
-public class UserLoginDto implements Serializable {
+public class UserLoginInDto implements Serializable {
 
     private String login;
     private String password;
 
-    public UserLoginDto(String login, String password) {
+    public UserLoginInDto(String login, String password) {
         this.login = login;
         this.password = password;
     }

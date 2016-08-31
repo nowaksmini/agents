@@ -98,21 +98,4 @@ public class CryptoUtils {
     public static String generateUserToken(String email) {
         return CryptoUtils.SHA1(new Date() + email).substring(0, 10).replaceAll("\\+", "");
     }
-
-    public static String generateToken(String data) {
-        return CryptoUtils.SHA1(data).substring(0, 10).replaceAll("\\+", "");
-    }
-
-    public static String generateToken(Long id) {
-        return CryptoUtils.SHA256(id + " " + System.currentTimeMillis()).replaceAll("[^a-zA-Z0-9]", "");
-    }
-
-    public static String generateRandomToken() {
-        return CryptoUtils.SHA256(System.nanoTime() + "" + random.nextInt()).replaceAll("[^a-zA-Z0-9]", "");
-    }
-
-    public static String generateShortRandomToken() {
-        return CryptoUtils.SHA256(System.nanoTime() + "" + random.nextInt()).replaceAll("[^a-zA-Z0-9]", "").substring(0, 10);
-    }
-
 }

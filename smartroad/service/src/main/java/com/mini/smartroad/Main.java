@@ -1,7 +1,7 @@
 package com.mini.smartroad;
 
 import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.service.UserServiceAgent;
+import com.mini.smartroad.service.user.UserServiceAgent;
 import com.mini.smartroad.simulation.StartSimulation;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -13,6 +13,10 @@ import jade.wrapper.StaleProxyException;
 public class Main {
     private static jade.core.Runtime runtime = jade.core.Runtime.instance();
     private static jade.wrapper.AgentContainer agentContainer;
+
+    public static void main(String[] args) throws StaleProxyException {
+        startMainContiner();
+    }
 
     public static void startMainContiner() {
         runtime.setCloseVM(true);
@@ -28,17 +32,13 @@ public class Main {
             e.printStackTrace();
         }
         try {
-            AgentController agentController = agentContainer.createNewAgent(UserServiceAgent.class.getName() + Utils.USER_SERVICE_ID, UserServiceAgent.class.getName(), null);
+            AgentController agentController = agentContainer.createNewAgent(UserServiceAgent.class.getName(), UserServiceAgent.class.getName(), null);
             agentController.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }
         StartSimulation.start();
         runtime.shutDown();
-    }
-
-    public static void main(String[] args) throws StaleProxyException {
-        startMainContiner();
     }
 
     public static AgentContainer getAgentContainer() {

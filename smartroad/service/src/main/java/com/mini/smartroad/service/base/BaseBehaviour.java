@@ -1,4 +1,4 @@
-package com.mini.smartroad.service;
+package com.mini.smartroad.service.base;
 
 import jade.core.behaviours.SimpleBehaviour;
 
