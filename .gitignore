@@ -38,8 +38,8 @@ captures/
 
 # Intellij
 *.iml
-.idea/workspace.xml
-.idea/libraries
+smartroad/.idea/workspace.xml
+smartroad/.idea/libraries
 
 # Keystore files
 *.jks
@@ -53,26 +53,26 @@ gen-external-apklibs
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
+smartroad/.idea/workspace.xml
+smartroad/.idea/tasks.xml
+smartroad/.idea/dictionaries
+smartroad/.idea/vcs.xml
+smartroad/.idea/jsLibraryMappings.xml
 
 # Sensitive or high-churn files:
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/dataSources.local.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
+smartroad/.idea/dataSources.ids
+smartroad/.idea/dataSources.xml
+smartroad/.idea/dataSources.local.xml
+smartroad/.idea/sqlDataSources.xml
+smartroad/.idea/dynamic.xml
+smartroad/.idea/uiDesigner.xml
 
 # Gradle:
-.idea/gradle.xml
-.idea/libraries
+smartroad/.idea/gradle.xml
+smartroad/.idea/libraries
 
 # Mongo Explorer plugin:
-.idea/mongoSettings.xml
+smartroad/.idea/mongoSettings.xml
 
 ## File-based project format:
 *.iws
@@ -80,10 +80,10 @@ gen-external-apklibs
 ## Plugin-specific files:
 
 # IntelliJ
-/out/
+smartroad/out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+smartroad/.idea_modules/
 
 # JIRA plugin
 atlassian-ide-plugin.xml

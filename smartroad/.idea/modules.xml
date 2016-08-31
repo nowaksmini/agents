@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/smartroad.iml" filepath="$PROJECT_DIR$/smartroad.iml" />
       <module fileurl="file://$PROJECT_DIR$/smartroad.iml" filepath="$PROJECT_DIR$/smartroad.iml" />
     </modules>
   </component>
