@@ -81,6 +81,7 @@ gen-external-apklibs
 
 # IntelliJ
 /out/
+/target/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -99,7 +100,7 @@ fabric.properties
 
 # *.iml
 # modules.xml
-# .idea/misc.xml
+# .idea/misc.xml 
 # *.ipr
 
 
