@@ -2,7 +2,6 @@ package com.mini.smartroad;
 
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.service.user.UserServiceAgent;
-import com.mini.smartroad.simulation.StartSimulation;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
@@ -37,7 +36,7 @@ public class Main {
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }
-        StartSimulation.start();
+        //StartSimulation.start();
         runtime.shutDown();
     }
 

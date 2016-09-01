@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/login_activity_background"
     android:layout_height="match_parent"
+    android:background="@color/login_activity_background"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -20,33 +20,33 @@
 
             <EditText
                 android:id="@+id/login"
-                android:textColor="@android:color/white"
-                android:textColorHighlight="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textColorLink="@android:color/white"
-                android:shadowColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/username_hint" />
+                android:hint="@string/username_hint"
+                android:shadowColor="@color/colorAccent"
+                android:textColor="@color/colorAccent"
+                android:textColorHighlight="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
+                android:textColorLink="@color/colorAccent" />
 
             <EditText
                 android:id="@+id/password"
-                android:textColor="@android:color/white"
-                android:textColorHighlight="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textColorLink="@android:color/white"
-                android:shadowColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password_hint"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:shadowColor="@color/colorAccent"
+                android:textColor="@color/colorAccent"
+                android:textColorHighlight="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
+                android:textColorLink="@color/colorAccent" />
         </LinearLayout>
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitEnd"
-        android:src="@mipmap/car" />
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:scaleType="fitEnd"-->
+    <!--android:src="@mipmap/car" />-->
 
 </LinearLayout>

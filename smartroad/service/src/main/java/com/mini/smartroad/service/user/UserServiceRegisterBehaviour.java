@@ -77,7 +77,7 @@ public class UserServiceRegisterBehaviour extends BaseInteractBehaviour {
         userEntity.setLastName(userRegisterInDto.getLastName());
         userEntity.setFirstName(userRegisterInDto.getFirstName());
         userEntity.setEmail(userRegisterInDto.getEmail());
-        userEntity.setPassword(userRegisterInDto.getPassword());
+        userEntity.setPassword(CryptoUtils.encodePassword(userRegisterInDto.getPassword()));
         userEntity.setToken(CryptoUtils.generateUserToken(userEntity.getEmail()));
         return userEntity;
     }

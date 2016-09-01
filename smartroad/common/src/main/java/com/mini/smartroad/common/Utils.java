@@ -12,4 +12,6 @@ public class Utils {
 
     public static final String IP = "192.168.0.38";
     public static final String PORT = "1099";
+
+    public static final String USER_SERVICE_AGENT = "com.mini.smartroad.service.user.UserServiceAgent";
 }

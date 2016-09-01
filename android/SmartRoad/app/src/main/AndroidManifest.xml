@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pl.edu.pw.mini.smartroad">
+    package="com.mini.smartroad">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme">
         <service android:name="jade.android.MicroRuntimeService" />
 
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.mini.smartroad.SettingsActivity"></activity>
+        <activity android:name="com.mini.smartroad.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

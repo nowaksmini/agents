@@ -30,4 +30,5 @@ dependencies {
     compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
     compile 'com.nineoldandroids:library:2.4.0'
     compile files('libs/JadeAndroid.jar')
+    compile files('libs/common-1.0-SNAPSHOT.jar')
 }

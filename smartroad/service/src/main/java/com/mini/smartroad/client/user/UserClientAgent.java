@@ -1,8 +1,9 @@
-package com.mini.smartroad.simulation.user;
+package com.mini.smartroad.client.user;
+
 
 import com.mini.smartroad.service.base.BaseAgent;
 
-public class UserSimulatorAgent extends BaseAgent {
+public class UserClientAgent extends BaseAgent {
 
     @Override
     protected void setup() {
@@ -13,7 +14,7 @@ public class UserSimulatorAgent extends BaseAgent {
                 String login = (String) arguments[0];
                 String password = (String) arguments[1];
                 logger.info("Passed arguments: login:" + login + " password:" + password);
-                addBehaviour(new UserSimulatorLoginBehaviour(login, password));
+                addBehaviour(new UserClientLoginRequestBehaviour(login, password));
             } else if (arguments.length == 4) {
                 String email = (String) arguments[0];
                 String firstName = (String) arguments[1];
@@ -21,7 +22,7 @@ public class UserSimulatorAgent extends BaseAgent {
                 String password = (String) arguments[3];
                 logger.info("Passed arguments: email:" + email + " firstName: " + firstName +
                         " lastName: " + lastName + " password:" + password);
-                addBehaviour(new UserSimulatorRegisterBehaviour(email, firstName, lastName, password));
+                addBehaviour(new UserClientRegisterRequestBehaviour(email, firstName, lastName, password));
             }
         }
     }

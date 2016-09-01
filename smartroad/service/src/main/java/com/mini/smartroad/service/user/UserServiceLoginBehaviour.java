@@ -1,6 +1,7 @@
 package com.mini.smartroad.service.user;
 
 import com.mini.smartroad.HibernateUtils;
+import com.mini.smartroad.common.CryptoUtils;
 import com.mini.smartroad.common.MessageProperties;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
@@ -50,7 +51,7 @@ public class UserServiceLoginBehaviour extends BaseInteractBehaviour {
         StatusOutDto statusOutDto;
         List list = session.createCriteria(UserEntity.class)
                 .add(Restrictions.eq("email", userLoginInDto.getLogin()))
-                .add(Restrictions.eq("password", userLoginInDto.getPassword()))
+                .add(Restrictions.eq("password", CryptoUtils.encodePassword(userLoginInDto.getPassword())))
                 .list();
         session.close();
         if (list == null || list.isEmpty()) {

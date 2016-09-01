@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.smartroad;
+package com.mini.smartroad;
 
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.SimpleBehaviour;
