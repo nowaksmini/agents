@@ -7,16 +7,18 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [users] (
+CREATE TABLE [addresses] (
   [id]          [int] IDENTITY (1, 1) NOT NULL,
-  [first_name]  [varchar](100)        NULL,
-  [last_name]   [varchar](100)        NULL,
-  [email]       [varchar](100)        NULL,
+  [country]     [nvarchar](100)       NULL,
+  [distinct]    [nvarchar](100)       NULL,
+  [city]        [nvarchar](100)       NULL,
+  [street]      [varchar](100)        NULL,
+  [number]      [varchar](100)        NULL,
+  [extraNumber] [varchar](100)        NULL,
+  [postalCode]  [varchar](100)        NULL,
   [create_date] [datetime]            NULL,
   [modify_date] [datetime]            NULL,
-  [token]       [varchar](100)        NULL,
-  [password]    [varchar](100)        NULL,
-  CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED
+  CONSTRAINT [PK_addresses] PRIMARY KEY CLUSTERED
     (
       [id] ASC
     )
@@ -25,4 +27,3 @@ CREATE TABLE [users] (
 ) ON [PRIMARY]
 
 GO
-

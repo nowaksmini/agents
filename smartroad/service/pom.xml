@@ -70,6 +70,7 @@
             <version>1.10</version>
         </dependency>
 
+        <!-- COMMON MODULE -->
         <dependency>
             <groupId>com.mini.pw</groupId>
             <artifactId>common</artifactId>

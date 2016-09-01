@@ -4,6 +4,7 @@ public class Utils {
     public static final int ID = 0;
 
     public static final String ONTOLOGY_USER = "user";
+    public static final String ONTOLOGY_STATION = "station";
 
     public static final String PROTOCOL_LOGIN = "login";
     public static final String PROTOCOL_REGISTER = "register";

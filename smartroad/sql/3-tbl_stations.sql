@@ -7,16 +7,20 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [users] (
+CREATE TABLE [stations] (
   [id]          [int] IDENTITY (1, 1) NOT NULL,
-  [first_name]  [varchar](100)        NULL,
-  [last_name]   [varchar](100)        NULL,
+  [token]       [varchar](100)        NULL,
+  [name]        [nvarchar](100)       NULL,
+  [full_name]   [nvarchar](100)       NULL,
+  [logo]        [nvarchar](200)       NULL,
   [email]       [varchar](100)        NULL,
+  [phone]       [varchar](100)        NULL,
+  [longitude]   [FLOAT]               NULL,
+  [latitude]    [FLOAT]               NULL,
+  [address_id]  [int]                 NULL,
   [create_date] [datetime]            NULL,
   [modify_date] [datetime]            NULL,
-  [token]       [varchar](100)        NULL,
-  [password]    [varchar](100)        NULL,
-  CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED
+  CONSTRAINT [PK_stations] PRIMARY KEY CLUSTERED
     (
       [id] ASC
     )
