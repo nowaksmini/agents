@@ -1,13 +1,13 @@
 package com.mini.smartroad.common;
 
 public class Utils {
-    public static final int ID = 0;
-
     public static final String ONTOLOGY_USER = "user";
     public static final String ONTOLOGY_STATION = "station";
+    public static final String ONTOLOGY_SEARCH = "search";
 
     public static final String PROTOCOL_LOGIN = "login";
     public static final String PROTOCOL_REGISTER = "register";
+    public static final String PROTOCOL_FIND_STATIONS = "find_stations";
 
     public static final String SUFFIX_RESPONSE = "-response";
 
@@ -16,4 +16,5 @@ public class Utils {
 
     public static final String USER_SERVICE_AGENT = "com.mini.smartroad.service.user.UserServiceAgent";
     public static final String STATION_SERVICE_AGENT = "com.mini.smartroad.service.station.StationServiceAgent";
+    public static final String SEARCH_SERVICE_AGENT = "com.mini.smartroad.service.station.StationSearchAgent";
 }

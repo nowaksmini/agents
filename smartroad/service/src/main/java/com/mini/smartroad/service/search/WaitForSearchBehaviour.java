@@ -1,4 +1,4 @@
-package com.mini.smartroad.service.user;
+package com.mini.smartroad.service.search;
 
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.service.base.BaseAgent;
@@ -10,30 +10,22 @@ import jade.lang.acl.UnreadableException;
 
 import java.io.Serializable;
 
-public class WaitForUserBehaviour extends BaseBehaviour {
+public class WaitForSearchBehaviour extends BaseBehaviour {
     private boolean isDone = false;
     private BaseInteractBehaviour nextBehaviour;
 
-    public WaitForUserBehaviour() {
+    public WaitForSearchBehaviour() {
     }
 
     @Override
     public void action() {
         super.action();
-        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_USER));
+        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_SEARCH));
         if (msg != null) {
-            if (msg.getProtocol().equals(Utils.PROTOCOL_LOGIN)) {
+            if (msg.getProtocol().equals(Utils.PROTOCOL_FIND_STATIONS)) {
                 try {
                     Serializable contentObject = msg.getContentObject();
-                    nextBehaviour = new UserServiceLoginBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
-                } catch (UnreadableException e) {
-                    e.printStackTrace();
-                }
-                isDone = true;
-            } else if (msg.getProtocol().equals(Utils.PROTOCOL_REGISTER)) {
-                try {
-                    Serializable contentObject = msg.getContentObject();
-                    nextBehaviour = new UserServiceRegisterBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
+                    nextBehaviour = new SearchServiceFindStationsBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
                 } catch (UnreadableException e) {
                     e.printStackTrace();
                 }
@@ -48,7 +40,7 @@ public class WaitForUserBehaviour extends BaseBehaviour {
     public boolean done() {
         if (isDone) {
             myAgent.addBehaviour(nextBehaviour);
-            myAgent.addBehaviour(new WaitForUserBehaviour());
+            myAgent.addBehaviour(new WaitForSearchBehaviour());
             return true;
         }
         return false;

@@ -1,7 +1,7 @@
 package com.mini.smartroad;
 
-import com.mini.smartroad.client.StartSimulation;
 import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.service.search.SearchServiceAgent;
 import com.mini.smartroad.service.station.StationServiceAgent;
 import com.mini.smartroad.service.user.UserServiceAgent;
 import jade.core.Profile;
@@ -16,10 +16,10 @@ public class Main {
     private static jade.wrapper.AgentContainer agentContainer;
 
     public static void main(String[] args) throws StaleProxyException {
-        startMainContiner();
+        startMainContainer();
     }
 
-    public static void startMainContiner() {
+    private static void startMainContainer() {
         runtime.setCloseVM(true);
         Profile profile = new ProfileImpl();
         profile.setParameter(Profile.MAIN_HOST, Utils.IP);
@@ -37,6 +37,8 @@ public class Main {
             agentUserController.start();
             AgentController agentStationController = agentContainer.createNewAgent(StationServiceAgent.class.getName(), StationServiceAgent.class.getName(), null);
             agentStationController.start();
+            AgentController agentSearchController = agentContainer.createNewAgent(SearchServiceAgent.class.getName(), SearchServiceAgent.class.getName(), null);
+            agentSearchController.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }

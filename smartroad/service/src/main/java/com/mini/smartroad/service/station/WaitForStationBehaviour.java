@@ -11,7 +11,7 @@ import jade.lang.acl.UnreadableException;
 import java.io.Serializable;
 
 public class WaitForStationBehaviour extends BaseBehaviour {
-    boolean isDone = false;
+    private boolean isDone = false;
     private BaseInteractBehaviour nextBehaviour;
 
     public WaitForStationBehaviour() {
