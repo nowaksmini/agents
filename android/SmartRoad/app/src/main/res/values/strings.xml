@@ -1,21 +1,6 @@
 <resources>
     <string name="app_name">SmartRoad</string>
 
-    <!-- SettingsActivity -->
-    <string name="host_label">HOST</string>
-    <string name="port_label">PORT</string>
-    <string name="ID_label">ID</string>
-    <string name="message_amount_label">Message amount</string>
-    <string name="message_length_label">Message length</string>
-    <string name="host_hint">192.168.0.38</string>
-    <string name="port_hint">1099</string>
-    <string name="id_hint">1</string>
-    <string name="message_amount_hint">10</string>
-    <string name="message_length_hint">176</string>
-
-    <string name="connect_btn">CONNECT</string>
-    <string name="settings">Settings</string>
-
     <!-- Login Activity -->
     <string name="username_hint">User name</string>
     <string name="password_hint">Password</string>

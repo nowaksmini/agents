@@ -40,7 +40,7 @@ public class Main {
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }
-        StartSimulation.start();
+//        StartSimulation.start();
         runtime.shutDown();
     }
 

@@ -1,52 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/login_activity_background"
-    android:orientation="vertical">
+    android:background="@color/login_activity_background">
 
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/login_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/login_panel_margin_vertical"
-        android:layout_marginRight="@dimen/login_panel_margin_vertical"
-        android:layout_marginTop="@dimen/login_panel_margin_top">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <fragment
+            android:id="@+id/fragment_login"
+            android:name="com.mini.smartroad.LoginFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_login" />
+    </FrameLayout>
 
-            <EditText
-                android:id="@+id/login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/username_hint"
-                android:shadowColor="@color/colorAccent"
-                android:textColor="@color/colorAccent"
-                android:textColorHighlight="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
-                android:textColorLink="@color/colorAccent" />
+    <FrameLayout
+        android:id="@+id/register_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password_hint"
-                android:inputType="textPassword"
-                android:shadowColor="@color/colorAccent"
-                android:textColor="@color/colorAccent"
-                android:textColorHighlight="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
-                android:textColorLink="@color/colorAccent" />
-        </LinearLayout>
-    </RelativeLayout>
+        <fragment
+            android:id="@+id/fragment_register"
+            android:name="com.mini.smartroad.RegisterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_register" />
+    </FrameLayout>
 
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:scaleType="fitEnd"-->
-    <!--android:src="@mipmap/car" />-->
-
-</LinearLayout>
+</FrameLayout>

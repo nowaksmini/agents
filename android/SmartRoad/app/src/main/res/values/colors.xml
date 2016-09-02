@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#82B1FF</color>
-    <color name="colorPrimaryDark">#304FFE</color>
-    <color name="colorAccent">@android:color/black</color>
+    <color name="colorPrimary">#4DB6AC</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#424242</color>
 
     <!-- Login Activity -->
     <color name="login_activity_background">@android:color/white</color>
