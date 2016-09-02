@@ -11,12 +11,12 @@ public class StationRegisterInDto implements Serializable {
     private String email;
     private String logo;
     private String phone;
-    private String longitude;
-    private String latitude;
+    private double longitude;
+    private double latitude;
     private AddressDto addressDto;
 
     public StationRegisterInDto(String name, String fullName, String email, String logo,
-                                String phone, String longitude, String latitude, AddressDto addressDto) {
+                                String phone, double longitude, double latitude, AddressDto addressDto) {
         this.name = name;
         this.fullName = fullName;
         this.email = email;
@@ -47,11 +47,11 @@ public class StationRegisterInDto implements Serializable {
         return phone;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 

@@ -8,8 +8,8 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
 
     @Column(name = "country")
     private String country;
-    @Column(name = "distinct")
-    private String distinct;
+    @Column(name = "province")
+    private String province;
     @Column(name = "city")
     private String city;
     @Column(name = "street")
@@ -22,7 +22,7 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
     private String postalCode;
 
     @OneToOne(mappedBy = "address")
-    private UserEntity userEntity;
+    private StationEntity station;
 
     public String getCountry() {
         return country;
@@ -32,12 +32,12 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
         this.country = country;
     }
 
-    public String getDistinct() {
-        return distinct;
+    public String getProvince() {
+        return province;
     }
 
-    public void setDistinct(String distinct) {
-        this.distinct = distinct;
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public String getCity() {
@@ -80,19 +80,19 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
         this.postalCode = postalCode;
     }
 
-    public UserEntity getUserEntity() {
-        return userEntity;
+    public StationEntity getStation() {
+        return station;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setStation(StationEntity station) {
+        this.station = station;
     }
 
     @Override
     public String toString() {
         return "AddressEntity{" +
                 "country='" + country + '\'' +
-                ", distinct='" + distinct + '\'' +
+                ", province='" + province + '\'' +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 ", number='" + number + '\'' +
@@ -110,7 +110,7 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
         AddressEntity that = (AddressEntity) o;
 
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
-        if (distinct != null ? !distinct.equals(that.distinct) : that.distinct != null) return false;
+        if (province != null ? !province.equals(that.province) : that.province != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
         if (street != null ? !street.equals(that.street) : that.street != null) return false;
         if (number != null ? !number.equals(that.number) : that.number != null) return false;
@@ -123,7 +123,7 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (distinct != null ? distinct.hashCode() : 0);
+        result = 31 * result + (province != null ? province.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (street != null ? street.hashCode() : 0);
         result = 31 * result + (number != null ? number.hashCode() : 0);

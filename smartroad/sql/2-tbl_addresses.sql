@@ -10,7 +10,7 @@ GO
 CREATE TABLE [addresses] (
   [id]          [int] IDENTITY (1, 1) NOT NULL,
   [country]     [nvarchar](100)       NULL,
-  [distinct]    [nvarchar](100)       NULL,
+  [province]    [nvarchar](100)       NULL,
   [city]        [nvarchar](100)       NULL,
   [street]      [varchar](100)        NULL,
   [number]      [varchar](100)        NULL,

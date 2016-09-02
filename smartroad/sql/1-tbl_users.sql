@@ -14,7 +14,7 @@ CREATE TABLE [users] (
   [email]       [varchar](100)        NULL,
   [create_date] [datetime]            NULL,
   [modify_date] [datetime]            NULL,
-  [token]       [varchar](100)        NULL,
+  [token]       [varchar](100)        NOT NULL,
   [password]    [varchar](100)        NULL,
   CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED
     (

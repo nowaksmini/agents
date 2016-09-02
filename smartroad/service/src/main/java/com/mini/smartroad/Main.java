@@ -1,6 +1,8 @@
 package com.mini.smartroad;
 
+import com.mini.smartroad.client.StartSimulation;
 import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.service.station.StationServiceAgent;
 import com.mini.smartroad.service.user.UserServiceAgent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -31,12 +33,14 @@ public class Main {
             e.printStackTrace();
         }
         try {
-            AgentController agentController = agentContainer.createNewAgent(UserServiceAgent.class.getName(), UserServiceAgent.class.getName(), null);
-            agentController.start();
+            AgentController agentUserController = agentContainer.createNewAgent(UserServiceAgent.class.getName(), UserServiceAgent.class.getName(), null);
+            agentUserController.start();
+            AgentController agentStationController = agentContainer.createNewAgent(StationServiceAgent.class.getName(), StationServiceAgent.class.getName(), null);
+            agentStationController.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }
-        //StartSimulation.start();
+        StartSimulation.start();
         runtime.shutDown();
     }
 

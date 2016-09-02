@@ -15,4 +15,5 @@ public class Utils {
     public static final String PORT = "1099";
 
     public static final String USER_SERVICE_AGENT = "com.mini.smartroad.service.user.UserServiceAgent";
+    public static final String STATION_SERVICE_AGENT = "com.mini.smartroad.service.station.StationServiceAgent";
 }

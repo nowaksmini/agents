@@ -1,16 +1,20 @@
 package com.mini.smartroad.service.station;
 
 import com.mini.smartroad.HibernateUtils;
+import com.mini.smartroad.common.CryptoUtils;
 import com.mini.smartroad.common.MessageProperties;
+import com.mini.smartroad.dto.AddressDto;
 import com.mini.smartroad.dto.in.StationRegisterInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
-import com.mini.smartroad.model.UserEntity;
+import com.mini.smartroad.model.AddressEntity;
+import com.mini.smartroad.model.StationEntity;
 import com.mini.smartroad.service.base.BaseAgent;
 import com.mini.smartroad.service.base.BaseInteractBehaviour;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.io.IOException;
@@ -46,23 +50,53 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
     private StatusOutDto registerStation(StationRegisterInDto stationRegisterInDto, ACLMessage aclMessage) {
         StatusOutDto statusOutDto;
         Session session = HibernateUtils.getSessionFactory().openSession();
-        List list = session.createCriteria(UserEntity.class)
-                .add(Restrictions.eq("name", stationRegisterInDto.getFullName()))
+        List list = session.createCriteria(StationEntity.class)
+                .add(Restrictions.eq("name", stationRegisterInDto.getName()))
                 .add(Restrictions.eq("longitude", stationRegisterInDto.getLongitude()))
                 .add(Restrictions.eq("latitude", stationRegisterInDto.getLatitude()))
                 .list();
         session.close();
         if (list != null && !list.isEmpty()) {
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
-            statusOutDto = new StatusOutDto(StatusType.ERROR, MessageProperties.ERROR_USER_ALREADY_DATABASE);
+            statusOutDto = new StatusOutDto(StatusType.ERROR, MessageProperties.ERROR_STATION_ALREADY_DATABASE);
             return statusOutDto;
         }
-
-        //TODO create station in database
+        session = HibernateUtils.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        StationEntity stationEntity = createStation(stationRegisterInDto);
+        session.save(stationEntity);
+        transaction.commit();
+        session.close();
         statusOutDto = new StatusOutDto();
+        aclMessage.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
         return statusOutDto;
     }
 
+    private StationEntity createStation(StationRegisterInDto stationRegisterInDto) {
+        AddressEntity addressEntity = new AddressEntity();
+        AddressDto addressDto = stationRegisterInDto.getAddressDto();
+        addressEntity.setCountry(addressDto.getCountry());
+        addressEntity.setCity(addressDto.getCity());
+        addressEntity.setProvince(addressDto.getDistinct());
+        addressEntity.setPostalCode(addressDto.getPostalCode());
+        addressEntity.setNumber(addressDto.getNumber());
+        addressEntity.setStreet(addressDto.getStreet());
+        addressEntity.setExtraNumber(addressDto.getExtraNumber());
+
+        StationEntity stationEntity = new StationEntity();
+        stationEntity.setEmail(stationRegisterInDto.getEmail());
+        stationEntity.setPhone(stationRegisterInDto.getPhone());
+        stationEntity.setLatitude(stationRegisterInDto.getLatitude());
+        stationEntity.setLongitude(stationRegisterInDto.getLongitude());
+        stationEntity.setLogo(stationRegisterInDto.getLogo());
+        stationEntity.setName(stationRegisterInDto.getName());
+        stationEntity.setFullName(stationRegisterInDto.getFullName());
+        stationEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName(),
+                stationRegisterInDto.getLongitude(), stationEntity.getLatitude()));
+        stationEntity.setAddress(addressEntity);
+
+        return stationEntity;
+    }
 
     @Override
     public boolean done() {

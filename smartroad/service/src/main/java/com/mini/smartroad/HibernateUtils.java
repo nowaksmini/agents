@@ -1,5 +1,7 @@
 package com.mini.smartroad;
 
+import com.mini.smartroad.model.AddressEntity;
+import com.mini.smartroad.model.StationEntity;
 import com.mini.smartroad.model.UserEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -13,6 +15,8 @@ public class HibernateUtils {
     private static SessionFactory buildSessionFactory() {
         Configuration cfg = new Configuration().configure();
         cfg.addAnnotatedClass(UserEntity.class);
+        cfg.addAnnotatedClass(AddressEntity.class);
+        cfg.addAnnotatedClass(StationEntity.class);
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
                 applySettings(cfg.getProperties()).build();
         SessionFactory sessionFactory = cfg.buildSessionFactory(serviceRegistry);

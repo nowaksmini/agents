@@ -5,5 +5,8 @@
     <file url="file://$PROJECT_DIR$/sql/1-tbl_users.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/sql/2-tbl_addresses.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/sql/3-tbl_stations.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/sql/4-index_user_token.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/sql/5-index_station_token.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/sql/6-FK_station_address.sql" dialect="TSQL" />
   </component>
 </project>

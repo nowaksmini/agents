@@ -96,6 +96,10 @@ public class CryptoUtils {
     }
 
     public static String generateUserToken(String email) {
-        return CryptoUtils.SHA1(new Date() + email).substring(0, 10).replaceAll("\\+", "");
+        return CryptoUtils.SHA1(new Date() + email).substring(0, 20).replaceAll("\\+", "");
+    }
+
+    public static String generateStationToken(String name, double longitude, double latitide) {
+        return CryptoUtils.SHA1(new Date() + name + latitide + longitude).substring(0, 20).replaceAll("\\+", "");
     }
 }
