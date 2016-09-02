@@ -1,6 +1,7 @@
 package com.mini.smartroad;
 
 import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.service.action.ActionServiceAgent;
 import com.mini.smartroad.service.search.SearchServiceAgent;
 import com.mini.smartroad.service.station.StationServiceAgent;
 import com.mini.smartroad.service.user.UserServiceAgent;
@@ -39,6 +40,8 @@ public class Main {
             agentStationController.start();
             AgentController agentSearchController = agentContainer.createNewAgent(SearchServiceAgent.class.getName(), SearchServiceAgent.class.getName(), null);
             agentSearchController.start();
+            AgentController agentActionController = agentContainer.createNewAgent(ActionServiceAgent.class.getName(), ActionServiceAgent.class.getName(), null);
+            agentActionController.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }

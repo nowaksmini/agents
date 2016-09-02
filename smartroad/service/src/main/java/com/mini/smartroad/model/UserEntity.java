@@ -1,6 +1,8 @@
 package com.mini.smartroad.model;
 
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,11 +15,14 @@ public class UserEntity extends BaseEntity<UserEntity> {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "email")
+    @NotNull
+    @Column(name = "email", unique = true)
     private String email;
+    @NotNull
     @Column(name = "password")
     private String password;
-    @Column(name = "token")
+    @NotNull
+    @Column(name = "token", unique = true)
     private String token;
 
     public String getFirstName() {

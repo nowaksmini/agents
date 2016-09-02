@@ -11,11 +11,11 @@ CREATE TABLE [users] (
   [id]          [int] IDENTITY (1, 1) NOT NULL,
   [first_name]  [varchar](100)        NULL,
   [last_name]   [varchar](100)        NULL,
-  [email]       [varchar](100)        NULL,
+  [email]       [varchar](100)        NOT NULL UNIQUE,
   [create_date] [datetime]            NULL,
   [modify_date] [datetime]            NULL,
-  [token]       [varchar](100)        NOT NULL,
-  [password]    [varchar](100)        NULL,
+  [token]       [varchar](100)        NOT NULL UNIQUE,
+  [password]    [varchar](100)        NOT NULL,
   CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED
     (
       [id] ASC

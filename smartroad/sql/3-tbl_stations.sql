@@ -9,7 +9,7 @@ GO
 
 CREATE TABLE [stations] (
   [id]          [int] IDENTITY (1, 1) NOT NULL,
-  [token]       [varchar](100)        NOT NULL,
+  [token]       [varchar](100)        NOT NULL UNIQUE,
   [name]        [nvarchar](100)       NOT NULL,
   [full_name]   [nvarchar](100)       NULL,
   [logo]        [nvarchar](200)       NULL,

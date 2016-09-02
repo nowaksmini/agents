@@ -24,7 +24,8 @@ public class Utils {
 
     public static final String USER_SERVICE_AGENT = "com.mini.smartroad.service.user.UserServiceAgent";
     public static final String STATION_SERVICE_AGENT = "com.mini.smartroad.service.station.StationServiceAgent";
-    public static final String SEARCH_SERVICE_AGENT = "com.mini.smartroad.service.station.StationSearchAgent";
+    public static final String SEARCH_SERVICE_AGENT = "com.mini.smartroad.service.search.SearchServiceAgent";
+    public static final String ACTION_SERVICE_AGENT = "com.mini.smartroad.service.action.ActionServiceAgent";
 
     public static final double LIKE_TIME_DURATION = 1; // in hours
     public static final double CONFRIM_TIME_DURATION = 1; // in hours

@@ -1,11 +1,14 @@
 package com.mini.smartroad.model;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "stations")
 public class StationEntity extends BaseEntity<StationEntity> {
 
+    @NotNull
     @Column(name = "name")
     private String name;
     @Column(name = "full_name")
@@ -14,12 +17,15 @@ public class StationEntity extends BaseEntity<StationEntity> {
     private String email;
     @Column(name = "logo")
     private String logo;
-    @Column(name = "token")
+    @NotNull
+    @Column(name = "token", unique = true)
     private String token;
     @Column(name = "phone")
     private String phone;
+    @NotNull
     @Column(name = "longitude")
     private Double longitude;
+    @NotNull
     @Column(name = "latitude")
     private Double latitude;
 
