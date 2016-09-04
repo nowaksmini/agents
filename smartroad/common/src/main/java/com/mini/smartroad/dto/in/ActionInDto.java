@@ -7,10 +7,10 @@ import java.io.Serializable;
 public class ActionInDto extends BaseInDto implements Serializable {
 
     private String stationToken;
-    private boolean value;
+    private Boolean value;
     private ActionType actionType;
 
-    public ActionInDto(String stationToken, String userToken, boolean value, ActionType actionType) {
+    public ActionInDto(String stationToken, String userToken, Boolean value, ActionType actionType) {
         this.stationToken = stationToken;
         this.userToken = userToken;
         this.value = value;
@@ -21,7 +21,7 @@ public class ActionInDto extends BaseInDto implements Serializable {
         return stationToken;
     }
 
-    public boolean isValue() {
+    public Boolean getValue() {
         return value;
     }
 

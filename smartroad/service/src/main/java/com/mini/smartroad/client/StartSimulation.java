@@ -1,9 +1,11 @@
 package com.mini.smartroad.client;
 
 import com.mini.smartroad.Main;
+import com.mini.smartroad.client.action.ActionClientAgent;
 import com.mini.smartroad.client.search.SearchStationsClientAgent;
 import com.mini.smartroad.client.station.StationClientAgent;
 import com.mini.smartroad.client.user.UserClientAgent;
+import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.dto.AddressDto;
 import com.mini.smartroad.dto.in.StationRegisterInDto;
 import jade.wrapper.AgentController;
@@ -41,8 +43,11 @@ public class StartSimulation {
                     StationClientAgent.class.getName(), buildStation());
             agentControllerStations.start();
             AgentController agentControllerSearch = Main.getAgentContainer().createNewAgent(SearchStationsClientAgent.class.getName(),
-                    SearchStationsClientAgent.class.getName(), new Object[]{"49d292a3d0fedca0509e", 50.01d, 50.01d, new Long(5)});
+                    SearchStationsClientAgent.class.getName(), new Object[]{"2b1e1cf6d6adea1dd3d8", 50.01d, 50.01d, new Long(5)});
             agentControllerSearch.start();
+            AgentController agentControllerAction = Main.getAgentContainer().createNewAgent(ActionClientAgent.class.getName(),
+                    ActionClientAgent.class.getName(), new Object[]{"2b1e1cf6d6adea1dd3d8", "42b62e5b8f97e22e64b6", ActionType.LIKE, Boolean.FALSE, Boolean.FALSE});
+            agentControllerAction.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }

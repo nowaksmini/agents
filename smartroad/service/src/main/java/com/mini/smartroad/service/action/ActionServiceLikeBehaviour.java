@@ -1,15 +1,14 @@
 package com.mini.smartroad.service.action;
 
 import com.mini.smartroad.base.BaseAgent;
-import com.mini.smartroad.base.BaseInteractBehaviour;
+import com.mini.smartroad.dto.in.ActionInDto;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 
+import java.io.IOException;
 import java.io.Serializable;
 
-public class ActionServiceLikeBehaviour extends BaseInteractBehaviour {
-
-    private boolean sent;
+public class ActionServiceLikeBehaviour extends ActionServiceBaseBehaviour {
 
     public ActionServiceLikeBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
         super(receiver, ontology, protocol, inputContent);
@@ -22,21 +21,15 @@ public class ActionServiceLikeBehaviour extends BaseInteractBehaviour {
         message.setOntology(getOntology());
         message.setProtocol(getProtocol());
         message.addReceiver(getReceiver());
-        // TODO create like entity
-//        try {
-//            //message.setContentObject(registerStation((StationRegisterInDto) getInputContent(), message));
-//        } catch (IOException e) {
-//            message.setContent(e.getMessage());
-//            message.setPerformative(ACLMessage.FAILURE);
-//            e.printStackTrace();
-//        }
+        try {
+            message.setContentObject(createAction((ActionInDto) getInputContent(), message));
+        } catch (IOException e) {
+            message.setContent(e.getMessage());
+            message.setPerformative(ACLMessage.FAILURE);
+            e.printStackTrace();
+        }
         ((BaseAgent) myAgent).sendMessage(message);
         sent = true;
-    }
-
-    @Override
-    public boolean done() {
-        return sent;
     }
 
 }

@@ -10,7 +10,7 @@ public class SearchStationsClientAgent extends BaseAgent {
         super.setup();
         Object[] arguments = getArguments();
         if (arguments != null) {
-            if (arguments.length == ArgumentProperties.SEARCH_STATIONS_WEB || arguments.length == ArgumentProperties.SERACH_STATIONS_MOBILE) {
+            if (arguments.length == ArgumentProperties.SEARCH_STATIONS_WEB || arguments.length == ArgumentProperties.SEARCH_STATIONS_MOBILE) {
                 String userToken = (String) arguments[arguments.length - 4];
                 double longitude = (Double) arguments[arguments.length - 3];
                 double latitude = (Double) arguments[arguments.length - 2];

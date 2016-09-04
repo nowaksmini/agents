@@ -68,7 +68,7 @@ public class SearchServiceFindStationsBehaviour extends BaseInteractBehaviour {
         List foundUsers = session.createCriteria(UserEntity.class).add(Restrictions.eq("token", userToken)).list();
         if (foundUsers == null || foundUsers.isEmpty()) {
             statusOutDto.setStatusType(StatusType.ERROR);
-            statusOutDto.setMessage(MessageProperties.ERROR_USER_NO_TOKEN + userToken);
+            statusOutDto.setMessage(MessageProperties.ERROR_NO_USER_WITH_TOKEN + userToken);
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
             session.close();
             return findStationsOutDto;
