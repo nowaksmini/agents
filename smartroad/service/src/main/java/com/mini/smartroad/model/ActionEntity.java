@@ -1,50 +1,160 @@
 package com.mini.smartroad.model;
 
-import com.sun.istack.internal.NotNull;
+import com.mini.smartroad.common.ActionType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "actions")
 public class ActionEntity extends BaseEntity<ActionEntity> {
 
-    @NotNull
-    @Column(name = "token", unique = true)
+    @Column(name = "token", unique = true, nullable = false)
     private String token;
-
     @Column(name = "value")
     private Boolean value;
     @Column(name = "sent_confirm")
     private Boolean sentConfirm;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_from", nullable = false)
+    private Date dateFrom;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_to", nullable = false)
+    private Date dateTo;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "action_type", nullable = false)
+    private ActionType actionType;
 
-    @Column(name = "country")
-    private String country;
-    @Column(name = "province")
-    private String province;
-    @Column(name = "city")
-    private String city;
-    @Column(name = "street")
-    private String street;
-    @Column(name = "number")
-    private String number;
-    @Column(name = "extraNumber")
-    private String extraNumber;
-    @Column(name = "postalCode")
-    private String postalCode;
-
-    @OneToOne(mappedBy = "address")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "station_id", nullable = false)
     private StationEntity station;
 
-    /*
-  [token]        [varchar](100)        NOT NULL UNIQUE,
-  [action_type]  [varchar](100)        NOT NULL,
-  [sent_confirm] [bit]                 NOT NULL,
-  [station_id]   [int]                 NOT NULL,
-  [user_id]      [int]                 NOT NULL,
-  [from]         [datetime]            NOT NULL,
-  [to]           [datetime]            NOT NULL,
-     */
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
+
+    @OneToMany(mappedBy = "action", fetch = FetchType.LAZY)
+    private List<CouponEntity> coupons;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Boolean getValue() {
+        return value;
+    }
+
+    public void setValue(Boolean value) {
+        this.value = value;
+    }
+
+    public Boolean getSentConfirm() {
+        return sentConfirm;
+    }
+
+    public void setSentConfirm(Boolean sentConfirm) {
+        this.sentConfirm = sentConfirm;
+    }
+
+    public Date getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public Date getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public ActionType getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(ActionType actionType) {
+        this.actionType = actionType;
+    }
+
+    public StationEntity getStation() {
+        return station;
+    }
+
+    public void setStation(StationEntity station) {
+        this.station = station;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public List<CouponEntity> getCoupons() {
+        return coupons;
+    }
+
+    public void setCoupons(List<CouponEntity> coupons) {
+        this.coupons = coupons;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ActionEntity)) return false;
+        if (!super.equals(o)) return false;
+
+        ActionEntity that = (ActionEntity) o;
+
+        if (getToken() != null ? !getToken().equals(that.getToken()) : that.getToken() != null) return false;
+        if (getValue() != null ? !getValue().equals(that.getValue()) : that.getValue() != null) return false;
+        if (getSentConfirm() != null ? !getSentConfirm().equals(that.getSentConfirm()) : that.getSentConfirm() != null)
+            return false;
+        if (getDateFrom() != null ? !getDateFrom().equals(that.getDateFrom()) : that.getDateFrom() != null)
+            return false;
+        if (getDateTo() != null ? !getDateTo().equals(that.getDateTo()) : that.getDateTo() != null) return false;
+        if (getActionType() != that.getActionType()) return false;
+        if (getStation() != null ? !getStation().equals(that.getStation()) : that.getStation() != null) return false;
+        return getUser() != null ? getUser().equals(that.getUser()) : that.getUser() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (getToken() != null ? getToken().hashCode() : 0);
+        result = 31 * result + (getValue() != null ? getValue().hashCode() : 0);
+        result = 31 * result + (getSentConfirm() != null ? getSentConfirm().hashCode() : 0);
+        result = 31 * result + (getDateFrom() != null ? getDateFrom().hashCode() : 0);
+        result = 31 * result + (getDateTo() != null ? getDateTo().hashCode() : 0);
+        result = 31 * result + (getActionType() != null ? getActionType().hashCode() : 0);
+        result = 31 * result + (getStation() != null ? getStation().hashCode() : 0);
+        result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ActionEntity{" +
+                "token='" + token + '\'' +
+                ", value=" + value +
+                ", sentConfirm=" + sentConfirm +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", actionType=" + actionType +
+                ", station=" + station +
+                ", user=" + user +
+                '}';
+    }
 }

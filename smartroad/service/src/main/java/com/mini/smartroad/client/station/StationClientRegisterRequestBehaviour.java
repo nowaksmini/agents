@@ -2,16 +2,15 @@ package com.mini.smartroad.client.station;
 
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.in.StationRegisterInDto;
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.base.BaseBehaviour;
+import com.mini.smartroad.base.BaseAgent;
+import com.mini.smartroad.base.BaseDoneBehaviour;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 
 import java.io.IOException;
 
-public class StationClientRegisterRequestBehaviour extends BaseBehaviour {
+public class StationClientRegisterRequestBehaviour extends BaseDoneBehaviour {
 
-    private boolean sent;
     private StationRegisterInDto stationRegisterInDto;
 
     public StationClientRegisterRequestBehaviour(StationRegisterInDto stationRegisterInDto) {
@@ -34,10 +33,4 @@ public class StationClientRegisterRequestBehaviour extends BaseBehaviour {
         sent = true;
         myAgent.addBehaviour(new StationClientRegisterResponseBehaviour());
     }
-
-    @Override
-    public boolean done() {
-        return sent;
-    }
-
 }

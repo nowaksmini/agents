@@ -2,12 +2,13 @@ package com.mini.smartroad.dto.in;
 
 import java.io.Serializable;
 
-public class FindStationsInDto implements Serializable {
+public class FindStationsInDto extends BaseInDto implements Serializable {
     private double latitude;
     private double longitude;
-    private long distance; // meters
+    private Long distance; // kilometers
 
-    public FindStationsInDto(double latitude, double longitude, long distance) {
+    public FindStationsInDto(String userToken, double latitude, double longitude, Long distance) {
+        this.userToken = userToken;
         this.latitude = latitude;
         this.longitude = longitude;
         this.distance = distance;
@@ -21,7 +22,7 @@ public class FindStationsInDto implements Serializable {
         return longitude;
     }
 
-    public long getDistance() {
+    public Long getDistance() {
         return distance;
     }
 

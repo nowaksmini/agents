@@ -3,17 +3,15 @@ package com.mini.smartroad.client.user;
 import com.mini.smartroad.common.CryptoUtils;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.in.UserLoginInDto;
-
+import com.mini.smartroad.base.BaseAgent;
+import com.mini.smartroad.base.BaseDoneBehaviour;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.base.BaseBehaviour;
 
 import java.io.IOException;
 
-public class UserClientLoginRequestBehaviour extends BaseBehaviour {
+public class UserClientLoginRequestBehaviour extends BaseDoneBehaviour {
 
-    private boolean sent;
     private UserLoginInDto userLoginInDto;
 
     public UserClientLoginRequestBehaviour(String login, String password) {
@@ -36,10 +34,4 @@ public class UserClientLoginRequestBehaviour extends BaseBehaviour {
         sent = true;
         myAgent.addBehaviour(new UserClientLoginResponseBehaviour());
     }
-
-    @Override
-    public boolean done() {
-        return sent;
-    }
-
 }

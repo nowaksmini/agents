@@ -1,7 +1,7 @@
 package com.mini.smartroad.service.action;
 
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.base.BaseInteractBehaviour;
+import com.mini.smartroad.base.BaseAgent;
+import com.mini.smartroad.base.BaseInteractBehaviour;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 

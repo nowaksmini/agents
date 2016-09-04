@@ -1,6 +1,6 @@
 package com.mini.smartroad.service.station;
 
-import com.mini.smartroad.service.base.BaseAgent;
+import com.mini.smartroad.base.BaseAgent;
 
 public class StationServiceAgent extends BaseAgent {
 
