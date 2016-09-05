@@ -24,14 +24,12 @@
         <processorPath useClasspath="true" />
         <module name="common" />
         <module name="service" />
-        <module name="spammer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.5" />
       <module name="service" target="1.5" />
       <module name="smartroad" target="1.5" />
-      <module name="spammer" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

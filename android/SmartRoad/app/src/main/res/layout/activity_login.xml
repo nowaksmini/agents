@@ -1,117 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/login_activity_background">
+    android:background="@color/login_activity_background"
+    android:orientation="horizontal">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/login_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/first_name_layout"
+        <fragment
+            android:id="@+id/login_fragment"
+            android:name="com.mini.smartroad.LoginFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_vertical_components_margin"
-            android:layout_marginTop="@dimen/small_vertical_components_margin">
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/first_name_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/first_name_hint"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/last_name_layout"
+    <FrameLayout
+        android:id="@+id/register_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <fragment
+            android:id="@+id/register_fragment"
+            android:name="com.mini.smartroad.RegisterFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_vertical_components_margin"
-            android:layout_marginTop="@dimen/small_vertical_components_margin">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/last_name_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/last_name_hint"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/email_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_vertical_components_margin"
-            android:layout_marginTop="@dimen/small_vertical_components_margin">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/email_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email_hint"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/password_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_vertical_components_margin"
-            android:layout_marginTop="@dimen/small_vertical_components_margin">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/password_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password_hint"
-                android:inputType="textPassword"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/repeat_password_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_vertical_components_margin"
-            android:layout_marginTop="@dimen/small_vertical_components_margin">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/repeated_password_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/repeat_password_hint"
-                android:inputType="textPassword"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_vertical_components_margin"
-            android:layout_marginTop="@dimen/small_vertical_components_margin"
-            android:padding="@dimen/action_button_padding"
-            android:text="@string/register_button"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/action_button_text_size" />
-
-        <TextView
-            android:id="@+id/link_login"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_vertical_components_margin"
-            android:gravity="center"
-            android:text="@string/already_member"
-            android:textSize="@dimen/link_text_size" />
-    </LinearLayout>
-
-</ScrollView>
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</LinearLayout>
