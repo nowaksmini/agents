@@ -1,9 +1,9 @@
 package com.mini.smartroad.service.search;
 
 import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.base.BaseBehaviour;
-import com.mini.smartroad.service.base.BaseInteractBehaviour;
+import com.mini.smartroad.base.BaseAgent;
+import com.mini.smartroad.base.BaseBehaviour;
+import com.mini.smartroad.base.BaseInteractBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;

@@ -1,5 +1,7 @@
 package com.mini.smartroad.common;
 
+import java.util.Date;
+
 public class Utils {
     public static final String ONTOLOGY_USER = "user";
     public static final String ONTOLOGY_STATION = "station";
@@ -27,7 +29,18 @@ public class Utils {
     public static final String SEARCH_SERVICE_AGENT = "com.mini.smartroad.service.search.SearchServiceAgent";
     public static final String ACTION_SERVICE_AGENT = "com.mini.smartroad.service.action.ActionServiceAgent";
 
-    public static final double LIKE_TIME_DURATION = 1; // in hours
-    public static final double CONFRIM_TIME_DURATION = 1; // in hours
+    public static final int LIKE_TIME_DURATION = 1; // in hours
+    public static final int COUPON_TIME_DURATION = 1; // in hours
 
+    public static final double MIN_LATITUDE = -90;
+    public static final double MAX_LATITUDE = 90;
+    public static final double MIN_LONGITUDE = -180;
+    public static final double MAX_LONGITUDE = 180;
+
+    public static final double KILOMETER_TO_DEGREES_LATITUDE = 0.005;
+    public static final double KILOMETER_TO_DEGREES_LONGITUDE = 0.01;
+
+    public static boolean dateBetweenRange(Date from, Date to, Date start, Date end) {
+        return !from.after(end) && !to.before(start);
+    }
 }

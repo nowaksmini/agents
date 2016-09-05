@@ -1,7 +1,6 @@
 package com.mini.smartroad.service.action;
 
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.station.WaitForStationBehaviour;
+import com.mini.smartroad.base.BaseAgent;
 
 public class ActionServiceAgent extends BaseAgent {
 

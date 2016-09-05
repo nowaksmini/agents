@@ -1,6 +1,6 @@
 package com.mini.smartroad.service.user;
 
-import com.mini.smartroad.service.base.BaseAgent;
+import com.mini.smartroad.base.BaseAgent;
 
 public class UserServiceAgent extends BaseAgent {
 

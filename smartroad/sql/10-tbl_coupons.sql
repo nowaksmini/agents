@@ -18,7 +18,7 @@ CREATE TABLE [coupons] (
   [valid_to]      [datetime]            NOT NULL,
   [create_date]   [datetime]            NULL,
   [modify_date]   [datetime]            NULL,
-  CONSTRAINT [PK_actions] PRIMARY KEY CLUSTERED
+  CONSTRAINT [PK_coupons] PRIMARY KEY CLUSTERED
     (
       [id] ASC
     )

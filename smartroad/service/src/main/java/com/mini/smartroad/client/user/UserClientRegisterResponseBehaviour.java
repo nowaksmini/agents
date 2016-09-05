@@ -3,8 +3,8 @@ package com.mini.smartroad.client.user;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.UserOutDto;
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.base.BaseBehaviour;
+import com.mini.smartroad.base.BaseAgent;
+import com.mini.smartroad.base.BaseBehaviour;
 
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;

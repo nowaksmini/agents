@@ -1,11 +1,7 @@
 package com.mini.smartroad.model;
 
-
-import com.sun.istack.internal.NotNull;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -15,15 +11,15 @@ public class UserEntity extends BaseEntity<UserEntity> {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @NotNull
-    @Column(name = "email", unique = true)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
-    @NotNull
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
-    @NotNull
-    @Column(name = "token", unique = true)
+    @Column(name = "token", unique = true, nullable = false)
     private String token;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<ActionEntity> actions;
 
     public String getFirstName() {
         return firstName;
@@ -63,6 +59,14 @@ public class UserEntity extends BaseEntity<UserEntity> {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public List<ActionEntity> getActions() {
+        return actions;
+    }
+
+    public void setActions(List<ActionEntity> actions) {
+        this.actions = actions;
     }
 
     @Override

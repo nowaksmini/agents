@@ -6,8 +6,8 @@ import com.mini.smartroad.dto.out.UserOutDto;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.base.BaseBehaviour;
+import com.mini.smartroad.base.BaseAgent;
+import com.mini.smartroad.base.BaseBehaviour;
 
 public class UserClientLoginResponseBehaviour extends BaseBehaviour {
     boolean isDone = false;

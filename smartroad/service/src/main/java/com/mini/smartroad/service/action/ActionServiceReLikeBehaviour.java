@@ -1,15 +1,18 @@
 package com.mini.smartroad.service.action;
 
-import com.mini.smartroad.service.base.BaseAgent;
-import com.mini.smartroad.service.base.BaseInteractBehaviour;
+import com.mini.smartroad.base.BaseAgent;
+import com.mini.smartroad.common.ActionType;
+import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.dto.in.ActionInDto;
+import com.mini.smartroad.dto.out.StatusOutDto;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Calendar;
 
-public class ActionServiceReLikeBehaviour extends BaseInteractBehaviour {
-
-    private boolean sent;
+public class ActionServiceReLikeBehaviour extends ActionServiceBaseBehaviour {
 
     public ActionServiceReLikeBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
         super(receiver, ontology, protocol, inputContent);
@@ -22,21 +25,19 @@ public class ActionServiceReLikeBehaviour extends BaseInteractBehaviour {
         message.setOntology(getOntology());
         message.setProtocol(getProtocol());
         message.addReceiver(getReceiver());
-        // TODO create new like entity, for old save value = 0
-//        try {
-//            //message.setContentObject(registerStation((StationRegisterInDto) getInputContent(), message));
-//        } catch (IOException e) {
-//            message.setContent(e.getMessage());
-//            message.setPerformative(ACLMessage.FAILURE);
-//            e.printStackTrace();
-//        }
+        try {
+            ActionInDto actionInDto = (ActionInDto) getInputContent();
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.HOUR, Utils.LIKE_TIME_DURATION);
+            StatusOutDto statusOutDto = findPreviousAction(actionInDto, ActionType.LIKE,
+                    Boolean.TRUE, Boolean.TRUE, calendar.getTime(), message, true);
+            message.setContentObject(statusOutDto);
+        } catch (IOException e) {
+            message.setContent(e.getMessage());
+            message.setPerformative(ACLMessage.FAILURE);
+            e.printStackTrace();
+        }
         ((BaseAgent) myAgent).sendMessage(message);
         sent = true;
     }
-
-    @Override
-    public boolean done() {
-        return sent;
-    }
-
 }

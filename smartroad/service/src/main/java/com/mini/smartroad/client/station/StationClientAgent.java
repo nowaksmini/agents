@@ -2,7 +2,7 @@ package com.mini.smartroad.client.station;
 
 
 import com.mini.smartroad.dto.in.StationRegisterInDto;
-import com.mini.smartroad.service.base.BaseAgent;
+import com.mini.smartroad.base.BaseAgent;
 
 public class StationClientAgent extends BaseAgent {
 

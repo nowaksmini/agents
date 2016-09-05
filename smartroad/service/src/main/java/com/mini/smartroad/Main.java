@@ -1,5 +1,6 @@
 package com.mini.smartroad;
 
+import com.mini.smartroad.client.StartSimulation;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.service.action.ActionServiceAgent;
 import com.mini.smartroad.service.search.SearchServiceAgent;
@@ -45,7 +46,7 @@ public class Main {
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }
-//        StartSimulation.start();
+        StartSimulation.start();
         runtime.shutDown();
     }
 
