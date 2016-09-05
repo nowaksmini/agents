@@ -2,7 +2,21 @@
     <string name="app_name">SmartRoad</string>
 
     <!-- Login Activity -->
-    <string name="username_hint">User name</string>
+    <string name="first_name_hint">First name</string>
+    <string name="last_name_hint">Last name</string>
+    <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
+    <string name="repeat_password_hint">Repeat password</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Create Account</string>
+    <string name="no_account"><u>No account yet? Create one</u></string>
+    <string name="already_member"><u>Already a member? Login</u></string>
+
+    <string name="error_empty_email">Please fill email.</string>
+    <string name="error_empty_password">Please fill password</string>
+    <string name="error_empty_repeat_password">Please repeat password</string>
+    <string name="error_password_to_short">Password should have minimum 6 signs.</string>
+    <string name="error_password_to_long">Password should have maximum 30 signs.</string>
+    <string name="error_repeat_password_mismatch">Password and repeated password mismatch.</string>
 
 </resources>

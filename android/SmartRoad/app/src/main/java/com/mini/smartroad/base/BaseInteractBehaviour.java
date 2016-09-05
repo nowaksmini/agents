@@ -1,4 +1,4 @@
-package com.mini.smartroad.service.base;
+package com.mini.smartroad.base;
 
 import jade.core.AID;
 

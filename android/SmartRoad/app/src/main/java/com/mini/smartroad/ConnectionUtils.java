@@ -1,4 +1,4 @@
-package com.mini.smartroad.client;
+package com.mini.smartroad;
 
 import android.content.ComponentName;
 import android.content.Context;

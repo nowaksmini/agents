@@ -6,7 +6,10 @@
     <dimen name="connection_config_label_text_size">18dp</dimen>
 
     <!-- Login Activity -->
-    <dimen name="login_panel_margin_top">50dp</dimen>
-    <dimen name="login_panel_margin_vertical">10dp</dimen>
+    <dimen name="action_button_padding">15dp</dimen>
+    <dimen name="vertical_components_margin">10dp</dimen>
+    <dimen name="small_vertical_components_margin">5dp</dimen>
+    <dimen name="link_text_size">16sp</dimen>
+    <dimen name="action_button_text_size">20sp</dimen>
 
 </resources>

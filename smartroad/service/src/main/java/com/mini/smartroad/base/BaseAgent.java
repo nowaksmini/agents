@@ -1,6 +1,5 @@
 package com.mini.smartroad.base;
 
-import com.mini.smartroad.service.user.UserServiceAgent;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
@@ -12,7 +11,7 @@ public class BaseAgent extends Agent {
 
     @Override
     protected void setup() {
-        Logger.getLogger(UserServiceAgent.class.getName()).info(getLocalName() + " started");
+        Logger.getLogger(this.getClass().getName()).info(getLocalName() + " started");
     }
 
     public void sendMessage(ACLMessage aclMessage) {

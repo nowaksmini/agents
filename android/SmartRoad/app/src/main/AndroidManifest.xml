@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <service android:name="jade.android.MicroRuntimeService" />
 
-        <activity android:name="com.mini.smartroad.LoginActivity">
+        <activity android:name="LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
