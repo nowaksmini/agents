@@ -1,5 +1,6 @@
 package com.mini.smartroad;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -45,33 +46,34 @@ public class RegisterFragment extends Fragment {
     public void register(View view) {
         Toast.makeText(getContext(), "REGISTER", Toast.LENGTH_LONG).show();
         Resources resources = getResources();
-        if (emailEditText.getText().toString().isEmpty()) {
-            emailLayout.setError(resources.getString(R.string.error_empty_email));
-        } else if (passwordEditText.getText().toString().isEmpty()) {
-            emailLayout.setError(null);
-            repeatedPasswordLayout.setError(null);
-            passwordLayout.setError(resources.getString(R.string.error_empty_password));
-        } else if (repeatedPasswordEditText.getText().toString().isEmpty()) {
-            emailLayout.setError(null);
-            passwordLayout.setError(null);
-            repeatedPasswordLayout.setError(resources.getString(R.string.error_empty_repeat_password));
-        } else if (passwordEditText.getText().toString().length() < 5) {
-            emailLayout.setError(null);
-            repeatedPasswordLayout.setError(null);
-            passwordLayout.setError(resources.getString(R.string.error_password_to_short));
-        } else if (passwordEditText.getText().toString().length() > 30) {
-            emailLayout.setError(null);
-            repeatedPasswordLayout.setError(null);
-            passwordLayout.setError(resources.getString(R.string.error_password_to_long));
-        } else if (!passwordEditText.getText().toString().equals(repeatedPasswordEditText.getText().toString())) {
-            emailLayout.setError(null);
-            passwordLayout.setError(null);
-            repeatedPasswordLayout.setError(resources.getString(R.string.error_repeat_password_mismatch));
-        } else {
-            emailLayout.setError(null);
-            passwordLayout.setError(null);
-            repeatedPasswordLayout.setError(null);
-        }
+//        if (emailEditText.getText().toString().isEmpty()) {
+//            emailLayout.setError(resources.getString(R.string.error_empty_email));
+//        } else if (passwordEditText.getText().toString().isEmpty()) {
+//            emailLayout.setError(null);
+//            repeatedPasswordLayout.setError(null);
+//            passwordLayout.setError(resources.getString(R.string.error_empty_password));
+//        } else if (repeatedPasswordEditText.getText().toString().isEmpty()) {
+//            emailLayout.setError(null);
+//            passwordLayout.setError(null);
+//            repeatedPasswordLayout.setError(resources.getString(R.string.error_empty_repeat_password));
+//        } else if (passwordEditText.getText().toString().length() < 5) {
+//            emailLayout.setError(null);
+//            repeatedPasswordLayout.setError(null);
+//            passwordLayout.setError(resources.getString(R.string.error_password_to_short));
+//        } else if (passwordEditText.getText().toString().length() > 30) {
+//            emailLayout.setError(null);
+//            repeatedPasswordLayout.setError(null);
+//            passwordLayout.setError(resources.getString(R.string.error_password_to_long));
+//        } else if (!passwordEditText.getText().toString().equals(repeatedPasswordEditText.getText().toString())) {
+//            emailLayout.setError(null);
+//            passwordLayout.setError(null);
+//            repeatedPasswordLayout.setError(resources.getString(R.string.error_repeat_password_mismatch));
+//        } else {
+//            emailLayout.setError(null);
+//            passwordLayout.setError(null);
+//            repeatedPasswordLayout.setError(null);
+//        }
+        startActivity(new Intent(getActivity(), SearchActivity.class));
     }
 
     @Override
