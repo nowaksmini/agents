@@ -1,6 +1,7 @@
 package com.mini.smartroad;
 
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -35,6 +36,8 @@ public class LoginFragment extends Fragment {
     TextView linkRegisterTextView;
     @BindView(R.id.remember_credentials)
     CheckBox rememberCredentials;
+    @BindView(R.id.app_name)
+    TextView appName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +48,8 @@ public class LoginFragment extends Fragment {
         emailEditText.setText(credentials[0]);
         passwordEditText.setText(credentials[1]);
         rememberCredentials.setChecked(true);
+        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "fonts/font.ttf");
+        appName.setTypeface(tf);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

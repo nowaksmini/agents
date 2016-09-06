@@ -104,9 +104,6 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register, container, false);
         ButterKnife.bind(this, view);
-        String[] credentials = ((LoginActivity) getActivity()).getCredentials();
-        emailEditText.setText(credentials[0]);
-        passwordEditText.setText(credentials[1]);
         rememberCredentials.setChecked(true);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
