@@ -1,9 +1,7 @@
 package com.mini.smartroad;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +12,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.BooleanResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -22,12 +21,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mini.smartroad.client.action.ActionClientAgent;
 import com.mini.smartroad.client.search.SearchStationsClientAgent;
 import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.common.Utils;
@@ -36,6 +35,7 @@ import com.mini.smartroad.dto.out.StationOutDto;
 import com.mini.smartroad.events.FailureEvent;
 import com.mini.smartroad.events.FoundStationsEvent;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,6 +52,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
     private Marker currentLocationMarker;
     private EventBus bus = EventBus.getDefault();
     private volatile FindStationsOutDto findStationsOutDto;
+    private HashMap<String, StationOutDto> stationsMap;
     private String userToken;
 
     @Override
@@ -74,6 +75,20 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         buildGoogleApiClient();
         mGoogleApiClient.connect();
         mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
+        mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                if (stationsMap != null) {
+                    StationOutDto stationOutDto = stationsMap.get(marker.getId());
+                    if (stationOutDto != null) {
+                        ActionDialogFragment actionDialogFragment = new ActionDialogFragment();
+                        actionDialogFragment.setArguments(new Bundle());
+                        actionDialogFragment.getArguments().putSerializable(ActionDialogFragment.STATION, stationOutDto);
+                        actionDialogFragment.show(getSupportFragmentManager(), "ACTION_DIALOG_" + stationOutDto.getToken());
+                    }
+                }
+            }
+        });
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -106,8 +121,8 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         }
 
         LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(15000); //5 seconds
-        mLocationRequest.setFastestInterval(13000); //3 seconds
+        mLocationRequest.setInterval(5000); //5 seconds
+        mLocationRequest.setFastestInterval(3000); //3 seconds
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         CameraPosition cameraPosition = new CameraPosition.Builder().target(currentLongLat).zoom(14).build();
         mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
@@ -117,6 +132,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
     private void addCurrentLocationMarker() {
         mGoogleMap.clear();
+        stationsMap = new HashMap<>();
         if (findStationsOutDto != null) {
             List<StationOutDto> stations = findStationsOutDto.getStations();
             if (stations != null) {
@@ -124,6 +140,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(new LatLng(station.getLatitude(), station.getLongitude()));
                     markerOptions.title(station.getName());
+                    markerOptions.snippet(station.getFullName());
                     if (station.getActionType() == ActionType.CONFIRM) {
                         setMarkerIcon(station, markerOptions);
                     } else if (station.getActionType() == ActionType.LIKE) {
@@ -133,7 +150,8 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
                         setMarkerIcon(station, markerOptions);
                         markerOptions.alpha(0.5f);
                     }
-                    mGoogleMap.addMarker(markerOptions);
+                    Marker marker = mGoogleMap.addMarker(markerOptions);
+                    stationsMap.put(marker.getId(), station);
                 }
             }
         }
@@ -148,25 +166,12 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         if (station.getConfirms() == Utils.CARS_AMOUNT) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
         } else if (station.getConfirms() + station.getLikes() == Utils.CARS_AMOUNT) {
-            markerOptions.icon(getMarkerIcon(getResources().getColor(R.color.light_green)));
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
         } else if (station.getConfirms() + station.getLikes() > 0) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
         } else {
-            markerOptions.icon(getMarkerIcon(getResources().getColor(R.color.gray)));
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         }
-    }
-
-    // method definition
-    public BitmapDescriptor getMarkerIcon(int color) {
-        float[] hsv = new float[3];
-        Color.colorToHSV(color, hsv);
-        return BitmapDescriptorFactory.defaultMarker(hsv[0]);
-    }
-
-    private void startAgentSearchStations() {
-        ConnectionUtils.startAgent(SearchStationsClientAgent.class.getName() + UUID.randomUUID(),
-                SearchStationsClientAgent.class, getApplicationContext(),
-                new Object[]{userToken, currentLongLat.latitude, currentLongLat.longitude, Long.valueOf((long) (1000/ mGoogleMap.getCameraPosition().zoom))});
     }
 
     @Override
@@ -196,6 +201,18 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
     public void onEvent(FailureEvent failureEvent) {
         Toast.makeText(this, failureEvent.getMessage(), Toast.LENGTH_LONG).show();
+        Log.e(TAG, failureEvent.getMessage());
+    }
+
+    private void startAgentSearchStations() {
+        ConnectionUtils.startAgent(SearchStationsClientAgent.class.getName() + UUID.randomUUID(),
+                SearchStationsClientAgent.class, getApplicationContext(),
+                new Object[]{userToken, currentLongLat.latitude, currentLongLat.longitude, Long.valueOf((long) (1000 / mGoogleMap.getCameraPosition().zoom))});
+    }
+
+    public void startAgentAction(String stationToken, ActionType actionType, Boolean value, Boolean redo) {
+        ConnectionUtils.startAgent(ActionClientAgent.class.getName() + UUID.randomUUID(),
+                ActionClientAgent.class, getApplicationContext(), new Object[]{userToken, stationToken, actionType, value, redo});
     }
 
     @Override

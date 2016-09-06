@@ -4,7 +4,9 @@ import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseStopAgentBehaviour;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.out.StatusOutDto;
+import com.mini.smartroad.events.FailureEvent;
 
+import de.greenrobot.event.EventBus;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
@@ -27,10 +29,13 @@ public class ActionClientResponseBehaviour extends BaseStopAgentBehaviour {
                     try {
                         StatusOutDto contentObject = (StatusOutDto) msg.getContentObject();
                         logger.info(getAgent().getName() + " do action failed, message: \n" + contentObject.getMessage());
+                        EventBus.getDefault().post(new FailureEvent(contentObject.getMessage()));
                     } catch (UnreadableException e) {
                         e.printStackTrace();
+                        EventBus.getDefault().post(new FailureEvent(e.getMessage()));
                     }
                 } else if (msg.getPerformative() == ACLMessage.FAILURE) {
+                    EventBus.getDefault().post(new FailureEvent(msg.getContent()));
                     logger.info(getAgent().getName() + " do action failed with error \n" + msg.getContent());
                 }
                 isDone = true;

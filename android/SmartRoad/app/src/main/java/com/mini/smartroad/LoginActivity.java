@@ -9,13 +9,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.mini.smartroad.client.search.SearchStationsClientAgent;
-import com.mini.smartroad.client.user.UserClientAgent;
 import com.mini.smartroad.events.FailureEvent;
-import com.mini.smartroad.events.FoundStationsEvent;
 import com.mini.smartroad.events.UserEvent;
-
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

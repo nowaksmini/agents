@@ -20,4 +20,22 @@
     <string name="error_password_to_long">Password should have maximum 30 signs.</string>
     <string name="error_repeat_password_mismatch">Password and repeated password mismatch.</string>
 
+    <!-- SearchActivity -->
+    <string name="select_action">Select action</string>
+    <string name="like_description">* Like this station, gives 1h to decide. Max 3 stations at one time.</string>
+    <string name="unlike_description">* Do not like this station anymore. Like it later.</string>
+    <string name="relike_description">* Like this station again, gives 1h extra to decide.
+        Max 3 stations at one time</string>
+    <string name="accept_description">* Confirm arrival in next hour. Max 1 station at one time</string>
+    <string name="reject_description">* Remove confirmation of arrival.</string>
+
+    <!-- ActionDialogFragment -->
+    <string name="distinct">distinct</string>
+    <string name="telephone">tel.</string>
+    <string name="email">email</string>
+    <string name="street">St.</string>
+    <string name="contact">Contact:</string>
+    <string name="address">Address:</string>
+    <string name="liked">Liked:</string>
+    <string name="confirmed">Confirmed:</string>
 </resources>
