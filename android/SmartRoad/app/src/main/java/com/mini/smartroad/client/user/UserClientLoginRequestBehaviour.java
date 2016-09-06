@@ -1,21 +1,21 @@
 package com.mini.smartroad.client.user;
 
-import com.mini.smartroad.common.CryptoUtils;
-import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.dto.in.UserLoginInDto;
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseDoneBehaviour;
-import jade.core.AID;
-import jade.lang.acl.ACLMessage;
+import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.dto.in.UserLoginInDto;
 
 import java.io.IOException;
+
+import jade.core.AID;
+import jade.lang.acl.ACLMessage;
 
 public class UserClientLoginRequestBehaviour extends BaseDoneBehaviour {
 
     private UserLoginInDto userLoginInDto;
 
     public UserClientLoginRequestBehaviour(String login, String password) {
-        userLoginInDto = new UserLoginInDto(login, CryptoUtils.encodePassword(password));
+        userLoginInDto = new UserLoginInDto(login, password);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class UserClientLoginRequestBehaviour extends BaseDoneBehaviour {
         message.setOntology(Utils.ONTOLOGY_USER);
         message.setProtocol(Utils.PROTOCOL_LOGIN);
         ((BaseAgent) myAgent).sendMessage(message);
-        sent = true;
+        isDone = true;
         myAgent.addBehaviour(new UserClientLoginResponseBehaviour());
     }
 }

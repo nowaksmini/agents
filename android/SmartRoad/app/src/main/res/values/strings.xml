@@ -11,6 +11,7 @@
     <string name="register_button">Create Account</string>
     <string name="no_account"><u>No account yet? Create one</u></string>
     <string name="already_member"><u>Already a member? Login</u></string>
+    <string name="remember_credentials">Remember credentials</string>
 
     <string name="error_empty_email">Please fill email.</string>
     <string name="error_empty_password">Please fill password</string>

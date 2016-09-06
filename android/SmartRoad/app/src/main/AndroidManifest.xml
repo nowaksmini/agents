@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -25,15 +26,19 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCkfJ23nKnDymnVIkLWgzTxrPSuiPc6Ifk" />
 
-        <service android:name=".jade.android.MicroRuntimeService" />
+        <service android:name="jade.android.MicroRuntimeService" />
 
-        <activity android:name="LoginActivity">
+        <activity
+            android:name="LoginActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

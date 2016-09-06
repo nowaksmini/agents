@@ -12,12 +12,12 @@ public class SearchStationsClientAgent extends BaseAgent {
         if (arguments != null) {
             if (arguments.length == ArgumentProperties.SEARCH_STATIONS_WEB || arguments.length == ArgumentProperties.SEARCH_STATIONS_MOBILE) {
                 String userToken = (String) arguments[arguments.length - 4];
-                double longitude = (Double) arguments[arguments.length - 3];
-                double latitude = (Double) arguments[arguments.length - 2];
+                double latitude = (Double) arguments[arguments.length - 3];
+                double longitude = (Double) arguments[arguments.length - 2];
                 Long distance = (Long) arguments[arguments.length - 1];
                 logger.info("Passed arguments: search userToken:" + userToken + ", latitude: " + latitude + ", longitude: "
                         + longitude + ", distance" + distance);
-                addBehaviour(new SearchStationsClientRequestBehaviour(userToken, longitude, latitude, distance));
+                addBehaviour(new SearchStationsClientRequestBehaviour(userToken, latitude, longitude, distance));
             }
         }
     }

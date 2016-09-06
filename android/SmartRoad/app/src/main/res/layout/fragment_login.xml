@@ -45,6 +45,11 @@
                 android:textColor="@color/colorAccent" />
         </android.support.design.widget.TextInputLayout>
 
+        <CheckBox
+            android:id="@+id/remember_credentials"
+            android:text="@string/remember_credentials"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"

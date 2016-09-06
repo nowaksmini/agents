@@ -1,13 +1,14 @@
 package com.mini.smartroad.client.search;
 
-import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.dto.in.FindStationsInDto;
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseDoneBehaviour;
-import jade.core.AID;
-import jade.lang.acl.ACLMessage;
+import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.dto.in.FindStationsInDto;
 
 import java.io.IOException;
+
+import jade.core.AID;
+import jade.lang.acl.ACLMessage;
 
 public class SearchStationsClientRequestBehaviour extends BaseDoneBehaviour {
 
@@ -30,7 +31,7 @@ public class SearchStationsClientRequestBehaviour extends BaseDoneBehaviour {
         message.setOntology(Utils.ONTOLOGY_SEARCH);
         message.setProtocol(Utils.PROTOCOL_FIND_STATIONS);
         ((BaseAgent) myAgent).sendMessage(message);
-        sent = true;
         myAgent.addBehaviour(new SearchStationsClientResponseBehaviour());
+        isDone = true;
     }
 }

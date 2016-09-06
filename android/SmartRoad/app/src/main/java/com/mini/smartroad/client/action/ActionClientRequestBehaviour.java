@@ -5,10 +5,11 @@ import com.mini.smartroad.base.BaseDoneBehaviour;
 import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.in.ActionInDto;
-import jade.core.AID;
-import jade.lang.acl.ACLMessage;
 
 import java.io.IOException;
+
+import jade.core.AID;
+import jade.lang.acl.ACLMessage;
 
 public class ActionClientRequestBehaviour extends BaseDoneBehaviour {
 
@@ -44,7 +45,7 @@ public class ActionClientRequestBehaviour extends BaseDoneBehaviour {
             message.setProtocol(Utils.PROTOCOL_UNCONFIRM);
         }
         ((BaseAgent) myAgent).sendMessage(message);
-        sent = true;
+        isDone = true;
         myAgent.addBehaviour(new ActionClientResponseBehaviour());
     }
 }

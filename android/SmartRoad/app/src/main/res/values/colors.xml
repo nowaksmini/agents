@@ -3,6 +3,8 @@
     <color name="colorPrimary">#4DB6AC</color>
     <color name="colorPrimaryDark">#009688</color>
     <color name="colorAccent">#424242</color>
+    <color name="gray">@android:color/darker_gray</color>
+    <color name="light_green">@android:color/holo_green_light</color>
 
     <!-- Login Activity -->
     <color name="login_activity_background">@android:color/white</color>

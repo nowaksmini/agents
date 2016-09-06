@@ -30,7 +30,7 @@ public class StationClientRegisterRequestBehaviour extends BaseDoneBehaviour {
         message.setOntology(Utils.ONTOLOGY_STATION);
         message.setProtocol(Utils.PROTOCOL_REGISTER);
         ((BaseAgent) myAgent).sendMessage(message);
-        sent = true;
+        isDone = true;
         myAgent.addBehaviour(new StationClientRegisterResponseBehaviour());
     }
 }

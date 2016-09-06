@@ -1,7 +1,5 @@
 package com.mini.smartroad.common;
 
-import java.util.Date;
-
 public class Utils {
     public static final String ONTOLOGY_USER = "user";
     public static final String ONTOLOGY_STATION = "station";
@@ -40,7 +38,5 @@ public class Utils {
     public static final double KILOMETER_TO_DEGREES_LATITUDE = 0.005;
     public static final double KILOMETER_TO_DEGREES_LONGITUDE = 0.01;
 
-    public static boolean dateBetweenRange(Date from, Date to, Date start, Date end) {
-        return !from.after(end) && !to.before(start);
-    }
+    public static int CARS_AMOUNT = 4;
 }

@@ -1,15 +1,15 @@
 package com.mini.smartroad.client.action;
 
 import com.mini.smartroad.base.BaseAgent;
-import com.mini.smartroad.base.BaseBehaviour;
+import com.mini.smartroad.base.BaseStopAgentBehaviour;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.out.StatusOutDto;
+
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class ActionClientResponseBehaviour extends BaseBehaviour {
-    boolean isDone = false;
+public class ActionClientResponseBehaviour extends BaseStopAgentBehaviour {
 
     @Override
     public void action() {
@@ -38,10 +38,5 @@ public class ActionClientResponseBehaviour extends BaseBehaviour {
         } else {
             block();
         }
-    }
-
-    @Override
-    public boolean done() {
-        return isDone;
     }
 }

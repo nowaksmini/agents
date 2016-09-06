@@ -1,15 +1,14 @@
 package com.mini.smartroad.client.station;
 
 import com.mini.smartroad.base.BaseAgent;
-import com.mini.smartroad.base.BaseBehaviour;
+import com.mini.smartroad.base.BaseDoneBehaviour;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class StationClientRegisterResponseBehaviour extends BaseBehaviour {
-    boolean isDone = false;
+public class StationClientRegisterResponseBehaviour extends BaseDoneBehaviour {
 
     @Override
     public void action() {
@@ -34,10 +33,5 @@ public class StationClientRegisterResponseBehaviour extends BaseBehaviour {
         } else {
             block();
         }
-    }
-
-    @Override
-    public boolean done() {
-        return isDone;
     }
 }
