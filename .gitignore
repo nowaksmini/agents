@@ -1,4 +1,10 @@
 
+# Excluded files
+!android/SmartRoad/app/libs/common-1.0-SNAPSHOT.jar
+!android/SmartRoad/app/libs/JadeAndroid.jar
+!smartroad/service/lib/jade.jar
+!smartroad/service/lib/sqljdbc4-2.0.jar
+
 # Created by https://www.gitignore.io/api/java,android,intellij
 
 ### Android ###

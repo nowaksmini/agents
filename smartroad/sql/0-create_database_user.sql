@@ -10,7 +10,7 @@ GRANT SELECT TO smartroad
 
 GO
 
-GRANT INSERT TO smartroada
+GRANT INSERT TO smartroad
 
 GO
 
