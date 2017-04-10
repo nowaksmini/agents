@@ -5,5 +5,5 @@
     <color name="colorAccent">#424242</color>
 
     <!-- Login Activity -->
-    <color name="login_activity_background">@android:color/white</color>
+    <color name="activity_background">@android:color/white</color>
 </resources>
