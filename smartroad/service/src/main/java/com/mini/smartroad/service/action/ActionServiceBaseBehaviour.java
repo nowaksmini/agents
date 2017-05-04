@@ -10,7 +10,7 @@ import com.mini.smartroad.dto.in.ActionInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
 import com.mini.smartroad.model.ActionEntity;
-import com.mini.smartroad.model.StationEntity;
+import com.mini.smartroad.model.StationDetailsEntity;
 import com.mini.smartroad.model.UserEntity;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
@@ -26,7 +26,7 @@ public class ActionServiceBaseBehaviour extends BaseInteractBehaviour {
 
     protected boolean sent;
     protected UserEntity userEntity;
-    protected StationEntity stationEntity;
+    protected StationDetailsEntity stationDetailsEntity;
 
     public ActionServiceBaseBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
         super(receiver, ontology, protocol, inputContent);
@@ -52,7 +52,7 @@ public class ActionServiceBaseBehaviour extends BaseInteractBehaviour {
             return statusOutDto;
         }
         userEntity = (UserEntity) users.get(0);
-        List stations = session.createCriteria(StationEntity.class)
+        List stations = session.createCriteria(StationDetailsEntity.class)
                 .add(Restrictions.eq("token", actionInDto.getStationToken())).list();
         if (stations == null || stations.isEmpty()) {
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
@@ -68,7 +68,7 @@ public class ActionServiceBaseBehaviour extends BaseInteractBehaviour {
             session.close();
             return statusOutDto;
         }
-        stationEntity = (StationEntity) stations.get(0);
+        stationDetailsEntity = (StationDetailsEntity) stations.get(0);
         session.close();
         return statusOutDto;
     }
@@ -85,7 +85,7 @@ public class ActionServiceBaseBehaviour extends BaseInteractBehaviour {
                 .add(Restrictions.eq("actionType", actionType))
                 .add(Restrictions.eq("value", oldValue))
                 .add(Restrictions.eq("user", userEntity))
-                .add(Restrictions.eq("station", stationEntity))
+                .add(Restrictions.eq("station", stationDetailsEntity))
                 .add(Restrictions.le("dateFrom", end))
                 .add(Restrictions.ge("dateTo", new Date())).list();
         session.beginTransaction();
@@ -111,7 +111,7 @@ public class ActionServiceBaseBehaviour extends BaseInteractBehaviour {
             return statusOutDto;
         }
         Session session = HibernateUtils.getSessionFactory().openSession();
-        ActionEntity actionEntity = createActionEntity(actionInDto, userEntity, stationEntity);
+        ActionEntity actionEntity = createActionEntity(actionInDto, userEntity, stationDetailsEntity);
         session.beginTransaction();
         session.save(actionEntity);
         session.getTransaction().commit();
@@ -120,11 +120,11 @@ public class ActionServiceBaseBehaviour extends BaseInteractBehaviour {
         return statusOutDto;
     }
 
-    private ActionEntity createActionEntity(ActionInDto actionInDto, UserEntity userEntity, StationEntity stationEntity) {
+    private ActionEntity createActionEntity(ActionInDto actionInDto, UserEntity userEntity, StationDetailsEntity stationDetailsEntity) {
         ActionEntity actionEntity = new ActionEntity();
-        actionEntity.setToken(CryptoUtils.generateActionToken(actionInDto.getActionType(), userEntity.getToken(), stationEntity.getToken()));
+        actionEntity.setToken(CryptoUtils.generateActionToken(actionInDto.getActionType(), userEntity.getToken(), stationDetailsEntity.getToken()));
         actionEntity.setValue(actionInDto.getValue());
-        actionEntity.setStation(stationEntity);
+        actionEntity.setStation(stationDetailsEntity);
         actionEntity.setActionType(actionInDto.getActionType());
         actionEntity.setUser(userEntity);
         actionEntity.setDateFrom(new Date());

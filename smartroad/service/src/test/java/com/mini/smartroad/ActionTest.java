@@ -1,7 +1,7 @@
 package com.mini.smartroad;
 
 import com.mini.smartroad.model.ActionEntity;
-import com.mini.smartroad.model.StationEntity;
+import com.mini.smartroad.model.StationDetailsEntity;
 import com.mini.smartroad.model.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,9 +28,9 @@ public class ActionTest {
         Transaction transaction = session.beginTransaction();
         UserEntity userEntity = TestBuilder.buildUser();
         String userToken = userEntity.getToken();
-        StationEntity stationEntity = TestBuilder.buildStation();
-        String stationToken = stationEntity.getToken();
-        ActionEntity actionEntity = TestBuilder.buildActionLike(userEntity, stationEntity);
+        StationDetailsEntity stationDetailsEntity = TestBuilder.buildStation();
+        String stationToken = stationDetailsEntity.getToken();
+        ActionEntity actionEntity = TestBuilder.buildActionLike(userEntity, stationDetailsEntity);
         String actionToken = actionEntity.getToken();
         session.persist(actionEntity);
         session.save(actionEntity);
@@ -43,7 +43,7 @@ public class ActionTest {
         Assert.assertNotNull(foundActions);
         Assert.assertEquals(1, foundActions.size());
 
-        List foundStations = session1.createCriteria(StationEntity.class).add(Restrictions.eq("token", stationToken)).list();
+        List foundStations = session1.createCriteria(StationDetailsEntity.class).add(Restrictions.eq("token", stationToken)).list();
         Assert.assertNotNull(foundStations);
         Assert.assertEquals(1, foundStations.size());
 

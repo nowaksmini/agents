@@ -17,6 +17,10 @@ public class UserEntity extends BaseEntity<UserEntity> {
     private String password;
     @Column(name = "token", unique = true, nullable = false)
     private String token;
+    @Column(name = "points", nullable = false)
+    private Integer points = 0;
+    @OneToOne(mappedBy = "user")
+    private UserPreferencesEntity preferences;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<ActionEntity> actions;
@@ -61,6 +65,22 @@ public class UserEntity extends BaseEntity<UserEntity> {
         this.token = token;
     }
 
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public UserPreferencesEntity getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(UserPreferencesEntity preferences) {
+        this.preferences = preferences;
+    }
+
     public List<ActionEntity> getActions() {
         return actions;
     }
@@ -68,6 +88,24 @@ public class UserEntity extends BaseEntity<UserEntity> {
     public void setActions(List<ActionEntity> actions) {
         this.actions = actions;
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", id=" + id +
+                ", email='" + email + '\'' +
+                ", createDate=" + createDate +
+                ", password='" + password + '\'' +
+                ", modifyDate=" + modifyDate +
+                ", token='" + token + '\'' +
+                ", points=" + points +
+                ", preferences=" + preferences +
+                ", actions=" + actions +
+                '}';
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -84,7 +122,9 @@ public class UserEntity extends BaseEntity<UserEntity> {
         if (getEmail() != null ? !getEmail().equals(that.getEmail()) : that.getEmail() != null) return false;
         if (getPassword() != null ? !getPassword().equals(that.getPassword()) : that.getPassword() != null)
             return false;
-        return getToken() != null ? getToken().equals(that.getToken()) : that.getToken() == null;
+        if (getToken() != null ? !getToken().equals(that.getToken()) : that.getToken() != null) return false;
+        if (getPoints() != null ? !getPoints().equals(that.getPoints()) : that.getPoints() != null) return false;
+        return getPreferences() != null ? getPreferences().equals(that.getPreferences()) : that.getPreferences() == null;
     }
 
     @Override
@@ -95,6 +135,8 @@ public class UserEntity extends BaseEntity<UserEntity> {
         result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
         result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
         result = 31 * result + (getToken() != null ? getToken().hashCode() : 0);
+        result = 31 * result + (getPoints() != null ? getPoints().hashCode() : 0);
+        result = 31 * result + (getPreferences() != null ? getPreferences().hashCode() : 0);
         return result;
     }
 }

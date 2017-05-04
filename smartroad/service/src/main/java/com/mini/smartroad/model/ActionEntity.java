@@ -27,8 +27,8 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
     private ActionType actionType;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "station_id", nullable = false)
-    private StationEntity station;
+    @JoinColumn(name = "station_details_id", nullable = false)
+    private StationDetailsEntity stationDetails;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", nullable = false)
@@ -85,12 +85,12 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
         this.actionType = actionType;
     }
 
-    public StationEntity getStation() {
-        return station;
+    public StationDetailsEntity getStationDetails() {
+        return stationDetails;
     }
 
-    public void setStation(StationEntity station) {
-        this.station = station;
+    public void setStationDetails(StationDetailsEntity stationDetails) {
+        this.stationDetails = stationDetails;
     }
 
     public UserEntity getUser() {
@@ -110,6 +110,24 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
     }
 
     @Override
+    public String toString() {
+        return "ActionEntity{" +
+                "id=" + id +
+                ", token='" + token + '\'' +
+                ", value=" + value +
+                ", createDate=" + createDate +
+                ", sentConfirm=" + sentConfirm +
+                ", modifyDate=" + modifyDate +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", actionType=" + actionType +
+                ", stationDetails=" + stationDetails +
+                ", user=" + user +
+                ", coupons=" + coupons +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ActionEntity)) return false;
@@ -125,9 +143,9 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
             return false;
         if (getDateTo() != null ? !getDateTo().equals(that.getDateTo()) : that.getDateTo() != null) return false;
         if (getActionType() != that.getActionType()) return false;
-        if (getStation() != null ? !getStation().equals(that.getStation()) : that.getStation() != null) return false;
+        if (getStationDetails() != null ? !getStationDetails().equals(that.getStationDetails()) : that.getStationDetails() != null)
+            return false;
         return getUser() != null ? getUser().equals(that.getUser()) : that.getUser() == null;
-
     }
 
     @Override
@@ -139,22 +157,8 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
         result = 31 * result + (getDateFrom() != null ? getDateFrom().hashCode() : 0);
         result = 31 * result + (getDateTo() != null ? getDateTo().hashCode() : 0);
         result = 31 * result + (getActionType() != null ? getActionType().hashCode() : 0);
-        result = 31 * result + (getStation() != null ? getStation().hashCode() : 0);
+        result = 31 * result + (getStationDetails() != null ? getStationDetails().hashCode() : 0);
         result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "ActionEntity{" +
-                "token='" + token + '\'' +
-                ", value=" + value +
-                ", sentConfirm=" + sentConfirm +
-                ", dateFrom=" + dateFrom +
-                ", dateTo=" + dateTo +
-                ", actionType=" + actionType +
-                ", station=" + station +
-                ", user=" + user +
-                '}';
     }
 }

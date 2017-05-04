@@ -8,7 +8,7 @@ import com.mini.smartroad.dto.in.StationRegisterInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
 import com.mini.smartroad.model.AddressEntity;
-import com.mini.smartroad.model.StationEntity;
+import com.mini.smartroad.model.StationDetailsEntity;
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseInteractBehaviour;
 import jade.core.AID;
@@ -50,7 +50,7 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
     private StatusOutDto registerStation(StationRegisterInDto stationRegisterInDto, ACLMessage aclMessage) {
         StatusOutDto statusOutDto;
         Session session = HibernateUtils.getSessionFactory().openSession();
-        List list = session.createCriteria(StationEntity.class)
+        List list = session.createCriteria(StationDetailsEntity.class)
                 .add(Restrictions.eq("name", stationRegisterInDto.getName()))
                 .add(Restrictions.eq("longitude", stationRegisterInDto.getLongitude()))
                 .add(Restrictions.eq("latitude", stationRegisterInDto.getLatitude()))
@@ -63,8 +63,8 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         }
         session = HibernateUtils.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        StationEntity stationEntity = createStation(stationRegisterInDto);
-        session.save(stationEntity);
+        StationDetailsEntity stationDetailsEntity = createStation(stationRegisterInDto);
+        session.save(stationDetailsEntity);
         transaction.commit();
         session.close();
         statusOutDto = new StatusOutDto();
@@ -72,7 +72,7 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         return statusOutDto;
     }
 
-    private StationEntity createStation(StationRegisterInDto stationRegisterInDto) {
+    private StationDetailsEntity createStation(StationRegisterInDto stationRegisterInDto) {
         AddressEntity addressEntity = new AddressEntity();
         AddressDto addressDto = stationRegisterInDto.getAddressDto();
         addressEntity.setCountry(addressDto.getCountry());
@@ -83,19 +83,19 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         addressEntity.setStreet(addressDto.getStreet());
         addressEntity.setExtraNumber(addressDto.getExtraNumber());
 
-        StationEntity stationEntity = new StationEntity();
-        stationEntity.setEmail(stationRegisterInDto.getEmail());
-        stationEntity.setPhone(stationRegisterInDto.getPhone());
-        stationEntity.setLatitude(stationRegisterInDto.getLatitude());
-        stationEntity.setLongitude(stationRegisterInDto.getLongitude());
-        stationEntity.setLogo(stationRegisterInDto.getLogo());
-        stationEntity.setName(stationRegisterInDto.getName());
-        stationEntity.setFullName(stationRegisterInDto.getFullName());
-        stationEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName(),
-                stationRegisterInDto.getLongitude(), stationEntity.getLatitude()));
-        stationEntity.setAddress(addressEntity);
+        StationDetailsEntity stationDetailsEntity = new StationDetailsEntity();
+        stationDetailsEntity.setEmail(stationRegisterInDto.getEmail());
+        stationDetailsEntity.setPhone(stationRegisterInDto.getPhone());
+        stationDetailsEntity.setLatitude(stationRegisterInDto.getLatitude());
+        stationDetailsEntity.setLongitude(stationRegisterInDto.getLongitude());
+        stationDetailsEntity.setLogo(stationRegisterInDto.getLogo());
+        stationDetailsEntity.setName(stationRegisterInDto.getName());
+        stationDetailsEntity.setFullName(stationRegisterInDto.getFullName());
+        stationDetailsEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName(),
+                stationRegisterInDto.getLongitude(), stationDetailsEntity.getLatitude()));
+        stationDetailsEntity.setAddress(addressEntity);
 
-        return stationEntity;
+        return stationDetailsEntity;
     }
 
     @Override

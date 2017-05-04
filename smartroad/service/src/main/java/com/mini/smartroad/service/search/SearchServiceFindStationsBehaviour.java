@@ -14,7 +14,7 @@ import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
 import com.mini.smartroad.model.ActionEntity;
 import com.mini.smartroad.model.AddressEntity;
-import com.mini.smartroad.model.StationEntity;
+import com.mini.smartroad.model.StationDetailsEntity;
 import com.mini.smartroad.model.UserEntity;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
@@ -112,25 +112,25 @@ public class SearchServiceFindStationsBehaviour extends BaseInteractBehaviour {
         List<StationOutDto> foundStations = new LinkedList<StationOutDto>();
 
         Session session = HibernateUtils.getSessionFactory().openSession();
-        List stations = session.createCriteria(StationEntity.class)
+        List stations = session.createCriteria(StationDetailsEntity.class)
                 .add(Restrictions.between("latitude", minLatitude, maxLatitude))
                 .add(Restrictions.between("longitude", minLongitude, maxLongitude)).list();
         if (stations != null) {
             for (Object station : stations) {
-                StationEntity stationEntity = (StationEntity) station;
-                AddressEntity addressEntity = stationEntity.getAddress();
+                StationDetailsEntity stationDetailsEntity = (StationDetailsEntity) station;
+                AddressEntity addressEntity = stationDetailsEntity.getAddress();
                 AddressDto addressDto = new AddressDto(addressEntity.getCountry(), addressEntity.getProvince(),
                         addressEntity.getCity(), addressEntity.getStreet(), addressEntity.getNumber(),
                         addressEntity.getExtraNumber(), addressEntity.getPostalCode());
                 Calendar calendarEnd = Calendar.getInstance();
                 calendarEnd.add(Calendar.HOUR, Utils.LIKE_TIME_DURATION);
-                Integer likes = findActiveActions(stationEntity, calendarEnd.getTime(), ActionType.LIKE, session);
-                Integer confirms = findActiveActions(stationEntity, calendarEnd.getTime(), ActionType.CONFIRM, session);
-                StationOutDto stationOutDto = new StationOutDto(addressDto, stationEntity.getName(),
-                        stationEntity.getFullName(), stationEntity.getEmail(), stationEntity.getLogo(),
-                        stationEntity.getToken(), stationEntity.getPhone(), stationEntity.getLongitude(),
-                        stationEntity.getLatitude(), likes, confirms,
-                        findActiveActionForUser(stationEntity, userEntity, calendarEnd.getTime(), session));
+                Integer likes = findActiveActions(stationDetailsEntity, calendarEnd.getTime(), ActionType.LIKE, session);
+                Integer confirms = findActiveActions(stationDetailsEntity, calendarEnd.getTime(), ActionType.CONFIRM, session);
+                StationOutDto stationOutDto = new StationOutDto(addressDto, stationDetailsEntity.getName(),
+                        stationDetailsEntity.getFullName(), stationDetailsEntity.getEmail(), stationDetailsEntity.getLogo(),
+                        stationDetailsEntity.getToken(), stationDetailsEntity.getPhone(), stationDetailsEntity.getLongitude(),
+                        stationDetailsEntity.getLatitude(), likes, confirms,
+                        findActiveActionForUser(stationDetailsEntity, userEntity, calendarEnd.getTime(), session));
                 foundStations.add(stationOutDto);
             }
         }
@@ -140,11 +140,11 @@ public class SearchServiceFindStationsBehaviour extends BaseInteractBehaviour {
         return foundStations;
     }
 
-    private Integer findActiveActions(StationEntity stationEntity, Date end, ActionType actionType, Session session) {
+    private Integer findActiveActions(StationDetailsEntity stationDetailsEntity, Date end, ActionType actionType, Session session) {
         Integer activeActions = 0;
         List actions = session.createCriteria(ActionEntity.class).add(Restrictions.le("dateFrom", end))
                 .add(Restrictions.ge("dateTo", new Date()))
-                .add(Restrictions.eq("station", stationEntity))
+                .add(Restrictions.eq("station", stationDetailsEntity))
                 .add(Restrictions.eq("actionType", actionType))
                 .add(Restrictions.eq("value", Boolean.TRUE)).list();
         if (actions != null) {
@@ -153,11 +153,11 @@ public class SearchServiceFindStationsBehaviour extends BaseInteractBehaviour {
         return activeActions;
     }
 
-    private ActionType findActiveActionForUser(StationEntity stationEntity, UserEntity userEntity, Date end, Session session) {
+    private ActionType findActiveActionForUser(StationDetailsEntity stationDetailsEntity, UserEntity userEntity, Date end, Session session) {
         ActionType actionType = null;
         List actions = session.createCriteria(ActionEntity.class).add(Restrictions.le("dateFrom", end))
                 .add(Restrictions.ge("dateTo", new Date()))
-                .add(Restrictions.eq("station", stationEntity))
+                .add(Restrictions.eq("station", stationDetailsEntity))
                 .add(Restrictions.eq("user", userEntity))
                 .add(Restrictions.eq("value", Boolean.TRUE)).list();
         if (actions != null && !actions.isEmpty()) {
