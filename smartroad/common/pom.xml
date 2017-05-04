@@ -13,15 +13,6 @@
     <name>COMMON_LIBRARY</name>
 
     <dependencies>
-        <!-- SQL SERVER -->
-        <dependency>
-            <groupId>org.microsoft</groupId>
-            <artifactId>sqljdbc</artifactId>
-            <version>6.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/sqljdbc4-2.0.jar</systemPath>
-        </dependency>
-
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
