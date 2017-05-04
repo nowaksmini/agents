@@ -1,6 +1,7 @@
-/smartroad/common/target
+/smartroad/common/target/
 /smartroad/service/target/
 /smartroad/.idea/
+/android/SmartRoad/build/
 /android/SmartRoad/app/build/
 /android/SmartRoad/.gradle/
 /android/SmartRoad/.idea/
