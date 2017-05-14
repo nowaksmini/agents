@@ -6,4 +6,10 @@
 /android/SmartRoad/.gradle/
 /android/SmartRoad/.idea/
 /android/SmartRoad/local.properties
+
+/android_gas/SmartRoad/build/
+/android_gas/SmartRoad/app/build/
+/android_gas/SmartRoad/.gradle/
+/android_gas/SmartRoad/.idea/
+/android_gas/SmartRoad/local.properties
 *.iml
