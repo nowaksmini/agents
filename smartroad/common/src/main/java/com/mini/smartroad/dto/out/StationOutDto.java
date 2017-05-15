@@ -9,7 +9,6 @@ public class StationOutDto implements Serializable {
 
     private AddressDto addressDto;
     private String name;
-    private String fullName;
     private String email;
     private String logo;
     private String token;
@@ -23,12 +22,11 @@ public class StationOutDto implements Serializable {
      */
     private ActionType actionType;
 
-    public StationOutDto(AddressDto addressDto, String name, String fullName, String email, String logo, String token,
+    public StationOutDto(AddressDto addressDto, String name, String email, String logo, String token,
                          String phone, Double longitude, Double latitude, Integer likes,
                          Integer confirms, ActionType actionType) {
         this.addressDto = addressDto;
         this.name = name;
-        this.fullName = fullName;
         this.email = email;
         this.logo = logo;
         this.token = token;
@@ -46,10 +44,6 @@ public class StationOutDto implements Serializable {
 
     public String getName() {
         return name;
-    }
-
-    public String getFullName() {
-        return fullName;
     }
 
     public String getEmail() {
@@ -93,7 +87,6 @@ public class StationOutDto implements Serializable {
         return "StationOutDto{" +
                 "addressDto=" + addressDto +
                 ", name='" + name + '\'' +
-                ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", logo='" + logo + '\'' +
                 ", token='" + token + '\'' +

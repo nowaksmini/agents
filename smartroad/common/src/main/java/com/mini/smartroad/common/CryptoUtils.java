@@ -99,8 +99,12 @@ public class CryptoUtils {
         return CryptoUtils.SHA1(new Date() + email).substring(0, 20).replaceAll("\\+", "");
     }
 
-    public static String generateStationToken(String name, double longitude, double latitide) {
-        return CryptoUtils.SHA1(new Date() + name + latitide + longitude).substring(0, 20).replaceAll("\\+", "");
+    public static String generateStationDetailsToken(String name, double longitude, double latitude) {
+        return CryptoUtils.SHA1(new Date() + name + latitude + longitude).substring(0, 20).replaceAll("\\+", "");
+    }
+
+    public static String generateStationToken(String name) {
+        return CryptoUtils.SHA1(new Date() + name).substring(0, 20).replaceAll("\\+", "");
     }
 
     public static String generateActionToken(ActionType actionType, String userToken, String stationToken) {

@@ -11,6 +11,7 @@ import com.mini.smartroad.model.AddressEntity;
 import com.mini.smartroad.model.StationDetailsEntity;
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseInteractBehaviour;
+import com.mini.smartroad.model.StationEntity;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 import org.hibernate.Session;
@@ -83,15 +84,20 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         addressEntity.setStreet(addressDto.getStreet());
         addressEntity.setExtraNumber(addressDto.getExtraNumber());
 
+        // todo check if station entity does not already exist, if so add it
+        StationEntity stationEntity = new StationEntity();
+        stationEntity.setName(stationRegisterInDto.getName());
+        stationEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName()));
+
         StationDetailsEntity stationDetailsEntity = new StationDetailsEntity();
         stationDetailsEntity.setEmail(stationRegisterInDto.getEmail());
         stationDetailsEntity.setPhone(stationRegisterInDto.getPhone());
         stationDetailsEntity.setLatitude(stationRegisterInDto.getLatitude());
         stationDetailsEntity.setLongitude(stationRegisterInDto.getLongitude());
         stationDetailsEntity.setLogo(stationRegisterInDto.getLogo());
-        stationDetailsEntity.setName(stationRegisterInDto.getName());
-        stationDetailsEntity.setFullName(stationRegisterInDto.getFullName());
-        stationDetailsEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName(),
+        stationDetailsEntity.setStation(stationEntity);
+
+        stationDetailsEntity.setToken(CryptoUtils.generateStationDetailsToken(stationRegisterInDto.getName(),
                 stationRegisterInDto.getLongitude(), stationDetailsEntity.getLatitude()));
         stationDetailsEntity.setAddress(addressEntity);
 

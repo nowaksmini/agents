@@ -58,7 +58,7 @@ public class StartSimulation {
         for (int i = 0; i < stations.length; i++) {
             AddressDto addressDto = new AddressDto(country, distinct, city, streets[i],
                     new Random().nextInt() % 20 + "", null, postalCode);
-            stations[i] = new StationRegisterInDto(names[i], fullNames[i], email, logos[i], phone, coordinates[i][1], coordinates[i][0], addressDto);
+            stations[i] = new StationRegisterInDto(names[i], email, logos[i], phone, coordinates[i][1], coordinates[i][0], addressDto);
         }
         return stations;
     }

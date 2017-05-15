@@ -126,8 +126,8 @@ public class SearchServiceFindStationsBehaviour extends BaseInteractBehaviour {
                 calendarEnd.add(Calendar.HOUR, Utils.LIKE_TIME_DURATION);
                 Integer likes = findActiveActions(stationDetailsEntity, calendarEnd.getTime(), ActionType.LIKE, session);
                 Integer confirms = findActiveActions(stationDetailsEntity, calendarEnd.getTime(), ActionType.CONFIRM, session);
-                StationOutDto stationOutDto = new StationOutDto(addressDto, stationDetailsEntity.getName(),
-                        stationDetailsEntity.getFullName(), stationDetailsEntity.getEmail(), stationDetailsEntity.getLogo(),
+                StationOutDto stationOutDto = new StationOutDto(addressDto, stationDetailsEntity.getStation().getName(),
+                        stationDetailsEntity.getEmail(), stationDetailsEntity.getLogo(),
                         stationDetailsEntity.getToken(), stationDetailsEntity.getPhone(), stationDetailsEntity.getLongitude(),
                         stationDetailsEntity.getLatitude(), likes, confirms,
                         findActiveActionForUser(stationDetailsEntity, userEntity, calendarEnd.getTime(), session));

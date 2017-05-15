@@ -124,7 +124,7 @@ public class ActionServiceBaseBehaviour extends BaseInteractBehaviour {
         ActionEntity actionEntity = new ActionEntity();
         actionEntity.setToken(CryptoUtils.generateActionToken(actionInDto.getActionType(), userEntity.getToken(), stationDetailsEntity.getToken()));
         actionEntity.setValue(actionInDto.getValue());
-        actionEntity.setStation(stationDetailsEntity);
+        actionEntity.setStationDetails(stationDetailsEntity);
         actionEntity.setActionType(actionInDto.getActionType());
         actionEntity.setUser(userEntity);
         actionEntity.setDateFrom(new Date());

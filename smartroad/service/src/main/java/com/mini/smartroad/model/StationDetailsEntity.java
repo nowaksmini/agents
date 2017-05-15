@@ -17,6 +17,8 @@ public class StationDetailsEntity extends BaseEntity<StationDetailsEntity> {
     private Double longitude;
     @Column(name = "latitude", nullable = false)
     private Double latitude;
+    @Column(name = "logo")
+    private String logo;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "station_id")
@@ -67,6 +69,14 @@ public class StationDetailsEntity extends BaseEntity<StationDetailsEntity> {
         this.latitude = latitude;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     public AddressEntity getAddress() {
         return address;
     }
@@ -95,13 +105,11 @@ public class StationDetailsEntity extends BaseEntity<StationDetailsEntity> {
     public String toString() {
         return "StationDetailsEntity{" +
                 "email='" + email + '\'' +
-                ", id=" + id +
                 ", token='" + token + '\'' +
-                ", createDate=" + createDate +
                 ", phone='" + phone + '\'' +
                 ", longitude=" + longitude +
-                ", modifyDate=" + modifyDate +
                 ", latitude=" + latitude +
+                ", logo='" + logo + '\'' +
                 ", station=" + station +
                 ", address=" + address +
                 ", actions=" + actions +
@@ -111,31 +119,32 @@ public class StationDetailsEntity extends BaseEntity<StationDetailsEntity> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof StationDetailsEntity)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
         StationDetailsEntity that = (StationDetailsEntity) o;
 
-        if (getEmail() != null ? !getEmail().equals(that.getEmail()) : that.getEmail() != null) return false;
-        if (getToken() != null ? !getToken().equals(that.getToken()) : that.getToken() != null) return false;
-        if (getPhone() != null ? !getPhone().equals(that.getPhone()) : that.getPhone() != null) return false;
-        if (getLongitude() != null ? !getLongitude().equals(that.getLongitude()) : that.getLongitude() != null)
-            return false;
-        if (getLatitude() != null ? !getLatitude().equals(that.getLatitude()) : that.getLatitude() != null)
-            return false;
-        if (getStation() != null ? !getStation().equals(that.getStation()) : that.getStation() != null) return false;
-        return getAddress() != null ? getAddress().equals(that.getAddress()) : that.getAddress() == null;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (token != null ? !token.equals(that.token) : that.token != null) return false;
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
+        if (longitude != null ? !longitude.equals(that.longitude) : that.longitude != null) return false;
+        if (latitude != null ? !latitude.equals(that.latitude) : that.latitude != null) return false;
+        if (logo != null ? !logo.equals(that.logo) : that.logo != null) return false;
+        if (station != null ? !station.equals(that.station) : that.station != null) return false;
+        return address != null ? address.equals(that.address) : that.address == null;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        result = 31 * result + (getToken() != null ? getToken().hashCode() : 0);
-        result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
-        result = 31 * result + (getLongitude() != null ? getLongitude().hashCode() : 0);
-        result = 31 * result + (getLatitude() != null ? getLatitude().hashCode() : 0);
-        result = 31 * result + (getStation() != null ? getStation().hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (token != null ? token.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
+        result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
+        result = 31 * result + (logo != null ? logo.hashCode() : 0);
+        result = 31 * result + (station != null ? station.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
     }
 }

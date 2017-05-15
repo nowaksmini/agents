@@ -36,27 +36,30 @@ public class TestBuilder {
         addressEntity.setExtraNumber(addressDto.getExtraNumber());
 
         StationRegisterInDto stationRegisterInDto = new StationRegisterInDto("Shell",
-                "Shell stacja paliw", "shell@gmail.com", "", "123 456 789",
+                "shell@gmail.com", "", "123 456 789",
                 50, 50, addressDto);
+        StationEntity stationEntity = new StationEntity();
+        stationEntity.setName(stationRegisterInDto.getName());
+        stationEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName()));
+
         StationDetailsEntity stationDetailsEntity = new StationDetailsEntity();
         stationDetailsEntity.setEmail(stationRegisterInDto.getEmail());
         stationDetailsEntity.setPhone(stationRegisterInDto.getPhone());
         stationDetailsEntity.setLatitude(stationRegisterInDto.getLatitude());
         stationDetailsEntity.setLongitude(stationRegisterInDto.getLongitude());
         stationDetailsEntity.setLogo(stationRegisterInDto.getLogo());
-        stationDetailsEntity.setName(stationRegisterInDto.getName());
-        stationDetailsEntity.setFullName(stationRegisterInDto.getFullName());
-        stationDetailsEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName(),
+        stationDetailsEntity.setToken(CryptoUtils.generateStationDetailsToken(stationRegisterInDto.getName(),
                 stationRegisterInDto.getLongitude(), stationDetailsEntity.getLatitude()));
         stationDetailsEntity.setAddress(addressEntity);
-        addressEntity.setStation(stationDetailsEntity);
+        stationDetailsEntity.setStation(stationEntity);
+        addressEntity.setStationDetails(stationDetailsEntity);
         return stationDetailsEntity;
     }
 
     public static ActionEntity buildActionLike(UserEntity userEntity, StationDetailsEntity stationDetailsEntity) {
         ActionEntity actionEntity = new ActionEntity();
         actionEntity.setUser(userEntity);
-        actionEntity.setStation(stationDetailsEntity);
+        actionEntity.setStationDetails(stationDetailsEntity);
         actionEntity.setDateFrom(new Date());
         Calendar to = Calendar.getInstance();
         to.add(Calendar.HOUR, (int) Utils.LIKE_TIME_DURATION);
