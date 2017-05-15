@@ -57,7 +57,7 @@ public class UserPreferencesEntity extends BaseEntity<UserPreferencesEntity> {
                 ", createDate=" + createDate +
                 ", acceptAlways=" + acceptAlways +
                 ", modifyDate=" + modifyDate +
-                ", user=" + user +
+                ", driver=" + user +
                 '}';
     }
 

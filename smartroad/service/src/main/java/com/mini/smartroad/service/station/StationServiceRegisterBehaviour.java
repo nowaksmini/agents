@@ -52,7 +52,7 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         StatusOutDto statusOutDto;
         Session session = HibernateUtils.getSessionFactory().openSession();
         List list = session.createCriteria(StationDetailsEntity.class)
-                .add(Restrictions.eq("name", stationRegisterInDto.getName()))
+//                .add(Restrictions.eq("name", stationRegisterInDto.getName()))
                 .add(Restrictions.eq("longitude", stationRegisterInDto.getLongitude()))
                 .add(Restrictions.eq("latitude", stationRegisterInDto.getLatitude()))
                 .list();

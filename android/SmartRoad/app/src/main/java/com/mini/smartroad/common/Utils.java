@@ -18,12 +18,12 @@ public class Utils {
 
     public static final String SUFFIX_RESPONSE = "-response";
 
-    public static final String IP = "192.168.0.38";
+    public static final String IP = "192.168.0.185";
     public static final String PORT = "1099";
 
-    public static final String USER_SERVICE_AGENT = "com.mini.smartroad.service.user.UserServiceAgent";
+    public static final String USER_SERVICE_AGENT = "com.mini.smartroad.service.driver.UserServiceAgent";
     public static final String STATION_SERVICE_AGENT = "com.mini.smartroad.service.station.StationServiceAgent";
-    public static final String SEARCH_SERVICE_AGENT = "com.mini.smartroad.service.search.SearchServiceAgent";
+    public static final String HELPER_SERVICE_AGENT = "com.mini.smartroad.service.helper.SearchServiceAgent";
     public static final String ACTION_SERVICE_AGENT = "com.mini.smartroad.service.action.ActionServiceAgent";
 
     public static int CARS_AMOUNT = 4;

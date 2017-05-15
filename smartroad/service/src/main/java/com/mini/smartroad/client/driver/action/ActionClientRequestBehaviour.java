@@ -1,4 +1,4 @@
-package com.mini.smartroad.client.action;
+package com.mini.smartroad.client.driver.action;
 
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseDoneBehaviour;
@@ -14,12 +14,10 @@ import jade.lang.acl.ACLMessage;
 public class ActionClientRequestBehaviour extends BaseDoneBehaviour {
 
     private ActionInDto actionInDto;
-    private boolean redo;
 
     public ActionClientRequestBehaviour(String userToken, String stationToken,
-                                        ActionType actionType, Boolean value, boolean redo) {
+                                        ActionType actionType, Boolean value) {
         actionInDto = new ActionInDto(stationToken, userToken, value, actionType);
-        this.redo = redo;
     }
 
     @Override
@@ -33,15 +31,17 @@ public class ActionClientRequestBehaviour extends BaseDoneBehaviour {
             e.printStackTrace();
         }
         message.setOntology(Utils.ONTOLOGY_ACTION);
-        if (actionInDto.getActionType() == ActionType.LIKE && !redo && Boolean.TRUE.equals(actionInDto.getValue())) {
+        if (actionInDto.getActionType() == ActionType.LIKE && Boolean.TRUE.equals(actionInDto.getValue())) {
+            // for making final decision
             message.setProtocol(Utils.PROTOCOL_LIKE);
-        } else if (actionInDto.getActionType() == ActionType.LIKE && redo && Boolean.TRUE.equals(actionInDto.getValue())) {
-            message.setProtocol(Utils.PROTOCOL_RELIKE);
         } else if (actionInDto.getActionType() == ActionType.LIKE && Boolean.FALSE.equals(actionInDto.getValue())) {
+            // for making final decision
             message.setProtocol(Utils.PROTOCOL_UNLIKE);
         } else if (actionInDto.getActionType() == ActionType.CONFIRM && Boolean.TRUE.equals(actionInDto.getValue())) {
+            // for negotiation purposes
             message.setProtocol(Utils.PROTOCOL_CONFIRM);
         } else {
+            // for negotiation purposes, whenever one driver asks another one to attend group
             message.setProtocol(Utils.PROTOCOL_UNCONFIRM);
         }
         ((BaseAgent) myAgent).sendMessage(message);

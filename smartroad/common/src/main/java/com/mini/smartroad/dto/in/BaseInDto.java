@@ -5,6 +5,13 @@ import java.io.Serializable;
 public class BaseInDto implements Serializable {
     protected String userToken;
 
+    public BaseInDto() {
+    }
+
+    public BaseInDto(String userToken) {
+        this.userToken = userToken;
+    }
+
     public String getUserToken() {
         return userToken;
     }

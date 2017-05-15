@@ -18,7 +18,7 @@ public class StationOutDto implements Serializable {
     private Integer likes;
     private Integer confirms;
     /**
-     * Shows what action user actually made LIKE, CONFIRM
+     * Shows what action driver actually made LIKE, CONFIRM
      */
     private ActionType actionType;
 

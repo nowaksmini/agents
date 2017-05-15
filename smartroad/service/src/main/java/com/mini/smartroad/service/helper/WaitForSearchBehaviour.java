@@ -1,4 +1,4 @@
-package com.mini.smartroad.service.search;
+package com.mini.smartroad.service.helper;
 
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.base.BaseAgent;
@@ -20,12 +20,12 @@ public class WaitForSearchBehaviour extends BaseBehaviour {
     @Override
     public void action() {
         super.action();
-        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_SEARCH));
+        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_TRACK));
         if (msg != null) {
             if (msg.getProtocol().equals(Utils.PROTOCOL_FIND_STATIONS)) {
                 try {
                     Serializable contentObject = msg.getContentObject();
-                    nextBehaviour = new SearchServiceFindStationsBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
+                    nextBehaviour = new HelperServiceFindStationsBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
                 } catch (UnreadableException e) {
                     e.printStackTrace();
                 }

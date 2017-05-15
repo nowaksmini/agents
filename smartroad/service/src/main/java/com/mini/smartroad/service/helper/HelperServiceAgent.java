@@ -1,8 +1,8 @@
-package com.mini.smartroad.service.search;
+package com.mini.smartroad.service.helper;
 
 import com.mini.smartroad.base.BaseAgent;
 
-public class SearchServiceAgent extends BaseAgent {
+public class HelperServiceAgent extends BaseAgent {
 
     @Override
     protected void setup() {

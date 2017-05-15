@@ -1,4 +1,4 @@
-package com.mini.smartroad.client.search;
+package com.mini.smartroad.client.driver.track;
 
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseDoneBehaviour;
@@ -9,11 +9,11 @@ import jade.lang.acl.ACLMessage;
 
 import java.io.IOException;
 
-public class SearchStationsClientRequestBehaviour extends BaseDoneBehaviour {
+public class DriverTrackClientRequestBehaviour extends BaseDoneBehaviour {
 
     private FindStationsInDto searchStationsInDto;
 
-    public SearchStationsClientRequestBehaviour(String userToken, double latitude, double longitude, Long distance) {
+    public DriverTrackClientRequestBehaviour(String userToken, double latitude, double longitude, Long distance) {
         searchStationsInDto = new FindStationsInDto(userToken, latitude, longitude, distance);
     }
 
@@ -21,16 +21,16 @@ public class SearchStationsClientRequestBehaviour extends BaseDoneBehaviour {
     public void action() {
         super.action();
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-        message.addReceiver(new AID(Utils.SEARCH_SERVICE_AGENT, AID.ISLOCALNAME));
+        message.addReceiver(new AID(Utils.HELPER_SERVICE_AGENT, AID.ISLOCALNAME));
         try {
             message.setContentObject(searchStationsInDto);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        message.setOntology(Utils.ONTOLOGY_SEARCH);
+        message.setOntology(Utils.ONTOLOGY_TRACK);
         message.setProtocol(Utils.PROTOCOL_FIND_STATIONS);
         ((BaseAgent) myAgent).sendMessage(message);
-        myAgent.addBehaviour(new SearchStationsClientResponseBehaviour());
+        myAgent.addBehaviour(new DriverTrackClientResponseBehaviour());
         isDone = true;
     }
 }

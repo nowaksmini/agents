@@ -122,7 +122,7 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
                 ", dateTo=" + dateTo +
                 ", actionType=" + actionType +
                 ", stationDetails=" + stationDetails +
-                ", user=" + user +
+                ", driver=" + user +
                 ", coupons=" + coupons +
                 '}';
     }

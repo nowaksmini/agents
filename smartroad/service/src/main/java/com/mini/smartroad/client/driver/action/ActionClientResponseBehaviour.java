@@ -1,4 +1,4 @@
-package com.mini.smartroad.client.action;
+package com.mini.smartroad.client.driver.action;
 
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseStopAgentBehaviour;
@@ -17,7 +17,6 @@ public class ActionClientResponseBehaviour extends BaseStopAgentBehaviour {
         ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_ACTION));
         if (msg != null) {
             if (msg.getProtocol().equals(Utils.PROTOCOL_LIKE + Utils.SUFFIX_RESPONSE)
-                    || msg.getProtocol().equals(Utils.PROTOCOL_RELIKE + Utils.SUFFIX_RESPONSE)
                     || msg.getProtocol().equals(Utils.PROTOCOL_CONFIRM + Utils.SUFFIX_RESPONSE)
                     || msg.getProtocol().equals(Utils.PROTOCOL_UNLIKE + Utils.SUFFIX_RESPONSE)
                     || msg.getProtocol().equals(Utils.PROTOCOL_UNCONFIRM + Utils.SUFFIX_RESPONSE)) {

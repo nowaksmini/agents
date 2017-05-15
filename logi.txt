@@ -1,0 +1,179 @@
+-------------------BECOME REPRESENTATIVE START-------------------------
+maj 15, 2017 11:00:23 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiate.DriverNegotiateGasStationClientRequestBehaviour action for agent com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE
+maj 15, 2017 11:00:23 AM com.mini.smartroad.base.BaseAgent sendMessage
+WARNING: com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE send (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.station.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.station.negotiate.StationNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  start_negotiation
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:00:47 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiate.DriverNegotiateGasStationClientResponseBehaviour action for agent com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE
+--------------------------------------------------------------------------------
+maj 15, 2017 11:01:02 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.station.negotiation.WaitForNegotiationBehaviour action for agent com.mini.smartroad.client.station.negotiation.StationNegotiateClientAgent1@192.168.0.185:1099/JADE
+maj 15, 2017 11:01:02 AM com.mini.smartroad.base.BaseAgent receiveMessage
+WARNING: com.mini.smartroad.client.station.negotiation.StationNegotiateClientAgent1@192.168.0.185:1099/JADE receive (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.station.negotiation.StationNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  start_negotiation
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:01:22 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.station.negotiation.StationStartNegotiateClientRequestBehaviour action for agent com.mini.smartroad.client.station.negotiation.StationNegotiateClientAgent1@192.168.0.185:1099/JADE
+maj 15, 2017 11:01:22 AM com.mini.smartroad.base.BaseAgent sendMessage
+WARNING: com.mini.smartroad.client.station.negotiation.StationNegotiateClientAgent1@192.168.0.185:1099/JADE send (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.station.negotiation.StationNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  start_negotiation-response
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:01:59 AM com.mini.smartroad.base.BaseAgent receiveMessage
+WARNING: com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE receive (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.station.negotiation.StationNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  start_negotiation-response
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:01:59 AM com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1 started successfully with station STATOIL, points: 40, min_users: 4
+-------------------BECOME REPRESENTATIVE END--------------------------
+
+------------------------ GET USERS START ----------------------------------
+maj 15, 2017 11:02:01 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiate.DriverNegotiateGetUsersClientRequestBehaviour action for agent com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE
+maj 15, 2017 11:02:01 AM com.mini.smartroad.base.BaseAgent sendMessage
+WARNING: com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE send (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.station.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  find_users
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:02:10 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiate.DriverNegotiateGetUsersClientResponseBehaviour action for agent com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE
+--------------------------------------------------------------------------------
+maj 15, 2017 11:02:28 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.service.helper.WaitForRequestsBehaviour action for agent com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE
+maj 15, 2017 11:02:28 AM com.mini.smartroad.base.BaseAgent receiveMessage
+WARNING: com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE receive (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  find_users
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:02:56 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.service.helper.HelperServiceFindUsersBehaviour action for agent com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE
+maj 15, 2017 11:02:56 AM com.mini.smartroad.base.BaseAgent sendMessage
+WARNING: com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE send (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  find_users-response
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:03:09 AM com.mini.smartroad.base.BaseAgent receiveMessage
+WARNING: com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE receive (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......"  
+ :ontology  negotiation  :protocol  find_users-response
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:03:09 AM com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1 received list of drivers ready to negotiate [com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE , ..... ]"
+------------------------ GET USERS END -------------------------------------
+
+------------------------ CREATE GROUP START ----------------------------------
+maj 15, 2017 11:03:09 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiate.DriverNegotiateSendUserClientRequestBehaviour action for agent com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE
+maj 15, 2017 11:03:09 AM com.mini.smartroad.base.BaseAgent sendMessage
+WARNING: com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE send (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.station.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.station.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  make_group
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:03:09 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiate.DriverNegotiateSendUserClientResponseBehaviour action for agent com.mini.smartroad.client.drivgotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE
+--------------------------------------------------------------------------------
+maj 15, 2017 11:03:55 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiation.WaitForInvitationBehaviour action for agent com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE
+maj 15, 2017 11:03:55 AM com.mini.smartroad.base.BaseAgent receiveMessage
+WARNING: com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE receive (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  make_group
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:03:55 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.negotiation.DriverNegotiateAnswerRequestBehaviour action for agent com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE
+maj 15, 2017 11:03:55 AM com.mini.smartroad.base.BaseAgent sendMessage
+WARNING: com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE send (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  make_group-response
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:04:12 AM com.mini.smartroad.base.BaseAgent receiveMessage
+WARNING: com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE receive (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  negotiation  :protocol  make_group-response
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:04:12 AM com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent1 received successfull response from com.mini.smartroad.client.driver.negotiate.DriverNegotiateClientAgent2
+.... negotiaties with more users
+------------------------ CREATE GROUP END --------------------------------
+
+------------------------ CONFIRM USER CAME START ----------------------------------
+maj 15, 2017 11:03:09 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.station.track.StationConfirmUserRequestBehaviour action for agent com.mini.smartroad.client.station.track.StationTrackClientAgent1@192.168.0.185:1099/JADE
+maj 15, 2017 11:03:09 AM com.mini.smartroad.base.BaseAgent sendMessage
+WARNING: com.mini.smartroad.client.station.track.StationTrackClientAgent1@192.168.0.185:1099/JADE send (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.station.track.StationTrackClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.service.track.TrackServiceAgent@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  track  :protocol  confirm_user
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:04:12 AM com.mini.smartroad.base.BaseAgent receiveMessage
+WARNING: com.mini.smartroad.service.track.TrackServiceAgent@192.168.0.185:1099/JADE receive (ACCEPT-PROPOSAL
+ :sender  ( agent-identifier :name com.mini.smartroad.client.station.track.StationTrackClientAgent1@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc ))
+ :receiver  (set ( agent-identifier :name com.mini.smartroad.service.track.TrackServiceAgent@192.168.0.185:1099/JADE  :addresses (sequence http://LAPTOP-8PE4FE8R:7778/acc )) )
+:X-JADE-Encoding Base64
+ :content  "......" 
+ :ontology  track  :protocol  confirm_user-response
+)
+--------------------------------------------------------------------------------
+maj 15, 2017 11:03:09 AM com.mini.smartroad.service.track.TrackServiceConfirmUserBehaviour Confirmed driver 'driver2' tanked at station 'Statoil'.
+------------------------ CONFIRM USER CAME END --------------------------
+
+------------------------ REWARD DRIVERS START ----------------------------------
+maj 15, 2017 11:59:59 AM com.mini.smartroad.base.BaseBehaviour action
+INFO: com.mini.smartroad.client.driver.helper.HelperRewardUsersBehaviour action for agent com.mini.smartroad.service.helper.HelperServiceAgent@192.168.0.185:1099/JADE
+--------------------------------------------------------------------------------
+maj 15, 2017 11:59:59 AM com.mini.smartroad.client.driver.helper.HelperRewardUsersBehaviour Driver: 'Driver1', reward:120 points; Driver: 'Driver2', reward: 100 points, ....
+------------------------ REWARD DRIVERS END -----------------------------
+

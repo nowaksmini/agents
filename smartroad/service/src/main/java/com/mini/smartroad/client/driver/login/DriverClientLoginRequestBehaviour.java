@@ -1,20 +1,20 @@
-package com.mini.smartroad.client.user;
+package com.mini.smartroad.client.driver.login;
 
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseDoneBehaviour;
 import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.dto.in.UserRegisterInDto;
+import com.mini.smartroad.dto.in.UserLoginInDto;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 
 import java.io.IOException;
 
-public class UserClientRegisterRequestBehaviour extends BaseDoneBehaviour {
+public class DriverClientLoginRequestBehaviour extends BaseDoneBehaviour {
 
-    private UserRegisterInDto userRegisterInDto;
+    private UserLoginInDto userLoginInDto;
 
-    public UserClientRegisterRequestBehaviour(String email, String firstName, String lastName, String password) {
-        userRegisterInDto = new UserRegisterInDto(email, firstName, lastName, password);
+    public DriverClientLoginRequestBehaviour(String login, String password) {
+        userLoginInDto = new UserLoginInDto(login, password);
     }
 
     @Override
@@ -23,14 +23,14 @@ public class UserClientRegisterRequestBehaviour extends BaseDoneBehaviour {
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
         message.addReceiver(new AID(Utils.USER_SERVICE_AGENT, AID.ISLOCALNAME));
         try {
-            message.setContentObject(userRegisterInDto);
+            message.setContentObject(userLoginInDto);
         } catch (IOException e) {
             e.printStackTrace();
         }
         message.setOntology(Utils.ONTOLOGY_USER);
-        message.setProtocol(Utils.PROTOCOL_REGISTER);
+        message.setProtocol(Utils.PROTOCOL_LOGIN);
         ((BaseAgent) myAgent).sendMessage(message);
         isDone = true;
-        myAgent.addBehaviour(new UserClientRegisterResponseBehaviour());
+        myAgent.addBehaviour(new DriverClientLoginResponseBehaviour());
     }
 }

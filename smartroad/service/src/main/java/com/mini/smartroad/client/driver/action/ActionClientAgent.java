@@ -1,4 +1,4 @@
-package com.mini.smartroad.client.action;
+package com.mini.smartroad.client.driver.action;
 
 
 import com.mini.smartroad.base.BaseAgent;
@@ -13,14 +13,13 @@ public class ActionClientAgent extends BaseAgent {
         Object[] arguments = getArguments();
         if (arguments != null) {
             if (arguments.length == ArgumentProperties.ACTION_MOBILE || arguments.length == ArgumentProperties.ACTION_WEB) {
-                String userToken = (String) arguments[arguments.length - 5];
-                String stationToken = (String) arguments[arguments.length - 4];
-                ActionType actionType = (ActionType) arguments[arguments.length - 3];
-                Boolean value = (Boolean) arguments[arguments.length - 2];
-                Boolean redo = (Boolean) arguments[arguments.length - 1];
+                String userToken = (String) arguments[arguments.length - 4];
+                String stationToken = (String) arguments[arguments.length - 3];
+                ActionType actionType = (ActionType) arguments[arguments.length - 2];
+                Boolean value = (Boolean) arguments[arguments.length - 1];
                 logger.info("Passed arguments: action userToken:" + userToken + ", stationToken: " + stationToken
                         + ", actionType: " + actionType + ", value" + value);
-                addBehaviour(new ActionClientRequestBehaviour(userToken, stationToken, actionType, value, redo));
+                addBehaviour(new ActionClientRequestBehaviour(userToken, stationToken, actionType, value));
             }
         }
     }

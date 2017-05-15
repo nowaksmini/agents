@@ -1,4 +1,4 @@
-package com.mini.smartroad.service.search;
+package com.mini.smartroad.service.helper;
 
 import com.mini.smartroad.HibernateUtils;
 import com.mini.smartroad.base.BaseAgent;
@@ -28,11 +28,11 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SearchServiceFindStationsBehaviour extends BaseInteractBehaviour {
+public class HelperServiceFindStationsBehaviour extends BaseInteractBehaviour {
 
     private boolean sent;
 
-    public SearchServiceFindStationsBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
+    public HelperServiceFindStationsBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
         super(receiver, ontology, protocol, inputContent);
     }
 

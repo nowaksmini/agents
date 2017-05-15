@@ -1,4 +1,4 @@
-package com.mini.smartroad.service.user;
+package com.mini.smartroad.service.driver;
 
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.base.BaseAgent;

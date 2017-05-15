@@ -1,10 +1,11 @@
 package com.mini.smartroad;
 
+import com.mini.smartroad.client.StartSimulation;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.service.action.ActionServiceAgent;
-import com.mini.smartroad.service.search.SearchServiceAgent;
+import com.mini.smartroad.service.helper.HelperServiceAgent;
 import com.mini.smartroad.service.station.StationServiceAgent;
-import com.mini.smartroad.service.user.UserServiceAgent;
+import com.mini.smartroad.service.driver.UserServiceAgent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
@@ -38,7 +39,7 @@ public class Main {
             agentUserController.start();
             AgentController agentStationController = agentContainer.createNewAgent(StationServiceAgent.class.getName(), StationServiceAgent.class.getName(), null);
             agentStationController.start();
-            AgentController agentSearchController = agentContainer.createNewAgent(SearchServiceAgent.class.getName(), SearchServiceAgent.class.getName(), null);
+            AgentController agentSearchController = agentContainer.createNewAgent(HelperServiceAgent.class.getName(), HelperServiceAgent.class.getName(), null);
             agentSearchController.start();
             AgentController agentActionController = agentContainer.createNewAgent(ActionServiceAgent.class.getName(), ActionServiceAgent.class.getName(), null);
             agentActionController.start();

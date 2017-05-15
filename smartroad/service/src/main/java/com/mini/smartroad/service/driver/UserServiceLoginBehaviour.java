@@ -1,4 +1,4 @@
-package com.mini.smartroad.service.user;
+package com.mini.smartroad.service.driver;
 
 import com.mini.smartroad.HibernateUtils;
 import com.mini.smartroad.common.CryptoUtils;

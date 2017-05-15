@@ -30,14 +30,6 @@ public class WaitForActionBehaviour extends BaseBehaviour {
                     e.printStackTrace();
                 }
                 isDone = true;
-            } else if (msg.getProtocol().equals(Utils.PROTOCOL_RELIKE)) {
-                try {
-                    Serializable contentObject = msg.getContentObject();
-                    nextBehaviour = new ActionServiceReLikeBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
-                } catch (UnreadableException e) {
-                    e.printStackTrace();
-                }
-                isDone = true;
             } else if (msg.getProtocol().equals(Utils.PROTOCOL_UNLIKE)) {
                 try {
                     Serializable contentObject = msg.getContentObject();
