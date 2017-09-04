@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <StationRegisterInDto>
+        <userName>Statoil_username_1</userName>
+        <name>Statoil</name>
+        <email>statoil@gmail.com</email>
+        <logo>https://upload.wikimedia.org/wikipedia/commons/1/1e/Logo_statoil.png</logo>
+        <phone>123 456 789</phone>
+        <longitude>52.233357</longitude>
+        <latitude>21.00925</latitude>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Marszałkowska</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationRegisterInDto>
+
+    <StationRegisterInDto>
+        <userName>BP_username_1</userName>
+        <name>BP</name>
+        <email>bp@gmail.com</email>
+        <logo>http://www.bp.com/content/dam/bp/images/general/graphics/1-1/bp-logo.jpg</logo>
+        <phone>123 456 789</phone>
+        <longitude>52.223105</longitude>
+        <latitude>21.00204</latitude>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Koszykowa</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationRegisterInDto>
+
+    <StationRegisterInDto>
+        <userName>Lukoil_username_1</userName>
+        <name>Lukoil</name>
+        <email>lukoil@gmail.com</email>
+        <logo>
+            http://vignette2.wikia.nocookie.net/logopedia/images/2/2d/Lukoil-logo-620x236.png/revision/latest?cb=20160304213348
+        </logo>
+        <phone>123 456 789</phone>
+        <longitude>52.237825</longitude>
+        <latitude>20.989509</latitude>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Żelaza</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationRegisterInDto>
+
+    <StationRegisterInDto>
+        <userName>Shell_username_1</userName>
+        <name>Shell</name>
+        <email>shell@gmail.com</email>
+        <logo>https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Shell_logo.svg/829px-Shell_logo.svg.png</logo>
+        <phone>123 456 789</phone>
+        <longitude>52.237825</longitude>
+        <latitude>20.989509</latitude>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Nowakowskiego</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationRegisterInDto>
+</input>

@@ -9,13 +9,13 @@
         <!--<property name="hibernate.connection.username">root</property>-->
         <!--<property name="hibernate.connection.password">root</property>-->
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
 
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
-        <property name="hibernate.connection.url">jdbc:h2:path\smartroad_db</property>
+        <property name="hibernate.connection.url">jdbc:h2:~/h2/smartroad;AUTO_SERVER=TRUE;MVCC=true</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
-        <!--<property name="hibernate.default_schema">PUBLIC</property>-->
+        <!--<property name="hibernate.default_schema">SMART_ROAD</property>-->
         <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
     </session-factory>
 </hibernate-configuration>

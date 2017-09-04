@@ -18,21 +18,27 @@ public class StationClientLoginResponseBehaviour extends BaseStopAgentBehaviour 
         if (msg != null) {
             if (msg.getProtocol().equals(Utils.PROTOCOL_LOGIN + Utils.SUFFIX_RESPONSE)) {
                 if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+                    logger.info("-------------------LOGIN STATION START-------------------------");
                     try {
                         LoginRegisterStationOutDto contentObject = (LoginRegisterStationOutDto) msg.getContentObject();
-                        logger.info(getAgent().getName() + " login_register success for: \n" + contentObject);
+                        logger.info(getAgent().getName() + " LOGIN success for: \n" + contentObject);
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }
+                    logger.info("-------------------LOGIN STATION END-------------------------");
                 } else if (msg.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
+                    logger.info("-------------------LOGIN STATION START-------------------------");
                     try {
                         StatusOutDto contentObject = ((LoginRegisterStationOutDto) msg.getContentObject()).getStatusOutDto();
-                        logger.info(getAgent().getName() + " login_register failed, message: \n" + contentObject.getMessage());
+                        logger.info(getAgent().getName() + " LOGIN failed, message: \n" + contentObject.getMessage());
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }
+                    logger.info("-------------------LOGIN STATION END-------------------------");
                 } else if (msg.getPerformative() == ACLMessage.FAILURE) {
-                    logger.info(getAgent().getName() + " login_register failed with error \n" + msg.getContent());
+                    logger.info("-------------------LOGIN STATION START-------------------------");
+                    logger.info(getAgent().getName() + " LOGIN failed with error \n" + msg.getContent());
+                    logger.info("-------------------LOGIN STATION END-------------------------");
                 }
                 isDone = true;
             }

@@ -18,21 +18,27 @@ public class StationClientRegisterResponseBehaviour extends BaseDoneBehaviour {
         if (msg != null) {
             if (msg.getProtocol().equals(Utils.PROTOCOL_REGISTER + Utils.SUFFIX_RESPONSE)) {
                 if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+                    logger.info("-------------------REGISTER STATION START-------------------------");
                     try {
                         LoginRegisterStationOutDto contentObject = (LoginRegisterStationOutDto) msg.getContentObject();
-                        logger.info(getAgent().getName() + " register success for: \n" + contentObject);
+                        logger.info(getAgent().getName() + " REGISTER success for: \n" + contentObject);
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }
+                    logger.info("-------------------REGISTER STATION END-------------------------");
                 } else if (msg.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
+                    logger.info("-------------------REGISTER STATION START-------------------------");
                     try {
                         StatusOutDto contentObject = ((LoginRegisterStationOutDto) msg.getContentObject()).getStatusOutDto();
-                        logger.info(getAgent().getName() + " register failed, message: \n" + contentObject.getMessage());
+                        logger.info(getAgent().getName() + " REGISTER failed, message: \n" + contentObject.getMessage());
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }
+                    logger.info("-------------------REGISTER STATION END-------------------------");
                 } else if (msg.getPerformative() == ACLMessage.FAILURE) {
-                    logger.info(getAgent().getName() + " register failed with error \n" + msg.getContent());
+                    logger.info("-------------------REGISTER STATION START-------------------------");
+                    logger.info(getAgent().getName() + " REGISTER failed with error \n" + msg.getContent());
+                    logger.info("-------------------REGISTER STATION END-------------------------");
                 }
                 isDone = true;
             }

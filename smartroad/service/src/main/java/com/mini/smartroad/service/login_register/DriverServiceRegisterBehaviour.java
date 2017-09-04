@@ -73,6 +73,7 @@ public class DriverServiceRegisterBehaviour extends BaseInteractBehaviour {
     }
 
     private UserEntity createUser(UserRegisterInDto userRegisterInDto) {
+        // TODO create user properties
         UserEntity userEntity = new UserEntity();
         userEntity.setLastName(userRegisterInDto.getLastName());
         userEntity.setFirstName(userRegisterInDto.getFirstName());

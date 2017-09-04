@@ -7,6 +7,7 @@ import com.mini.smartroad.dto.AddressDto;
 import com.mini.smartroad.dto.in.register.StationRegisterInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
+import com.mini.smartroad.dto.out.login_register.LoginRegisterStationOutDto;
 import com.mini.smartroad.model.AddressEntity;
 import com.mini.smartroad.model.StationEntity;
 import com.mini.smartroad.base.BaseAgent;
@@ -47,7 +48,7 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         sent = true;
     }
 
-    private StatusOutDto registerStation(StationRegisterInDto stationRegisterInDto, ACLMessage aclMessage) {
+    private LoginRegisterStationOutDto registerStation(StationRegisterInDto stationRegisterInDto, ACLMessage aclMessage) {
         StatusOutDto statusOutDto;
         Session session = HibernateUtils.getSessionFactory().openSession();
         List list = session.createCriteria(StationEntity.class)
@@ -59,7 +60,7 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         if (list != null && !list.isEmpty()) {
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
             statusOutDto = new StatusOutDto(StatusType.ERROR, MessageProperties.ERROR_STATION_ALREADY_DATABASE);
-            return statusOutDto;
+            return new LoginRegisterStationOutDto(statusOutDto);
         }
         session = HibernateUtils.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -69,7 +70,7 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         session.close();
         statusOutDto = new StatusOutDto();
         aclMessage.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-        return statusOutDto;
+        return new LoginRegisterStationOutDto(stationEntity.getToken(), stationEntity.getSecretCode(), statusOutDto);
     }
 
     private StationEntity createStation(StationRegisterInDto stationRegisterInDto) {
@@ -83,8 +84,10 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         addressEntity.setStreet(addressDto.getStreet());
         addressEntity.setExtraNumber(addressDto.getExtraNumber());
 
-        // todo check if station entity does not already exist, if so add it
         StationEntity stationEntity = new StationEntity();
+        stationEntity.setUserName(stationRegisterInDto.getUserName());
+        stationEntity.setSecretCode(CryptoUtils.generateStationSecretCode(stationRegisterInDto.getName(), stationRegisterInDto.getLongitude(),
+                stationRegisterInDto.getLatitude()));
         stationEntity.setName(stationRegisterInDto.getName());
         stationEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName(),
                 stationRegisterInDto.getLongitude(), stationRegisterInDto.getLatitude()));
@@ -95,8 +98,6 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         stationEntity.setLongitude(stationRegisterInDto.getLongitude());
         stationEntity.setLogo(stationRegisterInDto.getLogo());
 
-        stationEntity.setToken(CryptoUtils.generateStationDetailsToken(stationRegisterInDto.getName(),
-                stationRegisterInDto.getLongitude(), stationEntity.getLatitude()));
         stationEntity.setAddress(addressEntity);
 
         return stationEntity;

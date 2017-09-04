@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <UserRegisterInDto>
+        <email>test_driver1@migmail.pl</email>
+        <firstName>Test1</firstName>
+        <lastName>Driver1</lastName>
+        <password>test_driver1</password>
+    </UserRegisterInDto>
+    <UserRegisterInDto>
+        <email>test_driver2@migmail.pl</email>
+        <firstName>Test2</firstName>
+        <lastName>Driver2</lastName>
+        <password>test_driver2</password>
+    </UserRegisterInDto>
+</input>

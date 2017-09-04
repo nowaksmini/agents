@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <UserLoginInDto>
+        <login>test_driver1@migmail.pl</login>
+        <password>test_driver1</password>
+    </UserLoginInDto>
+    <UserLoginInDto>
+        <login>test_driver2@migmail.pl</login>
+        <password>test_driver2</password>
+    </UserLoginInDto>
+</input>

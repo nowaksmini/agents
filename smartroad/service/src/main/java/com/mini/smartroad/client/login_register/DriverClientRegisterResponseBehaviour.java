@@ -17,21 +17,27 @@ public class DriverClientRegisterResponseBehaviour extends BaseStopAgentBehaviou
         if (msg != null) {
             if (msg.getProtocol().equals(Utils.PROTOCOL_REGISTER + Utils.SUFFIX_RESPONSE)) {
                 if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+                    logger.info("-------------------REGISTER USER START-------------------------");
                     try {
                         LoginRegisterUserOutDto contentObject = (LoginRegisterUserOutDto) msg.getContentObject();
-                        logger.info(getAgent().getName() + " register success for: \n" + contentObject);
+                        logger.info(getAgent().getName() + " REGISTER success for: \n" + contentObject);
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }
+                    logger.info("-------------------REGISTER USER END-------------------------");
                 } else if (msg.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
+                    logger.info("-------------------REGISTER USER START-------------------------");
                     try {
                         StatusOutDto contentObject = ((LoginRegisterUserOutDto) msg.getContentObject()).getStatusOutDto();
-                        logger.info(getAgent().getName() + " register failed, message: \n" + contentObject.getMessage());
+                        logger.info(getAgent().getName() + " REGISTER failed, message: \n" + contentObject.getMessage());
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }
+                    logger.info("-------------------REGISTER USER END-------------------------");
                 } else if (msg.getPerformative() == ACLMessage.FAILURE) {
-                    logger.info(getAgent().getName() + " register failed with error \n" + msg.getContent());
+                    logger.info("-------------------REGISTER USER START-------------------------");
+                    logger.info(getAgent().getName() + " REGISTER failed with error \n" + msg.getContent());
+                    logger.info("-------------------REGISTER USER END-------------------------");
                 }
                 isDone = true;
             }

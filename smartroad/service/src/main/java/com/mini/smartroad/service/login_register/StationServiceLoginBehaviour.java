@@ -49,8 +49,8 @@ public class StationServiceLoginBehaviour extends BaseInteractBehaviour {
         LoginRegisterStationOutDto loginRegisterStationOutDto;
         StatusOutDto statusOutDto;
         List list = session.createCriteria(StationEntity.class)
-                .add(Restrictions.eq("user_name", stationLoginInDto.getUserName()))
-                .add(Restrictions.eq("secret_code", stationLoginInDto.getSecretCode()))
+                .add(Restrictions.eq("userName", stationLoginInDto.getUserName()))
+                .add(Restrictions.eq("secretCode", stationLoginInDto.getSecretCode()))
                 .list();
         session.close();
         if (list == null || list.isEmpty()) {

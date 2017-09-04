@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <StationLoginInDto>
+        <userName>Statoil_username_1</userName>
+        <secretCode>a31adbda8fdccc058224</secretCode>
+    </StationLoginInDto>
+
+    <StationLoginInDto>
+        <userName>BP_username_1</userName>
+        <secretCode>852fa527541ee751fb1c</secretCode>
+    </StationLoginInDto>
+
+    <StationLoginInDto>
+        <userName>Lukoil_username_1</userName>
+        <secretCode>0e594064e3994be92160</secretCode>
+    </StationLoginInDto>
+
+    <StationLoginInDto>
+        <userName>Shell_username_1</userName>
+        <secretCode>206537bb73f859dddf3a</secretCode>
+    </StationLoginInDto>
+</input>
