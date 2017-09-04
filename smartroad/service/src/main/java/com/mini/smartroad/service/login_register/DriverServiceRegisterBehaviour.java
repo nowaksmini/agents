@@ -10,6 +10,7 @@ import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
 import com.mini.smartroad.dto.out.login_register.LoginRegisterUserOutDto;
 import com.mini.smartroad.model.UserEntity;
+import com.mini.smartroad.model.UserPreferencesEntity;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 import org.hibernate.Session;
@@ -73,13 +74,17 @@ public class DriverServiceRegisterBehaviour extends BaseInteractBehaviour {
     }
 
     private UserEntity createUser(UserRegisterInDto userRegisterInDto) {
-        // TODO create user properties
         UserEntity userEntity = new UserEntity();
         userEntity.setLastName(userRegisterInDto.getLastName());
         userEntity.setFirstName(userRegisterInDto.getFirstName());
         userEntity.setEmail(userRegisterInDto.getEmail());
         userEntity.setPassword(CryptoUtils.encodePassword(userRegisterInDto.getPassword()));
         userEntity.setToken(CryptoUtils.generateUserToken(userEntity.getEmail()));
+
+        UserPreferencesEntity userPreferencesEntity = new UserPreferencesEntity();
+        userPreferencesEntity.setUser(userEntity);
+
+        userEntity.setPreferences(userPreferencesEntity);
         return userEntity;
     }
 

@@ -12,6 +12,7 @@ import com.mini.smartroad.model.AddressEntity;
 import com.mini.smartroad.model.StationEntity;
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseInteractBehaviour;
+import com.mini.smartroad.model.StationStrategyEntity;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
 import org.hibernate.Session;
@@ -99,6 +100,11 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
         stationEntity.setLogo(stationRegisterInDto.getLogo());
 
         stationEntity.setAddress(addressEntity);
+
+        StationStrategyEntity stationStrategyEntity = new StationStrategyEntity();
+        stationStrategyEntity.setStation(stationEntity);
+
+        stationEntity.setStationStrategy(stationStrategyEntity);
 
         return stationEntity;
     }

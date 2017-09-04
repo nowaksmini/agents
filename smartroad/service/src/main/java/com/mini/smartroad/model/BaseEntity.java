@@ -1,10 +1,13 @@
 package com.mini.smartroad.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @MappedSuperclass
+@Data
 public abstract class BaseEntity<T extends BaseEntity> implements Serializable {
 
     @Id
@@ -25,44 +28,11 @@ public abstract class BaseEntity<T extends BaseEntity> implements Serializable {
         BaseEntity<?> that = (BaseEntity<?>) o;
 
         return getId() != null ? getId().equals(that.getId()) : that.getId() == null;
-
     }
 
     @Override
     public int hashCode() {
         return getId() != null ? getId().hashCode() : 0;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getCreateDate() {
-        if (createDate != null) {
-            return new Date(createDate.getTime());
-        } else {
-            return null;
-        }
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getModifyDate() {
-        if (modifyDate != null) {
-            return new Date(modifyDate.getTime());
-        } else {
-            return null;
-        }
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
     }
 
     @PreUpdate

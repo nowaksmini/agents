@@ -15,6 +15,7 @@ public class HibernateUtils {
         cfg.addAnnotatedClass(AddressEntity.class);
         cfg.addAnnotatedClass(StationEntity.class);
         cfg.addAnnotatedClass(ActionEntity.class);
+        cfg.addAnnotatedClass(StationStrategyEntity.class);
         return cfg.buildSessionFactory();
     }
 
