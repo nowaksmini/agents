@@ -15,6 +15,8 @@ public class Utils {
     public static final String PROTOCOL_GET_NEGOTIATION_STRATEGY = "get_strategy";
     public static final String PROTOCOL_UPDATE_NEGOTIATION_STRATEGY = "update_strategy";
 
+    public static final String PROTOCOL_TRACK = "track";
+
 
 //    public static final String PROTOCOL_LIKE = "like";
 //    public static final String PROTOCOL_UNLIKE = "unlike";
@@ -32,7 +34,9 @@ public class Utils {
 
     public static final String LOGIN_REGISTER_SERVICE_AGENT = "com.mini.smartroad.service.login_register.LoginRegisterAgent";
     public static final String CONFIGURE_SERVICE_AGENT = "com.mini.smartroad.service.configuration.ConfigurationAgent";
-    // TODO TRACKER, NEGOTIATOR, ACTION
+    public static final String TRACKER_SERVICE_AGENT = "com.mini.smartroad.service.track.TrackerAgent";
+
+    // TODO, NEGOTIATOR, ACTION
 
     public static final int LIKE_TIME_DURATION = 1; // in hours
 

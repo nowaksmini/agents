@@ -1,13 +1,16 @@
 package com.mini.smartroad.simulation;
 
+import com.mini.smartroad.DriverRuntimeInfo;
 import com.mini.smartroad.Main;
 import com.mini.smartroad.client.configuration.ConfigurationClientAgent;
 import com.mini.smartroad.client.login_register.LoginRegisterClientAgent;
+import com.mini.smartroad.client.track.TrackClientAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.configure.UserPreferencesInDto;
 import com.mini.smartroad.dto.in.login.UserLoginInDto;
 import com.mini.smartroad.dto.in.register.UserRegisterInDto;
+import com.mini.smartroad.dto.in.track.UserTrackInDto;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 import org.w3c.dom.Document;
@@ -30,15 +33,10 @@ public class DriverSimulation {
             simulateUpdateUserPreferences();
             Thread.sleep(5000);
             simulateGetUserPreferences();
-        } catch (StaleProxyException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+            Thread.sleep(3000);
+            simulateDriverTrip();
+        } catch (StaleProxyException | SAXException | ParserConfigurationException |
+                IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -110,7 +108,7 @@ public class DriverSimulation {
                 }
             }
             String token = params.get(0);
-            AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
+            AgentController agentController = Main.getAgentContainer().createNewAgent
                     (ConfigurationClientAgent.class.getName() + (1 + 6 * i),
                             ConfigurationClientAgent.class.getName(),
                             new Object[]{
@@ -118,7 +116,7 @@ public class DriverSimulation {
                                     ArgumentType.USER_GET_PREFERENCES
                             }
                     );
-            agentControllerLogin.start();
+            agentController.start();
         }
     }
 
@@ -128,7 +126,7 @@ public class DriverSimulation {
         for (int i = 0; i < userPreferencesInDto.getLength(); i++) {
             Node item = userPreferencesInDto.item(i);
             NodeList childNodes = item.getChildNodes();
-            List<String> params = new LinkedList<String>();
+            List<String> params = new LinkedList<>();
             for (int j = 0; j < childNodes.getLength(); j++) {
                 if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
                     params.add(childNodes.item(j).getTextContent());
@@ -141,7 +139,7 @@ public class DriverSimulation {
             String avoidedStationNames = params.get(4);
             String preferredStationNames = params.get(5);
 
-            AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
+            AgentController agentController = Main.getAgentContainer().createNewAgent
                     (ConfigurationClientAgent.class.getName() + (2 + 6 * i),
                             ConfigurationClientAgent.class.getName(),
                             new Object[]{
@@ -151,7 +149,67 @@ public class DriverSimulation {
                                     ArgumentType.USER_UPDATE_PREFERENCES
                             }
                     );
-            agentControllerLogin.start();
+            agentController.start();
+        }
+    }
+
+    private void simulateDriverTrip() throws IOException, SAXException, ParserConfigurationException, StaleProxyException {
+        List<DriverRuntimeInfo> driverRuntimeInfos = new LinkedList<>();
+        List<Double> directions = new LinkedList<>();
+        Document document = Simulation.readXmlDocument("simulation_driver_start_trip_positions.xml");
+        NodeList userPreferencesInDto = document.getElementsByTagName("UserTrackInDto");
+        for (int i = 0; i < userPreferencesInDto.getLength(); i++) {
+            Node item = userPreferencesInDto.item(i);
+            NodeList childNodes = item.getChildNodes();
+            List<String> params = new LinkedList<>();
+            for (int j = 0; j < childNodes.getLength(); j++) {
+                if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                    params.add(childNodes.item(j).getTextContent());
+                }
+            }
+            String token = params.get(0);
+            Double longitude = Double.valueOf(params.get(1));
+            Double latitude = Double.valueOf(params.get(2));
+            Boolean wantsToNegotiate = Boolean.valueOf(params.get(3));
+            Double direction = Double.valueOf(params.get(4));
+
+            driverRuntimeInfos.add(new DriverRuntimeInfo(token, longitude, latitude, wantsToNegotiate));
+            directions.add(direction);
+        }
+
+        double longDiff = 0.01;
+        double latDiff = 0.03;
+        int i = 0;
+
+        while (true) {
+            for (int j = 0; j < driverRuntimeInfos.size(); j++) {
+                Double direction = directions.get(j);
+                DriverRuntimeInfo driverRuntimeInfo = driverRuntimeInfos.get(j);
+                driverRuntimeInfo.setLongitude(driverRuntimeInfo.getLongitude() + direction * longDiff);
+                driverRuntimeInfo.setLatitude(driverRuntimeInfo.getLatitude() + direction * latDiff);
+                AgentController agentController = Main.getAgentContainer().createNewAgent
+                        (TrackClientAgent.class.getName() + ((driverRuntimeInfos.size()) * i + j),
+                                TrackClientAgent.class.getName(),
+                                new Object[]{
+                                        new UserTrackInDto(driverRuntimeInfo.getToken(),
+                                                driverRuntimeInfo.getLongitude(),
+                                                driverRuntimeInfo.getLatitude(),
+                                                driverRuntimeInfo.isWantsToNegotiate()),
+                                        ArgumentType.USER_POSITION_TRACK
+                                }
+                        );
+                try {
+                    agentController.start();
+                } catch (StaleProxyException e) {
+                    e.printStackTrace();
+                }
+            }
+            i++;
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
