@@ -13,10 +13,8 @@ public class HibernateUtils {
         cfg.addAnnotatedClass(UserEntity.class);
         cfg.addAnnotatedClass(UserPreferencesEntity.class);
         cfg.addAnnotatedClass(AddressEntity.class);
-        cfg.addAnnotatedClass(StationDetailsEntity.class);
         cfg.addAnnotatedClass(StationEntity.class);
         cfg.addAnnotatedClass(ActionEntity.class);
-        cfg.addAnnotatedClass(CouponEntity.class);
         return cfg.buildSessionFactory();
     }
 

@@ -1,25 +1,14 @@
 package com.mini.smartroad.dto.in;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BaseInDto implements Serializable {
     protected String userToken;
-
-    public BaseInDto() {
-    }
-
-    public BaseInDto(String userToken) {
-        this.userToken = userToken;
-    }
-
-    public String getUserToken() {
-        return userToken;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseInDto{" +
-                "userToken='" + userToken + '\'' +
-                '}';
-    }
 }

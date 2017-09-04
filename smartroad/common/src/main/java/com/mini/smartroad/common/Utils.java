@@ -21,13 +21,13 @@ public class Utils {
 
     public static final String SUFFIX_RESPONSE = "-response";
 
-    public static final String IP = "192.168.0.185";
+    public static final String IP = "192.168.56.1";
     public static final String PORT = "1099";
 
-    public static final String USER_SERVICE_AGENT = "com.mini.smartroad.service.driver.UserServiceAgent";
-    public static final String STATION_SERVICE_AGENT = "com.mini.smartroad.service.station.StationServiceAgent";
-    public static final String HELPER_SERVICE_AGENT = "com.mini.smartroad.service.helper.SearchServiceAgent";
-    public static final String ACTION_SERVICE_AGENT = "com.mini.smartroad.service.action.ActionServiceAgent";
+    public static final String LOGIN_REGISTER_SERVICE_AGENT = "com.mini.smartroad.service.login_register.LoginRegisterAgent";
+
+    public static final String HELPER_SERVICE_AGENT = "com.mini.smartroad.service.xyz.helper.SearchServiceAgent";
+    public static final String ACTION_SERVICE_AGENT = "com.mini.smartroad.service.xyz.action.ActionServiceAgent";
 
     public static final int LIKE_TIME_DURATION = 1; // in hours
     public static final int COUPON_TIME_DURATION = 1; // in hours
@@ -39,6 +39,4 @@ public class Utils {
 
     public static final double KILOMETER_TO_DEGREES_LATITUDE = 0.005;
     public static final double KILOMETER_TO_DEGREES_LONGITUDE = 0.01;
-
-    public static int CARS_AMOUNT = 4;
 }

@@ -103,19 +103,15 @@ public class CryptoUtils {
         return CryptoUtils.SHA1(new Date() + name + latitude + longitude).substring(0, 20).replaceAll("\\+", "");
     }
 
-    public static String generateStationToken(String name) {
-        return CryptoUtils.SHA1(new Date() + name).substring(0, 20).replaceAll("\\+", "");
+    public static String generateStationToken(String name, double lon, double lat) {
+        return CryptoUtils.SHA1(new Date() + name + lon + lat).substring(0, 20).replaceAll("\\+", "");
+    }
+
+    public static String generateStationSecretCode(String name, double lon, double lat) {
+        return CryptoUtils.SHA1(new Date() + name + lon + lat).substring(0, 20).replaceAll("\\+", "");
     }
 
     public static String generateActionToken(ActionType actionType, String userToken, String stationToken) {
         return CryptoUtils.SHA1(new Date() + actionType.name() + userToken + stationToken).substring(0, 20).replaceAll("\\+", "");
-    }
-
-    public static String generateCouponToken(String actionToken) {
-        return CryptoUtils.SHA1(new Date() + actionToken).substring(0, 20).replaceAll("\\+", "");
-    }
-
-    public static String generateDiscountCode(String couponToken) {
-        return CryptoUtils.SHA1(new Date() + couponToken).substring(0, 8).replaceAll("\\+", "");
     }
 }

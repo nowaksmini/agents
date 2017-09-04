@@ -4,7 +4,6 @@ import com.mini.smartroad.common.ActionType;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "actions")
@@ -27,15 +26,12 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
     private ActionType actionType;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "station_details_id", nullable = false)
-    private StationDetailsEntity stationDetails;
+    @JoinColumn(name = "station_id", nullable = false)
+    private StationEntity stationDetails;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
-
-    @OneToMany(mappedBy = "action", fetch = FetchType.LAZY)
-    private List<CouponEntity> coupons;
 
     public String getToken() {
         return token;
@@ -85,11 +81,11 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
         this.actionType = actionType;
     }
 
-    public StationDetailsEntity getStationDetails() {
+    public StationEntity getStationDetails() {
         return stationDetails;
     }
 
-    public void setStationDetails(StationDetailsEntity stationDetails) {
+    public void setStationDetails(StationEntity stationDetails) {
         this.stationDetails = stationDetails;
     }
 
@@ -99,14 +95,6 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
 
     public void setUser(UserEntity user) {
         this.user = user;
-    }
-
-    public List<CouponEntity> getCoupons() {
-        return coupons;
-    }
-
-    public void setCoupons(List<CouponEntity> coupons) {
-        this.coupons = coupons;
     }
 
     @Override
@@ -123,7 +111,6 @@ public class ActionEntity extends BaseEntity<ActionEntity> {
                 ", actionType=" + actionType +
                 ", stationDetails=" + stationDetails +
                 ", driver=" + user +
-                ", coupons=" + coupons +
                 '}';
     }
 

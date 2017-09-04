@@ -22,7 +22,7 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
     private String postalCode;
 
     @OneToOne(mappedBy = "address")
-    private StationDetailsEntity stationDetails;
+    private StationEntity stationDetails;
 
     public String getCountry() {
         return country;
@@ -80,11 +80,11 @@ public class AddressEntity extends BaseEntity<AddressEntity> {
         this.postalCode = postalCode;
     }
 
-    public StationDetailsEntity getStationDetails() {
+    public StationEntity getStationDetails() {
         return stationDetails;
     }
 
-    public void setStationDetails(StationDetailsEntity stationDetails) {
+    public void setStationDetails(StationEntity stationDetails) {
         this.stationDetails = stationDetails;
     }
 
