@@ -15,25 +15,25 @@ public class DriverNegotiateGasStationClientRequestBehaviour extends BaseDoneBeh
     private BaseInDto baseInDto;
     private String gasStationAgentName;
 
-    public DriverNegotiateGasStationClientRequestBehaviour(String userToken, String gasStationAgentName) {
-        BaseInDto baseInDto = new BaseInDto(userToken);
-        this.gasStationAgentName = gasStationAgentName;
-    }
-
-    @Override
-    public void action() {
-        super.action();
-        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-        message.addReceiver(new AID(gasStationAgentName, AID.ISLOCALNAME));
-        try {
-            message.setContentObject(baseInDto);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        message.setOntology(Utils.ONTOLOGY_NEGOTIATE);
-        message.setProtocol(Utils.PROTOCOL_START_NEGOTIATION);
-        ((BaseAgent) myAgent).sendMessage(message);
-        myAgent.addBehaviour(new DriverNegotiateGasStationClientResponseBehaviour());
-        isDone = true;
-    }
+//    public DriverNegotiateGasStationClientRequestBehaviour(String userToken, String gasStationAgentName) {
+//        BaseInDto baseInDto = new BaseInDto(userToken);
+//        this.gasStationAgentName = gasStationAgentName;
+//    }
+//
+//    @Override
+//    public void action() {
+//        super.action();
+//        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+//        message.addReceiver(new AID(gasStationAgentName, AID.ISLOCALNAME));
+//        try {
+//            message.setContentObject(baseInDto);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        message.setOntology(Utils.ONTOLOGY_NEGOTIATE);
+//        message.setProtocol(Utils.PROTOCOL_START_NEGOTIATION);
+//        ((BaseAgent) myAgent).sendMessage(message);
+//        myAgent.addBehaviour(new DriverNegotiateGasStationClientResponseBehaviour());
+//        isDone = true;
+//    }
 }

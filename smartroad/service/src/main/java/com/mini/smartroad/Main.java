@@ -1,5 +1,6 @@
 package com.mini.smartroad;
 
+import com.mini.smartroad.service.configuration.ConfigurationAgent;
 import com.mini.smartroad.simulation.Simulation;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.service.login_register.LoginRegisterAgent;
@@ -34,12 +35,9 @@ public class Main {
         try {
             AgentController agentLoginRegister = agentContainer.createNewAgent(LoginRegisterAgent.class.getName(), LoginRegisterAgent.class.getName(), null);
             agentLoginRegister.start();
-//            AgentController agentStationController = agentContainer.createNewAgent(StationServiceAgent.class.getName(), StationServiceAgent.class.getName(), null);
-//            agentStationController.start();
-//            AgentController agentSearchController = agentContainer.createNewAgent(HelperServiceAgent.class.getName(), HelperServiceAgent.class.getName(), null);
-//            agentSearchController.start();
-//            AgentController agentActionController = agentContainer.createNewAgent(ActionServiceAgent.class.getName(), ActionServiceAgent.class.getName(), null);
-//            agentActionController.start();
+            AgentController agentConfiguration = agentContainer.createNewAgent(ConfigurationAgent.class.getName(), ConfigurationAgent.class.getName(), null);
+            agentConfiguration.start();
+            // TODO TRACKER, ACTION, HELPER
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }

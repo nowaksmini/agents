@@ -13,7 +13,7 @@ public class DriverNegotiateClientAgent extends BaseAgent {
         super.setup();
         Object[] arguments = getArguments();
         if (arguments != null) {
-//            if (arguments.length == ArgumentsType.SEARCH_STATIONS_WEB || arguments.length == ArgumentsType.SEARCH_STATIONS_MOBILE) {
+//            if (arguments.length == ArgumentType.SEARCH_STATIONS_WEB || arguments.length == ArgumentType.SEARCH_STATIONS_MOBILE) {
 //                String userToken = (String) arguments[arguments.length - 2];
 //                String petrolStationAgentName = (String) arguments[arguments.length - 1];
 //                logger.info("Passed arguments: userToken:" + userToken + ", petrolStationAgentName" + petrolStationAgentName);

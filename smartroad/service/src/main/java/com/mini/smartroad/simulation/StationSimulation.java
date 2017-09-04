@@ -1,9 +1,13 @@
 package com.mini.smartroad.simulation;
 
 import com.mini.smartroad.Main;
+import com.mini.smartroad.client.configuration.ConfigurationClientAgent;
 import com.mini.smartroad.client.login_register.LoginRegisterClientAgent;
-import com.mini.smartroad.common.ArgumentsType;
+import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.AddressDto;
+import com.mini.smartroad.dto.in.BaseInDto;
+import com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto;
+import com.mini.smartroad.dto.in.configure.StationPreferencesInDto;
 import com.mini.smartroad.dto.in.login.StationLoginInDto;
 import com.mini.smartroad.dto.in.register.StationRegisterInDto;
 import jade.wrapper.AgentController;
@@ -24,6 +28,12 @@ public class StationSimulation {
             simulateRegisterStation();
             Thread.sleep(3000);
             simulateLoginStation();
+            Thread.sleep(10000);
+            simulateUpdateStationPreferences();
+            simulateUpdateStationStrategies();
+            Thread.sleep(10000);
+            simulateGetStationPreferences();
+            simulateGetStationStrategies();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         } catch (SAXException e) {
@@ -56,7 +66,7 @@ public class StationSimulation {
                             LoginRegisterClientAgent.class.getName(),
                             new Object[]{
                                     new StationLoginInDto(login, password),
-                                    ArgumentsType.STATION_LOGIN
+                                    ArgumentType.STATION_LOGIN
                             }
                     );
             agentControllerLogin.start();
@@ -105,11 +115,138 @@ public class StationSimulation {
                             LoginRegisterClientAgent.class.getName(),
                             new Object[]{
                                     new StationRegisterInDto(userName, name, email, logo, phone, longitude, latitude, addressDto),
-                                    ArgumentsType.STATION_REGISTER
+                                    ArgumentType.STATION_REGISTER
                             }
                     );
             agentControllerRegister.start();
         }
     }
 
+    private void simulateGetStationPreferences() throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
+        Document document = Simulation.readXmlDocument("simulation_station_get_preferences.xml");
+        NodeList baseInDto = document.getElementsByTagName("BaseInDto");
+        for (int i = 0; i < baseInDto.getLength(); i++) {
+            Node item = baseInDto.item(i);
+            NodeList childNodes = item.getChildNodes();
+            List<String> params = new LinkedList<String>();
+            for (int j = 0; j < childNodes.getLength(); j++) {
+                if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                    params.add(childNodes.item(j).getTextContent());
+                }
+            }
+            String token = params.get(0);
+            AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
+                    (ConfigurationClientAgent.class.getName() + (3 + 6 * i),
+                            ConfigurationClientAgent.class.getName(),
+                            new Object[]{
+                                    new BaseInDto(token),
+                                    ArgumentType.STATION_GET_PREFERENCES
+                            }
+                    );
+            agentControllerLogin.start();
+        }
+    }
+
+    private void simulateUpdateStationPreferences() throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
+        Document document = Simulation.readXmlDocument("simulation_station_update_preferences.xml");
+        NodeList baseInDto = document.getElementsByTagName("StationPreferencesInDto");
+        for (int i = 0; i < baseInDto.getLength(); i++) {
+            Node item = baseInDto.item(i);
+            NodeList childNodes = item.getChildNodes();
+            List<String> params = new LinkedList<String>();
+            for (int j = 0; j < childNodes.getLength(); j++) {
+                if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                    params.add(childNodes.item(j).getTextContent());
+                }
+            }
+            String token = params.get(0);
+            String name = params.get(1);
+            String email = params.get(2);
+            String phone = params.get(3);
+            String logo = params.get(4);
+            AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
+                    (ConfigurationClientAgent.class.getName() + (4 + 6 * i),
+                            ConfigurationClientAgent.class.getName(),
+                            new Object[]{
+                                    new StationPreferencesInDto(token, name, email, phone, logo),
+                                    ArgumentType.STATION_UPDATE_PREFERENCES
+                            }
+                    );
+            agentControllerLogin.start();
+        }
+    }
+
+    private void simulateGetStationStrategies() throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
+        Document document = Simulation.readXmlDocument("simulation_station_get_strategies.xml");
+        NodeList baseInDto = document.getElementsByTagName("BaseInDto");
+        for (int i = 0; i < baseInDto.getLength(); i++) {
+            Node item = baseInDto.item(i);
+            NodeList childNodes = item.getChildNodes();
+            List<String> params = new LinkedList<String>();
+            for (int j = 0; j < childNodes.getLength(); j++) {
+                if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                    params.add(childNodes.item(j).getTextContent());
+                }
+            }
+            String token = params.get(0);
+            AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
+                    (ConfigurationClientAgent.class.getName() + (5 + 6 * i),
+                            ConfigurationClientAgent.class.getName(),
+                            new Object[]{
+                                    new BaseInDto(token),
+                                    ArgumentType.STATION_GET_NEGOTIATION_STRATEGY
+                            }
+                    );
+            agentControllerLogin.start();
+        }
+    }
+
+    private void simulateUpdateStationStrategies() throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
+        Document document = Simulation.readXmlDocument("simulation_station_update_strategies.xml");
+        NodeList baseInDto = document.getElementsByTagName("StationNegotiationStrategyInDto");
+        for (int i = 0; i < baseInDto.getLength(); i++) {
+            Node item = baseInDto.item(i);
+            NodeList childNodes = item.getChildNodes();
+            List<String> params = new LinkedList<String>();
+            for (int j = 0; j < childNodes.getLength(); j++) {
+                if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                    params.add(childNodes.item(j).getTextContent());
+                }
+            }
+            String token = params.get(0);
+            Integer groupSize0 = Integer.valueOf(params.get(1));
+            Integer groupSize1 = Integer.valueOf(params.get(2));
+            Integer groupSize2 = Integer.valueOf(params.get(3));
+            Integer groupSize3 = Integer.valueOf(params.get(4));
+            Integer groupSize4 = Integer.valueOf(params.get(5));
+
+            Integer pointsGroupSize0 = Integer.valueOf(params.get(6));
+            Integer pointsGroupSize1 = Integer.valueOf(params.get(7));
+            Integer pointsGroupSize2 = Integer.valueOf(params.get(8));
+            Integer pointsGroupSize3 = Integer.valueOf(params.get(9));
+            Integer pointsGroupSize4 = Integer.valueOf(params.get(10));
+
+            AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
+                    (ConfigurationClientAgent.class.getName() + (6 * i),
+                            ConfigurationClientAgent.class.getName(),
+                            new Object[]{
+                                    new StationNegotiationStrategyInDto(
+                                            token,
+                                            groupSize0,
+                                            groupSize1,
+                                            groupSize2,
+                                            groupSize3,
+                                            groupSize4,
+                                            pointsGroupSize0,
+                                            pointsGroupSize1,
+                                            pointsGroupSize2,
+                                            pointsGroupSize3,
+                                            pointsGroupSize4
+                                    ),
+                                    ArgumentType.STATION_UPDATE_NEGOTIATION_STRATEGY
+                            }
+                    );
+            agentControllerLogin.start();
+        }
+    }
 }

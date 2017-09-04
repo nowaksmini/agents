@@ -10,5 +10,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseInDto implements Serializable {
-    protected String userToken;
+    protected String token;
 }

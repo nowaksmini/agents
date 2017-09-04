@@ -103,8 +103,8 @@ public class CryptoUtils {
         return CryptoUtils.SHA1(name + lon + lat).substring(0, 20).replaceAll("\\+", "");
     }
 
-    public static String generateStationSecretCode(String name, double lon, double lat) {
-        return CryptoUtils.SHA1(name + lon + lat).substring(0, 20).replaceAll("\\+", "");
+    public static String generateStationSecretCode(String userName, double lon, double lat) {
+        return CryptoUtils.SHA1(userName + lon + lat).substring(0, 20).replaceAll("\\+", "");
     }
 
     public static String generateActionToken(ActionType actionType, String userToken, String stationToken) {

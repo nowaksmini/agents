@@ -22,7 +22,7 @@ public class UserPreferencesEntity extends BaseEntity<UserPreferencesEntity> {
     @Column(name = "preferred_station_names", nullable = false)
     private String preferredStationNames = "";
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserEntity user;
 }

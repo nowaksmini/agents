@@ -8,6 +8,7 @@ import com.mini.smartroad.dto.in.register.StationRegisterInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
 import com.mini.smartroad.dto.out.login_register.LoginRegisterStationOutDto;
+import com.mini.smartroad.dto.out.login_register.LoginRegisterUserOutDto;
 import com.mini.smartroad.model.AddressEntity;
 import com.mini.smartroad.model.StationEntity;
 import com.mini.smartroad.base.BaseAgent;
@@ -63,6 +64,11 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
             statusOutDto = new StatusOutDto(StatusType.ERROR, MessageProperties.ERROR_STATION_ALREADY_DATABASE);
             return new LoginRegisterStationOutDto(statusOutDto);
         }
+        if (list.size() > 1) {
+            aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
+            statusOutDto = new StatusOutDto(StatusType.ERROR, MessageProperties.ERROR_STATION_UNIQUE);
+            return new LoginRegisterStationOutDto(statusOutDto);
+        }
         session = HibernateUtils.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         StationEntity stationEntity = createStation(stationRegisterInDto);
@@ -87,7 +93,7 @@ public class StationServiceRegisterBehaviour extends BaseInteractBehaviour {
 
         StationEntity stationEntity = new StationEntity();
         stationEntity.setUserName(stationRegisterInDto.getUserName());
-        stationEntity.setSecretCode(CryptoUtils.generateStationSecretCode(stationRegisterInDto.getName(), stationRegisterInDto.getLongitude(),
+        stationEntity.setSecretCode(CryptoUtils.generateStationSecretCode(stationRegisterInDto.getUserName(), stationRegisterInDto.getLongitude(),
                 stationRegisterInDto.getLatitude()));
         stationEntity.setName(stationRegisterInDto.getName());
         stationEntity.setToken(CryptoUtils.generateStationToken(stationRegisterInDto.getName(),

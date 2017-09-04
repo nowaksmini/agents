@@ -1,0 +1,18 @@
+package com.mini.smartroad.common;
+
+public enum ArgumentType {
+    USER_LOGIN,
+    USER_REGISTER,
+
+    STATION_LOGIN,
+    STATION_REGISTER,
+
+    USER_GET_PREFERENCES, // input BaseInDto
+    USER_UPDATE_PREFERENCES,
+
+    STATION_GET_PREFERENCES, // input BaseInDto
+    STATION_UPDATE_PREFERENCES,
+
+    STATION_GET_NEGOTIATION_STRATEGY, // input BaseInDto
+    STATION_UPDATE_NEGOTIATION_STRATEGY,
+}

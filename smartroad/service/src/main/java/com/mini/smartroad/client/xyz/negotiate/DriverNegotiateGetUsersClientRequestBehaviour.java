@@ -14,24 +14,24 @@ public class DriverNegotiateGetUsersClientRequestBehaviour extends BaseDoneBehav
 
     private FindDriversInDto findDriversInDto;
 
-    public DriverNegotiateGetUsersClientRequestBehaviour(String userToken, String stationToken) {
-        findDriversInDto = new FindDriversInDto(userToken, stationToken);
-    }
-
-    @Override
-    public void action() {
-        super.action();
-        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-        message.addReceiver(new AID(Utils.HELPER_SERVICE_AGENT, AID.ISLOCALNAME));
-        try {
-            message.setContentObject(findDriversInDto);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        message.setOntology(Utils.ONTOLOGY_NEGOTIATE);
-        message.setProtocol(Utils.PROTOCOL_FIND_USERS);
-        ((BaseAgent) myAgent).sendMessage(message);
-        myAgent.addBehaviour(new DriverNegotiateGetUsersClientResponseBehaviour());
-        isDone = true;
-    }
+//    public DriverNegotiateGetUsersClientRequestBehaviour(String userToken, String stationToken) {
+//        findDriversInDto = new FindDriversInDto(userToken, stationToken);
+//    }
+//
+//    @Override
+//    public void action() {
+//        super.action();
+//        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+//        message.addReceiver(new AID(Utils.HELPER_SERVICE_AGENT, AID.ISLOCALNAME));
+//        try {
+//            message.setContentObject(findDriversInDto);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        message.setOntology(Utils.ONTOLOGY_NEGOTIATE);
+//        message.setProtocol(Utils.PROTOCOL_FIND_USERS);
+//        ((BaseAgent) myAgent).sendMessage(message);
+//        myAgent.addBehaviour(new DriverNegotiateGetUsersClientResponseBehaviour());
+//        isDone = true;
+//    }
 }

@@ -2,21 +2,21 @@
 <input>
     <StationLoginInDto>
         <userName>Statoil_username_1</userName>
-        <secretCode>a31adbda8fdccc058224</secretCode>
+        <secretCode>d27bbb773f6385f14058</secretCode>
     </StationLoginInDto>
 
     <StationLoginInDto>
         <userName>BP_username_1</userName>
-        <secretCode>852fa527541ee751fb1c</secretCode>
+        <secretCode>36ad7afd29d8777b72e6</secretCode>
     </StationLoginInDto>
 
     <StationLoginInDto>
         <userName>Lukoil_username_1</userName>
-        <secretCode>0e594064e3994be92160</secretCode>
+        <secretCode>c389ed43eb7e327ea4d5</secretCode>
     </StationLoginInDto>
 
     <StationLoginInDto>
         <userName>Shell_username_1</userName>
-        <secretCode>206537bb73f859dddf3a</secretCode>
+        <secretCode>a49eaef644b4f84439a4</secretCode>
     </StationLoginInDto>
 </input>

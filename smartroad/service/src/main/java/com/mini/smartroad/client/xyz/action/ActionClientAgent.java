@@ -10,7 +10,7 @@ public class ActionClientAgent extends BaseAgent {
         super.setup();
         Object[] arguments = getArguments();
 //        if (arguments != null) {
-//            if (arguments.length == ArgumentsType.ACTION_MOBILE || arguments.length == ArgumentsType.ACTION_WEB) {
+//            if (arguments.length == ArgumentType.ACTION_MOBILE || arguments.length == ArgumentType.ACTION_WEB) {
 //                String userToken = (String) arguments[arguments.length - 4];
 //                String stationToken = (String) arguments[arguments.length - 3];
 //                ActionType actionType = (ActionType) arguments[arguments.length - 2];

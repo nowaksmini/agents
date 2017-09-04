@@ -61,7 +61,7 @@ public class StationServiceLoginBehaviour extends BaseInteractBehaviour {
         }
         if (list.size() > 1) {
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
-            statusOutDto = new StatusOutDto(StatusType.ERROR, MessageProperties.ERROR_USER_UNIQUE);
+            statusOutDto = new StatusOutDto(StatusType.ERROR, MessageProperties.ERROR_STATION_UNIQUE);
             loginRegisterStationOutDto = new LoginRegisterStationOutDto(statusOutDto);
             return loginRegisterStationOutDto;
         }

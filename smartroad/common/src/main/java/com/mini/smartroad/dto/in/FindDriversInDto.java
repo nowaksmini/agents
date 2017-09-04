@@ -1,23 +1,14 @@
 package com.mini.smartroad.dto.in;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.io.Serializable;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
+@AllArgsConstructor
 public class FindDriversInDto extends BaseInDto implements Serializable {
     private String stationToken;
-
-    public FindDriversInDto(String userToken, String stationToken) {
-        this.userToken = userToken;
-        this.stationToken = stationToken;
-    }
-
-    public String getStationToken() {
-        return stationToken;
-    }
-
-    @Override
-    public String toString() {
-        return "FindDriversInDto{" +
-                "stationToken='" + stationToken + '\'' +
-                '}';
-    }
 }

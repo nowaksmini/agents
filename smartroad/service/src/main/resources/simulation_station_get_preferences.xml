@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <!-- Statoil -->
+    <BaseInDto>
+        <token>a31adbda8fdccc058224</token>
+    </BaseInDto>
+
+    <!-- BP -->
+    <BaseInDto>
+        <token>852fa527541ee751fb1c</token>
+    </BaseInDto>
+
+    <!-- Lukoil -->
+    <BaseInDto>
+        <token>0e594064e3994be92160</token>
+    </BaseInDto>
+
+    <!-- Shell -->
+    <BaseInDto>
+        <token>206537bb73f859dddf3a</token>
+    </BaseInDto>
+</input>

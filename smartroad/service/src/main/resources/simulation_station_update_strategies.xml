@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <!-- BP -->
+    <StationNegotiationStrategyInDto>
+        <token>852fa527541ee751fb1c</token>
+        <groupSize0>3</groupSize0>
+        <groupSize1>6</groupSize1>
+        <groupSize2>8</groupSize2>
+        <groupSize3>11</groupSize3>
+        <groupSize4>16</groupSize4>
+        <pointsGroupSize0>11</pointsGroupSize0>
+        <pointsGroupSize1>61</pointsGroupSize1>
+        <pointsGroupSize2>91</pointsGroupSize2>
+        <pointsGroupSize3>151</pointsGroupSize3>
+        <pointsGroupSize4>301</pointsGroupSize4>
+    </StationNegotiationStrategyInDto>
+</input>

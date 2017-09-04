@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <UserPreferencesInDto>
+        <token>85d12476494048fc1c20</token>
+        <minimalMinutesLeft>33</minimalMinutesLeft>
+        <startSearchingMinutesLeft>66</startSearchingMinutesLeft>
+        <acceptAlways>true</acceptAlways>
+        <avoidedStationNames>Statoil, BP</avoidedStationNames>
+        <preferredStationNames>Lukoil</preferredStationNames>
+    </UserPreferencesInDto>
+</input>

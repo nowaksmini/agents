@@ -24,7 +24,7 @@ public class UserEntity extends BaseEntity<UserEntity> {
     private String token;
     @Column(name = "points", nullable = false)
     private Integer points = 0;
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserPreferencesEntity preferences;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)

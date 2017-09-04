@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <!-- Lukoil -->
+    <StationPreferencesInDto>
+        <token>0e594064e3994be92160</token>
+        <name>Lukoil_prim</name>
+        <email>lukoil_prim@gmail.com</email>
+        <phone>111 111 111</phone>
+        <logo>https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Shell_logo.svg/829px-Shell_logo.svg.png</logo>
+    </StationPreferencesInDto>
+
+    <!-- Shell -->
+    <StationPreferencesInDto>
+        <token>206537bb73f859dddf3a</token>
+        <name>Shell_prim</name>
+        <email>shell_prim@gmail.com</email>
+        <phone>222 111 111</phone>
+        <logo>
+            http://vignette2.wikia.nocookie.net/logopedia/images/2/2d/Lukoil-logo-620x236.png/revision/latest?cb=20160304213348
+        </logo>
+    </StationPreferencesInDto>
+</input>
