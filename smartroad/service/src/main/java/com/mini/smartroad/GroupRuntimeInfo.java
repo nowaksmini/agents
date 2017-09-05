@@ -7,7 +7,6 @@ import java.util.UUID;
 
 @Data
 public class GroupRuntimeInfo {
-    private UUID groupId;
     private String stationToken;
     private LocalDateTime from;
     private LocalDateTime to;

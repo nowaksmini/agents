@@ -3,7 +3,7 @@
     <UserTrackInDto>
         <token>85d12476494048fc1c20</token>
         <longitude>52.2378250</longitude>
-        <latitude>20.9895090</latitude>
+        <latitude>21.00925</latitude>
         <wantsToNegotiate>true</wantsToNegotiate>
         <direction>1</direction>
     </UserTrackInDto>
@@ -11,7 +11,7 @@
     <UserTrackInDto>
         <token>bad9afa2745b554831f4</token>
         <longitude>52.3378250</longitude>
-        <latitude>21.9895090</latitude>
+        <latitude>21.0095090</latitude>
         <wantsToNegotiate>true</wantsToNegotiate>
         <direction>-1</direction>
     </UserTrackInDto>

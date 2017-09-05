@@ -1,5 +1,6 @@
-package com.mini.smartroad.dto.in;
+package com.mini.smartroad.dto.in.negotiate;
 
+import com.mini.smartroad.dto.in.BaseInDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +11,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 public class FindStationsInDto extends BaseInDto implements Serializable {
-    private double latitude;
-    private double longitude;
     private Long distance; // kilometers
+
+    public FindStationsInDto(String token, Long distance) {
+        super(token);
+        this.distance = distance;
+    }
 }

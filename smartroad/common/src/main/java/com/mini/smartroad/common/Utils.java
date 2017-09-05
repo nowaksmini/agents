@@ -26,6 +26,8 @@ public class Utils {
 //    public static final String PROTOCOL_FIND_USERS = "find_users";
 //    public static final String PROTOCOL_MAKE_GROUP = "make_group";
 
+    public static final String PROTOCOL_FIND_STATIONS = "find_stations";
+
 
     public static final String SUFFIX_RESPONSE = "-response";
 
@@ -35,7 +37,7 @@ public class Utils {
     public static final String LOGIN_REGISTER_SERVICE_AGENT = "com.mini.smartroad.service.login_register.LoginRegisterAgent";
     public static final String CONFIGURE_SERVICE_AGENT = "com.mini.smartroad.service.configuration.ConfigurationAgent";
     public static final String TRACKER_SERVICE_AGENT = "com.mini.smartroad.service.track.TrackerAgent";
-
+    public static final String HELPER_SERVICE_AGENT = "com.mini.smartroad.service.helper.HelperServiceAgent";
     // TODO, NEGOTIATOR, ACTION
 
     public static final int LIKE_TIME_DURATION = 1; // in hours

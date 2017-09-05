@@ -4,13 +4,16 @@ import com.mini.smartroad.DriverRuntimeInfo;
 import com.mini.smartroad.Main;
 import com.mini.smartroad.client.configuration.ConfigurationClientAgent;
 import com.mini.smartroad.client.login_register.LoginRegisterClientAgent;
+import com.mini.smartroad.client.negotiate.NegotiateClientAgent;
 import com.mini.smartroad.client.track.TrackClientAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.configure.UserPreferencesInDto;
 import com.mini.smartroad.dto.in.login.UserLoginInDto;
+import com.mini.smartroad.dto.in.negotiate.FindStationsInDto;
 import com.mini.smartroad.dto.in.register.UserRegisterInDto;
 import com.mini.smartroad.dto.in.track.UserTrackInDto;
+import com.mini.smartroad.dto.out.negotiate.FindStationsOutDto;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 import org.w3c.dom.Document;
@@ -181,7 +184,7 @@ public class DriverSimulation {
         double latDiff = 0.03;
         int i = 0;
 
-        while (true) {
+        while (i < 2) {
             for (int j = 0; j < driverRuntimeInfos.size(); j++) {
                 Double direction = directions.get(j);
                 DriverRuntimeInfo driverRuntimeInfo = driverRuntimeInfos.get(j);
@@ -192,8 +195,8 @@ public class DriverSimulation {
                                 TrackClientAgent.class.getName(),
                                 new Object[]{
                                         new UserTrackInDto(driverRuntimeInfo.getToken(),
-                                                driverRuntimeInfo.getLongitude(),
                                                 driverRuntimeInfo.getLatitude(),
+                                                driverRuntimeInfo.getLongitude(),
                                                 driverRuntimeInfo.isWantsToNegotiate()),
                                         ArgumentType.USER_POSITION_TRACK
                                 }
@@ -206,10 +209,54 @@ public class DriverSimulation {
             }
             i++;
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
+                simulateGetStations(i);
+                Thread.sleep(50000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
+
+    private void simulateGetStations(int iteration) throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
+        Document document = Simulation.readXmlDocument("simulation_driver_get_stations.xml");
+        NodeList baseInDto = document.getElementsByTagName("BaseInDto");
+        for (int i = 0; i < baseInDto.getLength(); i++) {
+            Node item = baseInDto.item(i);
+            NodeList childNodes = item.getChildNodes();
+            List<String> params = new LinkedList<>();
+            for (int j = 0; j < childNodes.getLength(); j++) {
+                if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                    params.add(childNodes.item(j).getTextContent());
+                }
+            }
+            String token = params.get(0);
+            AgentController agentController = Main.getAgentContainer().createNewAgent
+                    (NegotiateClientAgent.class.getName() + (i + 6 * iteration),
+                            NegotiateClientAgent.class.getName(),
+                            new Object[]{
+                                    new FindStationsInDto(token, 20L),
+                                    ArgumentType.USER_FIND_STATIONS
+                            }
+                    );
+            agentController.start();
+        }
+    }
+
+    private void simulateBecomeRepresentative(){
+        // TODO process received data obout ststsions
+        // select best one
+        // wyślij prośbę do danej stacji benzynowej o zostanie reprezentantem
+        // dla stacji benzynowej wyślij accepp
+        // po otrzymaniu accept formuj grupę - nie można formować grupy która już jest
+        // pytaj CU o agentów userów skłonnych do negocjacji
+        // wyślij info do userów o negocjacjach
+        // dostaj akceptację od user-a 1
+        // dla stacji benzynowaej która nie spełnia wymagań wyśłij zapytanie o podwyżkę
+        // stacja zraca nową kwotę
+        // stacja informuje CU o zmianie kwoty
+        // stacja potwierdza ze przyjechali ludzie
+        // rozdanie punktów
+    }
+
 }

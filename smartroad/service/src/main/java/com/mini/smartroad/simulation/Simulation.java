@@ -10,8 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class Simulation {
+
     public static void start() {
-        //new StationSimulation().start();
+        new StationSimulation().start();
         new DriverSimulation().start();
 //            AgentController agentControllerSearch = Main.getAgentContainer().createNewAgent(DriverTrackClientAgent.class.getName(),
 //                    DriverTrackClientAgent.class.getName(), new Object[]{"2b1e1cf6d6adea1dd3d8", 50.01d, 50.01d, new Long(5)});
