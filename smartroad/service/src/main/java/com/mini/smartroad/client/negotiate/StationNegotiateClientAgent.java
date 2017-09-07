@@ -7,6 +7,6 @@ public class StationNegotiateClientAgent extends BaseAgent {
     @Override
     protected void setup() {
         super.setup();
-        addBehaviour(new StationWaitForDriverBecomeRepresentativeBehaviour());
+        addBehaviour(new StationClientWaitForDriverBecomeRepresentativeBehaviour());
     }
 }

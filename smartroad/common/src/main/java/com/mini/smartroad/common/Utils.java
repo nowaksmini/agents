@@ -19,11 +19,12 @@ public class Utils {
     public static final String PROTOCOL_FIND_STATIONS = "find_stations";
     public static final String PROTOCOL_BECOME_REPRESENTATIVE = "become_representative";
     public static final String PROTOCOL_MAKE_GROUP = "make_group";
+    public static final String PROTOCOL_FIND_USERS = "find_users";
+    public static final String PROTOCOL_INVITE_TO_GROUP = "invite_to_group";
 
 //    public static final String PROTOCOL_REJECT = "reject";
 //    public static final String PROTOCOL_CONFIRM = "confirm";
-//    public static final String PROTOCOL_START_NEGOTIATION = "start_negotiation";
-//    public static final String PROTOCOL_FIND_USERS = "find_users";
+//    public static final String PROTOCOL_NEGOTIATE = "negotiate";
 
 
     public static final String SUFFIX_RESPONSE = "-response";
@@ -35,7 +36,7 @@ public class Utils {
     public static final String CONFIGURE_SERVICE_AGENT = "com.mini.smartroad.service.configuration.ConfigurationAgent";
     public static final String TRACKER_SERVICE_AGENT = "com.mini.smartroad.service.track.TrackerAgent";
     public static final String HELPER_SERVICE_AGENT = "com.mini.smartroad.service.helper.HelperServiceAgent";
-    // TODO, NEGOTIATOR, ACTION
+    // TODO, ACTION
 
     public static final int LIKE_TIME_DURATION = 1; // in hours
 

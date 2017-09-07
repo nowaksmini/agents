@@ -1,15 +1,16 @@
-package com.mini.smartroad.service.action;
+package com.mini.smartroad.service.helper;
 
 import com.mini.smartroad.DriverRuntimeInfo;
-import com.mini.smartroad.GroupRuntimeInfo;
 import com.mini.smartroad.HibernateUtils;
 import com.mini.smartroad.Main;
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseInteractBehaviour;
 import com.mini.smartroad.common.MessageProperties;
-import com.mini.smartroad.dto.in.negotiate.MakeGroupInDto;
+import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.dto.in.negotiate.FindUsersInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;
+import com.mini.smartroad.dto.out.negotiate.FindUsersOutDto;
 import com.mini.smartroad.model.StationEntity;
 import com.mini.smartroad.model.UserEntity;
 import jade.core.AID;
@@ -19,15 +20,15 @@ import org.hibernate.criterion.Restrictions;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-public class DriverServiceMakeGroupBehaviour extends BaseInteractBehaviour {
+public class DriverServiceFindUsersBehaviour extends BaseInteractBehaviour {
 
     private boolean sent;
 
-    public DriverServiceMakeGroupBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
+    public DriverServiceFindUsersBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
         super(receiver, ontology, protocol, inputContent);
     }
 
@@ -39,7 +40,7 @@ public class DriverServiceMakeGroupBehaviour extends BaseInteractBehaviour {
         message.setProtocol(getProtocol());
         message.addReceiver(getReceiver());
         try {
-            message.setContentObject(makeGroup((MakeGroupInDto) getInputContent(), message));
+            message.setContentObject(findUsers((FindUsersInDto) getInputContent(), message));
         } catch (IOException e) {
             message.setContent(e.getMessage());
             message.setPerformative(ACLMessage.FAILURE);
@@ -49,14 +50,15 @@ public class DriverServiceMakeGroupBehaviour extends BaseInteractBehaviour {
         sent = true;
     }
 
-    private StatusOutDto makeGroup(MakeGroupInDto makeGroupInDto, ACLMessage aclMessage) {
+    private FindUsersOutDto findUsers(FindUsersInDto findUsersInDto, ACLMessage aclMessage) {
         StatusOutDto statusOutDto = new StatusOutDto();
-        String userToken = makeGroupInDto.getToken();
+        FindUsersOutDto findUsersOutDto = new FindUsersOutDto(statusOutDto);
+        String userToken = findUsersInDto.getToken();
         if (userToken == null || userToken.trim().isEmpty()) {
             statusOutDto.setStatusType(StatusType.ERROR);
             statusOutDto.setMessage(MessageProperties.ERROR_USER_NO_INPUT_TOKEN);
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
-            return statusOutDto;
+            return findUsersOutDto;
         }
         Session session = HibernateUtils.getSessionFactory().openSession();
         List foundUsers = session.createCriteria(UserEntity.class).add(Restrictions.eq("token", userToken)).list();
@@ -65,63 +67,61 @@ public class DriverServiceMakeGroupBehaviour extends BaseInteractBehaviour {
             statusOutDto.setMessage(MessageProperties.ERROR_NO_USER_WITH_TOKEN);
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
             session.close();
-            return statusOutDto;
+            return findUsersOutDto;
         }
         if (foundUsers.size() != 1) {
             statusOutDto.setStatusType(StatusType.ERROR);
             statusOutDto.setMessage(MessageProperties.ERROR_USER_UNIQUE);
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
             session.close();
-            return statusOutDto;
+            return findUsersOutDto;
         }
-        UserEntity userEntity = (UserEntity) foundUsers.get(0);
 
         List foundStations = session.createCriteria(StationEntity.class)
-                .add(Restrictions.eq("token", makeGroupInDto.getStationToken())).list();
+                .add(Restrictions.eq("token", findUsersInDto.getStationToken())).list();
         if (foundStations == null || foundStations.isEmpty()) {
             statusOutDto.setStatusType(StatusType.ERROR);
             statusOutDto.setMessage(MessageProperties.ERROR_NO_STATION_WITH_TOKEN);
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
             session.close();
-            return statusOutDto;
+            return findUsersOutDto;
         }
         if (foundStations.size() != 1) {
             statusOutDto.setStatusType(StatusType.ERROR);
             statusOutDto.setMessage(MessageProperties.ERROR_STATION_UNIQUE);
             aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
             session.close();
-            return statusOutDto;
+            return findUsersOutDto;
         }
 
         StationEntity stationEntity = (StationEntity) foundStations.get(0);
         session.close();
 
-        GroupRuntimeInfo groupRuntimeInfo = Main.groups.get(stationEntity.getToken());
-        if (groupRuntimeInfo != null) {
-            if (groupRuntimeInfo.getFrom().isAfter(LocalDateTime.now()) && groupRuntimeInfo.getTo().isBefore(LocalDateTime.now())) {
-                statusOutDto.setStatusType(StatusType.ERROR);
-                statusOutDto.setMessage(MessageProperties.ERROR_GROUP_ALREADY_EXISTS);
-                aclMessage.setPerformative(ACLMessage.REJECT_PROPOSAL);
-                session.close();
-                return statusOutDto;
+        Long distanceKm = 10L;
+        List<String> potentialNegotiatorsTokens = new LinkedList<>();
+        double latitude = stationEntity.getLatitude();
+        double longitude = stationEntity.getLongitude();
+        double maxLatitude = Math.min(latitude + distanceKm * Utils.KILOMETER_TO_DEGREES_LATITUDE, Utils.MAX_LATITUDE);
+        double maxLongitude = Math.min(longitude + distanceKm * Utils.KILOMETER_TO_DEGREES_LONGITUDE, Utils.MAX_LONGITUDE);
+        double minLatitude = Math.max(latitude - distanceKm * Utils.KILOMETER_TO_DEGREES_LATITUDE, Utils.MIN_LATITUDE);
+        double minLongitude = Math.max(longitude - distanceKm * Utils.KILOMETER_TO_DEGREES_LONGITUDE, Utils.MIN_LONGITUDE);
+        Set<String> currentDriversTokens = Main.drivers.keySet();
+        for (String currentDriverToken : currentDriversTokens) {
+            DriverRuntimeInfo driverRuntimeInfo = Main.drivers.get(currentDriverToken);
+            if (driverRuntimeInfo.isWantsToNegotiate()) {
+                double driverRuntimeInfoLatitude = driverRuntimeInfo.getLatitude();
+                double driverRuntimeInfoLongitude = driverRuntimeInfo.getLongitude();
+                if (driverRuntimeInfoLatitude <= maxLatitude && driverRuntimeInfoLatitude >= minLatitude) {
+                    if (driverRuntimeInfoLongitude <= maxLongitude && driverRuntimeInfoLongitude >= minLongitude) {
+                        potentialNegotiatorsTokens.add(driverRuntimeInfo.getToken());
+                    }
+                }
             }
         }
 
-        LocalDateTime localDateTimeFrom = LocalDateTime.now().withMinute(0).withSecond(0);
-        LocalDateTime localDateTimeTo = LocalDateTime.now().withMinute(59).withSecond(59);
-        int currentReward = 0;
-
-        GroupRuntimeInfo newGroupRuntimeInfo = new GroupRuntimeInfo(stationEntity.getToken(),
-                localDateTimeFrom, localDateTimeTo, 1, currentReward);
-        Main.groups.put(stationEntity.getToken(), newGroupRuntimeInfo);
-        Main.currentGroupParticipants.put(stationEntity.getToken(), Collections.singletonList(userEntity.getToken()));
-        DriverRuntimeInfo driverRuntimeInfo = Main.drivers.get(userToken);
-        driverRuntimeInfo.setWantsToNegotiate(false);
-        driverRuntimeInfo.setGroupToken(stationEntity.getToken());
-        Main.drivers.put(userToken, driverRuntimeInfo);
-
+        findUsersOutDto.setAvailableUsers(potentialNegotiatorsTokens);
         aclMessage.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-        return statusOutDto;
+        return findUsersOutDto;
     }
 
     @Override

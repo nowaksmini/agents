@@ -4,6 +4,7 @@ import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.negotiate.FindStationsInDto;
+import com.mini.smartroad.dto.in.negotiate.FindUsersInDto;
 
 public class DriverNegotiateClientAgent extends BaseAgent {
 
@@ -24,6 +25,11 @@ public class DriverNegotiateClientAgent extends BaseAgent {
                     String stationAgentName = (String) arguments[arguments.length - 3];
                     logger.info("Passed arguments: " + baseInDto + ", " + stationAgentName);
                     addBehaviour(new DriverClientBecomeRepresentativeRequestBehaviour(baseInDto, stationAgentName));
+                    break;
+                case USER_FIND_USERS:
+                    FindUsersInDto findUsersInDto = (FindUsersInDto) arguments[arguments.length - 2];
+                    logger.info("Passed arguments: " + findUsersInDto);
+                    addBehaviour(new DriverClientFindUsersRequestBehaviour(findUsersInDto));
                     break;
             }
         }

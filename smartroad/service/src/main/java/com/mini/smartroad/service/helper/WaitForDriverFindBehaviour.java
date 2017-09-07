@@ -30,6 +30,14 @@ public class WaitForDriverFindBehaviour extends BaseBehaviour {
                     e.printStackTrace();
                 }
                 isDone = true;
+            } else if (msg.getProtocol().equals(Utils.PROTOCOL_FIND_USERS)) {
+                try {
+                    Serializable contentObject = msg.getContentObject();
+                    nextBehaviour = new DriverServiceFindUsersBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
+                } catch (UnreadableException e) {
+                    e.printStackTrace();
+                }
+                isDone = true;
             }
         } else {
             block();

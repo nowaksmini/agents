@@ -10,11 +10,11 @@ import jade.lang.acl.UnreadableException;
 
 import java.io.Serializable;
 
-public class StationWaitForDriverBecomeRepresentativeBehaviour extends BaseBehaviour {
+public class StationClientWaitForDriverBecomeRepresentativeBehaviour extends BaseBehaviour {
     private boolean isDone = false;
     private BaseInteractBehaviour nextBehaviour;
 
-    public StationWaitForDriverBecomeRepresentativeBehaviour() {
+    public StationClientWaitForDriverBecomeRepresentativeBehaviour() {
     }
 
     @Override
@@ -25,7 +25,7 @@ public class StationWaitForDriverBecomeRepresentativeBehaviour extends BaseBehav
             if (msg.getProtocol().equals(Utils.PROTOCOL_BECOME_REPRESENTATIVE)) {
                 try {
                     Serializable contentObject = msg.getContentObject();
-                    nextBehaviour = new StationBecomeRepresentativeBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
+                    nextBehaviour = new StationClientBecomeRepresentativeBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
                 } catch (UnreadableException e) {
                     e.printStackTrace();
                 }
@@ -40,7 +40,7 @@ public class StationWaitForDriverBecomeRepresentativeBehaviour extends BaseBehav
     public boolean done() {
         if (isDone) {
             myAgent.addBehaviour(nextBehaviour);
-            myAgent.addBehaviour(new StationWaitForDriverBecomeRepresentativeBehaviour());
+            myAgent.addBehaviour(new StationClientWaitForDriverBecomeRepresentativeBehaviour());
             return true;
         }
         return false;

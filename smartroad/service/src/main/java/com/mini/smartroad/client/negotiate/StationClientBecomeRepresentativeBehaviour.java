@@ -12,11 +12,11 @@ import jade.lang.acl.ACLMessage;
 import java.io.IOException;
 import java.io.Serializable;
 
-public class StationBecomeRepresentativeBehaviour extends BaseInteractBehaviour {
+public class StationClientBecomeRepresentativeBehaviour extends BaseInteractBehaviour {
 
     private boolean sent;
 
-    public StationBecomeRepresentativeBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
+    public StationClientBecomeRepresentativeBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
         super(receiver, ontology, protocol, inputContent);
     }
 

@@ -10,7 +10,7 @@ public class DriverRuntimeInfo {
     private double longitude;
     private double latitude;
     private boolean wantsToNegotiate;
-    private UUID groupId;
+    private String groupToken;
 
     public DriverRuntimeInfo(String token, double longitude, double latitude, boolean wantsToNegotiate) {
         this.token = token;
