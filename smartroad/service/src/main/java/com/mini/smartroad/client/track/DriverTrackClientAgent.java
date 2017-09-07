@@ -4,7 +4,7 @@ import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.in.track.UserTrackInDto;
 
-public class TrackClientAgent extends BaseAgent {
+public class DriverTrackClientAgent extends BaseAgent {
 
     @Override
     protected void setup() {

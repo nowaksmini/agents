@@ -16,17 +16,14 @@ public class Utils {
     public static final String PROTOCOL_UPDATE_NEGOTIATION_STRATEGY = "update_strategy";
 
     public static final String PROTOCOL_TRACK = "track";
+    public static final String PROTOCOL_FIND_STATIONS = "find_stations";
+    public static final String PROTOCOL_BECOME_REPRESENTATIVE = "become_representative";
+    public static final String PROTOCOL_MAKE_GROUP = "make_group";
 
-
-//    public static final String PROTOCOL_LIKE = "like";
-//    public static final String PROTOCOL_UNLIKE = "unlike";
+//    public static final String PROTOCOL_REJECT = "reject";
 //    public static final String PROTOCOL_CONFIRM = "confirm";
-//    public static final String PROTOCOL_UNCONFIRM = "unconfirm";
 //    public static final String PROTOCOL_START_NEGOTIATION = "start_negotiation";
 //    public static final String PROTOCOL_FIND_USERS = "find_users";
-//    public static final String PROTOCOL_MAKE_GROUP = "make_group";
-
-    public static final String PROTOCOL_FIND_STATIONS = "find_stations";
 
 
     public static final String SUFFIX_RESPONSE = "-response";

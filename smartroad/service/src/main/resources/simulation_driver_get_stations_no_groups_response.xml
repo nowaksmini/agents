@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<input>
+    <StationOutDto>
+        <name>Statoil</name>
+        <email>statoil@gmail.com</email>
+        <logo>https://upload.wikimedia.org/wikipedia/commons/1/1e/Logo_statoil.png</logo>
+        <token>a31adbda8fdccc058224</token>
+        <phone>123 456 789</phone>
+        <longitude>52.233357</longitude>
+        <latitude>21.00925</latitude>
+        <counter>0</counter>
+        <points>10</points>
+        <minCarsAmount>2</minCarsAmount>
+        <actionType></actionType>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Marszałkowska</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationOutDto>
+
+    <StationOutDto>
+        <name>BP</name>
+        <email>bp@gmail.com</email>
+        <logo>http://www.bp.com/content/dam/bp/images/general/graphics/1-1/bp-logo.jpg</logo>
+        <token>852fa527541ee751fb1c</token>
+        <phone>123 456 789</phone>
+        <longitude>52.223105</longitude>
+        <latitude>21.00204</latitude>
+        <counter>0</counter>
+        <points>11</points>
+        <minCarsAmount>3</minCarsAmount>
+        <actionType></actionType>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Koszykowa</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationOutDto>
+
+    <StationOutDto>
+        <name>Lukoil_prim</name>
+        <email>lukoil_prim@gmail.com</email>
+        <logo>https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Shell_logo.svg/829px-Shell_logo.svg.png</logo>
+        <token>0e594064e3994be92160</token>
+        <phone>111 111 111</phone>
+        <longitude>52.237825</longitude>
+        <latitude>20.989509</latitude>
+        <counter>0</counter>
+        <points>10</points>
+        <minCarsAmount>2</minCarsAmount>
+        <actionType></actionType>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Żelaza</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationOutDto>
+
+    <StationOutDto>
+        <name>Shell_prim</name>
+        <email>shell_prim@gmail.com</email>
+        <logo>
+            http://vignette2.wikia.nocookie.net/logopedia/images/2/2d/Lukoil-logo-620x236.png/revision/latest?cb=20160304213348
+        </logo>
+        <token>206537bb73f859dddf3a</token>
+        <phone>222 111 111</phone>
+        <longitude>52.237825</longitude>
+        <latitude>20.989509</latitude>
+        <counter>0</counter>
+        <points>10</points>
+        <minCarsAmount>2</minCarsAmount>
+        <actionType></actionType>
+        <AddressDto>
+            <country>Poland</country>
+            <distinct>Mazowieckie</distinct>
+            <city>Warsaw</city>
+            <street>Nowakowskiego</street>
+            <number>10</number>
+            <extraNumber>1</extraNumber>
+            <postalCode>02-237</postalCode>
+        </AddressDto>
+    </StationOutDto>
+
+</input>

@@ -12,4 +12,6 @@ public final class MessageProperties {
     public static final String ERROR_STATION_ALREADY_DATABASE = "Station already in database.";
     public static final String ERROR_NO_STATION_WITH_TOKEN = "There is no station with token";
     public static final String ERROR_STATION_UNIQUE = "Station not unique.";
+
+    public static final String ERROR_GROUP_ALREADY_EXISTS = "Group already exists";
 }

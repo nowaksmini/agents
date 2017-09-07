@@ -152,10 +152,10 @@ public class DriverServiceFindStationsBehaviour extends BaseInteractBehaviour {
                     points = stationStrategy.getPointsGroupSize0();
                     minCarsAmount = stationStrategy.getGroupSize0();
                 }
-                StationOutDto stationOutDto = new StationOutDto(addressDto, stationEntity.getName(),
+                StationOutDto stationOutDto = new StationOutDto(stationEntity.getName(),
                         stationEntity.getEmail(), stationEntity.getLogo(),
                         stationEntity.getToken(), stationEntity.getPhone(), stationEntity.getLongitude(),
-                        stationEntity.getLatitude(), counter, points, minCarsAmount, actionType);
+                        stationEntity.getLatitude(), counter, points, minCarsAmount, actionType, addressDto);
                 foundStations.add(stationOutDto);
             }
         }

@@ -2,20 +2,24 @@ package com.mini.smartroad.simulation;
 
 import com.mini.smartroad.DriverRuntimeInfo;
 import com.mini.smartroad.Main;
-import com.mini.smartroad.client.configuration.ConfigurationClientAgent;
-import com.mini.smartroad.client.login_register.LoginRegisterClientAgent;
-import com.mini.smartroad.client.negotiate.NegotiateClientAgent;
-import com.mini.smartroad.client.track.TrackClientAgent;
+import com.mini.smartroad.client.configuration.DriverConfigurationClientAgent;
+import com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent;
+import com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent;
+import com.mini.smartroad.client.track.DriverTrackClientAgent;
+import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.common.ArgumentType;
+import com.mini.smartroad.dto.AddressDto;
 import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.configure.UserPreferencesInDto;
 import com.mini.smartroad.dto.in.login.UserLoginInDto;
 import com.mini.smartroad.dto.in.negotiate.FindStationsInDto;
 import com.mini.smartroad.dto.in.register.UserRegisterInDto;
 import com.mini.smartroad.dto.in.track.UserTrackInDto;
-import com.mini.smartroad.dto.out.negotiate.FindStationsOutDto;
+import com.mini.smartroad.dto.out.configure.UserPreferencesOutDto;
+import com.mini.smartroad.dto.out.negotiate.StationOutDto;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
+import org.h2.util.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -61,8 +65,8 @@ public class DriverSimulation {
             String lastName = params.get(2);
             String password = params.get(3);
             AgentController agentControllerRegister = Main.getAgentContainer().createNewAgent
-                    (LoginRegisterClientAgent.class.getName() + (1 + 4 * i),
-                            LoginRegisterClientAgent.class.getName(),
+                    (DriverLoginRegisterClientAgent.class.getName() + (1 + 4 * i),
+                            DriverLoginRegisterClientAgent.class.getName(),
                             new Object[]{
                                     new UserRegisterInDto(email, firstName, lastName, password),
                                     ArgumentType.USER_REGISTER
@@ -87,8 +91,8 @@ public class DriverSimulation {
             String login = params.get(0);
             String password = params.get(1);
             AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
-                    (LoginRegisterClientAgent.class.getName() + (2 + 4 * i),
-                            LoginRegisterClientAgent.class.getName(),
+                    (DriverLoginRegisterClientAgent.class.getName() + (2 + 4 * i),
+                            DriverLoginRegisterClientAgent.class.getName(),
                             new Object[]{
                                     new UserLoginInDto(login, password),
                                     ArgumentType.USER_LOGIN
@@ -112,8 +116,8 @@ public class DriverSimulation {
             }
             String token = params.get(0);
             AgentController agentController = Main.getAgentContainer().createNewAgent
-                    (ConfigurationClientAgent.class.getName() + (1 + 6 * i),
-                            ConfigurationClientAgent.class.getName(),
+                    (DriverConfigurationClientAgent.class.getName() + (1 + 6 * i),
+                            DriverConfigurationClientAgent.class.getName(),
                             new Object[]{
                                     new BaseInDto(token),
                                     ArgumentType.USER_GET_PREFERENCES
@@ -143,8 +147,8 @@ public class DriverSimulation {
             String preferredStationNames = params.get(5);
 
             AgentController agentController = Main.getAgentContainer().createNewAgent
-                    (ConfigurationClientAgent.class.getName() + (2 + 6 * i),
-                            ConfigurationClientAgent.class.getName(),
+                    (DriverConfigurationClientAgent.class.getName() + (2 + 6 * i),
+                            DriverConfigurationClientAgent.class.getName(),
                             new Object[]{
                                     new UserPreferencesInDto(token, minimalMinutesLeft,
                                             startSearchingMinutesLeft, acceptAlways,
@@ -191,8 +195,8 @@ public class DriverSimulation {
                 driverRuntimeInfo.setLongitude(driverRuntimeInfo.getLongitude() + direction * longDiff);
                 driverRuntimeInfo.setLatitude(driverRuntimeInfo.getLatitude() + direction * latDiff);
                 AgentController agentController = Main.getAgentContainer().createNewAgent
-                        (TrackClientAgent.class.getName() + ((driverRuntimeInfos.size()) * i + j),
-                                TrackClientAgent.class.getName(),
+                        (DriverTrackClientAgent.class.getName() + ((driverRuntimeInfos.size()) * i + j),
+                                DriverTrackClientAgent.class.getName(),
                                 new Object[]{
                                         new UserTrackInDto(driverRuntimeInfo.getToken(),
                                                 driverRuntimeInfo.getLatitude(),
@@ -218,7 +222,7 @@ public class DriverSimulation {
         }
     }
 
-    private void simulateGetStations(int iteration) throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
+    private void simulateGetStations(int iteration) throws StaleProxyException, IOException, SAXException, ParserConfigurationException, InterruptedException {
         Document document = Simulation.readXmlDocument("simulation_driver_get_stations.xml");
         NodeList baseInDto = document.getElementsByTagName("BaseInDto");
         for (int i = 0; i < baseInDto.getLength(); i++) {
@@ -232,8 +236,8 @@ public class DriverSimulation {
             }
             String token = params.get(0);
             AgentController agentController = Main.getAgentContainer().createNewAgent
-                    (NegotiateClientAgent.class.getName() + (i + 6 * iteration),
-                            NegotiateClientAgent.class.getName(),
+                    (DriverNegotiateClientAgent.class.getName() + (i + 6 * iteration),
+                            DriverNegotiateClientAgent.class.getName(),
                             new Object[]{
                                     new FindStationsInDto(token, 20L),
                                     ArgumentType.USER_FIND_STATIONS
@@ -241,14 +245,64 @@ public class DriverSimulation {
                     );
             agentController.start();
         }
+        Thread.sleep(3000);
+        simulateBecomeRepresentative();
     }
 
-    private void simulateBecomeRepresentative(){
+    private void simulateBecomeRepresentative() throws IOException, SAXException, ParserConfigurationException {
+        Document document = Simulation.readXmlDocument("simulation_driver_get_stations_no_groups_response.xml");
+        NodeList stationOutDto = document.getElementsByTagName("StationOutDto");
+        List<StationOutDto> stationOutDtos = new LinkedList<>();
+        for (int i = 0; i < stationOutDto.getLength(); i++) {
+            Node item = stationOutDto.item(i);
+            NodeList childNodes = item.getChildNodes();
+            List<String> params = new LinkedList<>();
+            for (int j = 0; j < childNodes.getLength(); j++) {
+                if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                    if (childNodes.item(j).getNodeName().equals("AddressDto")) {
+                        NodeList addressDto = childNodes.item(j).getChildNodes();
+                        for (int a = 0; a < addressDto.getLength(); a++) {
+                            if (addressDto.item(a).getNodeType() == Node.ELEMENT_NODE) {
+                                params.add(addressDto.item(a).getTextContent());
+                            }
+                        }
+                    } else {
+                        params.add(childNodes.item(j).getTextContent());
+                    }
+                }
+            }
+            String name = params.get(0);
+            String email = params.get(1);
+            String logo = params.get(2);
+            String token = params.get(3);
+            String phone = params.get(4);
+            double longitude = Double.valueOf(params.get(5));
+            double latitude = Double.valueOf(params.get(6));
+            int counter = Integer.valueOf(params.get(7));
+            int points = Integer.valueOf(params.get(8));
+            int minAmountCars = Integer.valueOf(params.get(9));
+            ActionType actionType = StringUtils.isNullOrEmpty(params.get(10)) ? null
+                    : ActionType.valueOf(params.get(10));
+            AddressDto addressDto = new AddressDto(
+                    params.get(11),
+                    params.get(12),
+                    params.get(13),
+                    params.get(14),
+                    params.get(15),
+                    params.get(16),
+                    params.get(17)
+            );
+            StationOutDto stationOutDto1 = new StationOutDto(name, email, logo, token, phone, longitude, latitude,
+                    counter, points, minAmountCars, actionType, addressDto);
+            stationOutDtos.add(stationOutDto1);
+        }
+        selectBestStation(null, null);
+
         // TODO process received data obout ststsions
-        // select best one
-        // wyślij prośbę do danej stacji benzynowej o zostanie reprezentantem
-        // dla stacji benzynowej wyślij accepp
-        // po otrzymaniu accept formuj grupę - nie można formować grupy która już jest
+        // select best one - algorytm
+        // wyślij prośbę do danej stacji benzynowej o zostanie reprezentantem - agent done
+        // dla stacji benzynowej wyślij accepp - agent done
+        // po otrzymaniu accept formuj grupę - nie można formować grupy która już jest - agent done
         // pytaj CU o agentów userów skłonnych do negocjacji
         // wyślij info do userów o negocjacjach
         // dostaj akceptację od user-a 1
@@ -257,6 +311,10 @@ public class DriverSimulation {
         // stacja informuje CU o zmianie kwoty
         // stacja potwierdza ze przyjechali ludzie
         // rozdanie punktów
+    }
+
+    private StationOutDto selectBestStation(List<StationOutDto> stationOutDtos, UserPreferencesOutDto userPreferencesOutDto){
+        return null;
     }
 
 }

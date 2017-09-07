@@ -19,4 +19,5 @@ public enum ArgumentType {
     USER_POSITION_TRACK,
 
     USER_FIND_STATIONS,
+    USER_BECOME_REPRESENTATIVE
 }

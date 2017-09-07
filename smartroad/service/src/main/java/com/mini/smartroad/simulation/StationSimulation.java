@@ -1,8 +1,8 @@
 package com.mini.smartroad.simulation;
 
 import com.mini.smartroad.Main;
-import com.mini.smartroad.client.configuration.ConfigurationClientAgent;
-import com.mini.smartroad.client.login_register.LoginRegisterClientAgent;
+import com.mini.smartroad.client.configuration.StationConfigurationClientAgent;
+import com.mini.smartroad.client.login_register.StationLoginRegisterClientAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.AddressDto;
 import com.mini.smartroad.dto.in.BaseInDto;
@@ -62,8 +62,8 @@ public class StationSimulation {
             String login = params.get(0);
             String password = params.get(1);
             AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
-                    (LoginRegisterClientAgent.class.getName() + (4 * i),
-                            LoginRegisterClientAgent.class.getName(),
+                    (StationLoginRegisterClientAgent.class.getName() + (4 * i),
+                            StationLoginRegisterClientAgent.class.getName(),
                             new Object[]{
                                     new StationLoginInDto(login, password),
                                     ArgumentType.STATION_LOGIN
@@ -111,8 +111,8 @@ public class StationSimulation {
                     params.get(13)
             );
             AgentController agentControllerRegister = Main.getAgentContainer().createNewAgent
-                    (LoginRegisterClientAgent.class.getName() + (3 + 4 * i),
-                            LoginRegisterClientAgent.class.getName(),
+                    (StationLoginRegisterClientAgent.class.getName() + (3 + 4 * i),
+                            StationLoginRegisterClientAgent.class.getName(),
                             new Object[]{
                                     new StationRegisterInDto(userName, name, email, logo, phone, longitude, latitude, addressDto),
                                     ArgumentType.STATION_REGISTER
@@ -136,8 +136,8 @@ public class StationSimulation {
             }
             String token = params.get(0);
             AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
-                    (ConfigurationClientAgent.class.getName() + (3 + 6 * i),
-                            ConfigurationClientAgent.class.getName(),
+                    (StationConfigurationClientAgent.class.getName() + (3 + 6 * i),
+                            StationConfigurationClientAgent.class.getName(),
                             new Object[]{
                                     new BaseInDto(token),
                                     ArgumentType.STATION_GET_PREFERENCES
@@ -165,8 +165,8 @@ public class StationSimulation {
             String phone = params.get(3);
             String logo = params.get(4);
             AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
-                    (ConfigurationClientAgent.class.getName() + (4 + 6 * i),
-                            ConfigurationClientAgent.class.getName(),
+                    (StationConfigurationClientAgent.class.getName() + (4 + 6 * i),
+                            StationConfigurationClientAgent.class.getName(),
                             new Object[]{
                                     new StationPreferencesInDto(token, name, email, phone, logo),
                                     ArgumentType.STATION_UPDATE_PREFERENCES
@@ -190,8 +190,8 @@ public class StationSimulation {
             }
             String token = params.get(0);
             AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
-                    (ConfigurationClientAgent.class.getName() + (5 + 6 * i),
-                            ConfigurationClientAgent.class.getName(),
+                    (StationConfigurationClientAgent.class.getName() + (5 + 6 * i),
+                            StationConfigurationClientAgent.class.getName(),
                             new Object[]{
                                     new BaseInDto(token),
                                     ArgumentType.STATION_GET_NEGOTIATION_STRATEGY
@@ -227,8 +227,8 @@ public class StationSimulation {
             Integer pointsGroupSize4 = Integer.valueOf(params.get(10));
 
             AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
-                    (ConfigurationClientAgent.class.getName() + (6 * i),
-                            ConfigurationClientAgent.class.getName(),
+                    (StationConfigurationClientAgent.class.getName() + (6 * i),
+                            StationConfigurationClientAgent.class.getName(),
                             new Object[]{
                                     new StationNegotiationStrategyInDto(
                                             token,

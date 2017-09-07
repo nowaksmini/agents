@@ -11,7 +11,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class StationOutDto implements Serializable {
 
-    private AddressDto addressDto;
     private String name;
     private String email;
     private String logo;
@@ -26,4 +25,5 @@ public class StationOutDto implements Serializable {
      * Shows what action driver actually made
      */
     private ActionType actionType;
+    private AddressDto addressDto;
 }
