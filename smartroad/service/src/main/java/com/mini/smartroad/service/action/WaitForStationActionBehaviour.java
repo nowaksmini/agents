@@ -10,22 +10,22 @@ import jade.lang.acl.UnreadableException;
 
 import java.io.Serializable;
 
-public class WaitForMakeGroupBehaviour extends BaseBehaviour {
+public class WaitForStationActionBehaviour extends BaseBehaviour {
     private boolean isDone = false;
     private BaseInteractBehaviour nextBehaviour;
 
-    public WaitForMakeGroupBehaviour() {
+    public WaitForStationActionBehaviour() {
     }
 
     @Override
     public void action() {
         super.action();
-        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_USER));
+        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_STATION));
         if (msg != null) {
-            if (msg.getProtocol().equals(Utils.PROTOCOL_MAKE_GROUP)) {
+            if (msg.getProtocol().equals(Utils.PROTOCOL_USER_CAME_TO_STATION)) {
                 try {
                     Serializable contentObject = msg.getContentObject();
-                    nextBehaviour = new DriverServiceMakeGroupBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
+                    nextBehaviour = new StationServiceConfirmUserCameBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);
                 } catch (UnreadableException e) {
                     e.printStackTrace();
                 }
@@ -40,7 +40,7 @@ public class WaitForMakeGroupBehaviour extends BaseBehaviour {
     public boolean done() {
         if (isDone) {
             myAgent.addBehaviour(nextBehaviour);
-            myAgent.addBehaviour(new WaitForMakeGroupBehaviour());
+            myAgent.addBehaviour(new WaitForStationActionBehaviour());
             return true;
         }
         return false;

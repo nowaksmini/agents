@@ -23,11 +23,11 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
-public class DriverServiceMakeGroupBehaviour extends BaseInteractBehaviour {
+public class StationServiceConfirmUserCameBehaviour extends BaseInteractBehaviour {
 
     private boolean sent;
 
-    public DriverServiceMakeGroupBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
+    public StationServiceConfirmUserCameBehaviour(AID receiver, String ontology, String protocol, Serializable inputContent) {
         super(receiver, ontology, protocol, inputContent);
     }
 
@@ -39,7 +39,7 @@ public class DriverServiceMakeGroupBehaviour extends BaseInteractBehaviour {
         message.setProtocol(getProtocol());
         message.addReceiver(getReceiver());
         try {
-            message.setContentObject(makeGroup((ActionInDto) getInputContent(), message));
+            message.setContentObject(confirm((ActionInDto) getInputContent(), message));
         } catch (IOException e) {
             message.setContent(e.getMessage());
             message.setPerformative(ACLMessage.FAILURE);
@@ -49,7 +49,7 @@ public class DriverServiceMakeGroupBehaviour extends BaseInteractBehaviour {
         sent = true;
     }
 
-    private StatusOutDto makeGroup(ActionInDto actionInDto, ACLMessage aclMessage) {
+    private StatusOutDto confirm(ActionInDto actionInDto, ACLMessage aclMessage) {
         StatusOutDto statusOutDto = new StatusOutDto();
         String userToken = actionInDto.getToken();
         if (userToken == null || userToken.trim().isEmpty()) {

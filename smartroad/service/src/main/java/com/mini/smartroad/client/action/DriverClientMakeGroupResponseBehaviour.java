@@ -1,18 +1,18 @@
-package com.mini.smartroad.client.negotiate;
+package com.mini.smartroad.client.action;
 
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseStopAgentBehaviour;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.out.StatusOutDto;
+import com.mini.smartroad.dto.out.negotiate.FindUsersOutDto;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class DriverClientInviteToGroupResponseBehaviour extends BaseStopAgentBehaviour {
+public class DriverClientMakeGroupResponseBehaviour extends BaseStopAgentBehaviour {
 
     @Override
     public void action() {
-        // TODO IMPLEMENT
         super.action();
         ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_USER));
         if (msg != null) {

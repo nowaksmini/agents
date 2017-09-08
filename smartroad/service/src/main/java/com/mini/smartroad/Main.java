@@ -1,7 +1,8 @@
 package com.mini.smartroad;
 
+import com.mini.smartroad.service.action.ActionAgent;
 import com.mini.smartroad.service.configuration.ConfigurationAgent;
-import com.mini.smartroad.service.helper.HelperServiceAgent;
+import com.mini.smartroad.service.helper.HelperAgent;
 import com.mini.smartroad.service.track.TrackerAgent;
 import com.mini.smartroad.simulation.Simulation;
 import com.mini.smartroad.common.Utils;
@@ -15,8 +16,6 @@ import jade.wrapper.StaleProxyException;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
-import java.util.UUID;
 
 public class Main {
     private static jade.core.Runtime runtime = jade.core.Runtime.instance();
@@ -50,9 +49,10 @@ public class Main {
             agentConfiguration.start();
             AgentController trackerAgent = agentContainer.createNewAgent(TrackerAgent.class.getName(), TrackerAgent.class.getName(), null);
             trackerAgent.start();
-            AgentController helperServiceAgent = agentContainer.createNewAgent(HelperServiceAgent.class.getName(), HelperServiceAgent.class.getName(), null);
+            AgentController helperServiceAgent = agentContainer.createNewAgent(HelperAgent.class.getName(), HelperAgent.class.getName(), null);
             helperServiceAgent.start();
-            // TODO, ACTION
+            AgentController actionServiceAgent = agentContainer.createNewAgent(ActionAgent.class.getName(), ActionAgent.class.getName(), null);
+            actionServiceAgent.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }

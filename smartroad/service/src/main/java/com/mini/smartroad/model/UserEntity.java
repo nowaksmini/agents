@@ -26,7 +26,4 @@ public class UserEntity extends BaseEntity<UserEntity> {
     private Integer points = 0;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserPreferencesEntity preferences;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<ActionEntity> actions;
 }

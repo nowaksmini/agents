@@ -1,5 +1,5 @@
 package com.mini.smartroad.common;
 
 public enum ActionType {
-    REPRESENTATE, ATTEND
+    MAKE_GROUP, REPRESENT, ATTEND, REJECT
 }

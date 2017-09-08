@@ -12,6 +12,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class ActionInDto extends BaseInDto implements Serializable {
     private String stationToken;
-    private Boolean value;
     private ActionType actionType;
 }

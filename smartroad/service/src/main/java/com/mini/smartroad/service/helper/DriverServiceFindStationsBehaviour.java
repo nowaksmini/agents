@@ -24,7 +24,6 @@ import org.hibernate.criterion.Restrictions;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -144,7 +143,7 @@ public class DriverServiceFindStationsBehaviour extends BaseInteractBehaviour {
                     minCarsAmount = counter;
                     List<String> participants = Main.currentGroupParticipants.get(stationEntity.getToken());
                     if (participants.size() > 0 && participants.get(0).equals(userEntity.getToken())) {
-                        actionType = ActionType.REPRESENTATE;
+                        actionType = ActionType.REPRESENT;
                     } else if (participants.contains(userEntity.getToken())) {
                         actionType = ActionType.ATTEND;
                     }

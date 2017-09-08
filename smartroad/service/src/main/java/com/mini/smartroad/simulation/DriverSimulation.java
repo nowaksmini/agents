@@ -304,12 +304,12 @@ public class DriverSimulation {
         // dla stacji benzynowej wyślij accepp - agent done
         // po otrzymaniu accept formuj grupę - nie można formować grupy która już jest - agent done
         // pytaj CU o agentów userów skłonnych do negocjacji - agent done
-        // wyślij info do userów o negocjacjach
-        // dostaj akceptację od user-a 1
+        // wyślij info do userów o negocjacjach - agent done
+        // dostaj akceptację od user-a 1 - agent done
         // dla stacji benzynowaej która nie spełnia wymagań wyśłij zapytanie o podwyżkę
         // stacja zraca nową kwotę
         // stacja informuje CU o zmianie kwoty
-        // stacja potwierdza ze przyjechali ludzie
+        // stacja potwierdza ze przyjechali ludzie //
         // rozdanie punktów
     }
 
