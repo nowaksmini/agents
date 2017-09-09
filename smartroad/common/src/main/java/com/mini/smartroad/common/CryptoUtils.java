@@ -2,53 +2,10 @@ package com.mini.smartroad.common;
 
 import org.apache.commons.codec.binary.Base64;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
-import java.security.InvalidKeyException;
-import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
-import java.util.Random;
 
 public class CryptoUtils {
-
-    private static final String algorithm = "DESede";
-    private static Key key = null;
-    private static Cipher cipher = null;
-    private static Random random = new Random();
-
-    static {
-        try {
-            key = KeyGenerator.getInstance(algorithm).generateKey();
-            cipher = Cipher.getInstance(algorithm);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public static byte[] encrypt(String input)
-            throws InvalidKeyException,
-            BadPaddingException,
-            IllegalBlockSizeException {
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        byte[] inputBytes = input.getBytes();
-        return cipher.doFinal(inputBytes);
-    }
-
-    public static String decrypt(byte[] encryptionBytes)
-            throws InvalidKeyException,
-            BadPaddingException,
-            IllegalBlockSizeException {
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] recoveredBytes
-                = cipher.doFinal(encryptionBytes);
-        String recovered
-                = new String(recoveredBytes);
-        return recovered;
-    }
 
     private static String convertToHex(byte[] data) {
         StringBuilder buf = new StringBuilder();
@@ -105,9 +62,5 @@ public class CryptoUtils {
 
     public static String generateStationSecretCode(String userName, double lon, double lat) {
         return CryptoUtils.SHA1(userName + lon + lat).substring(0, 20).replaceAll("\\+", "");
-    }
-
-    public static String generateActionToken(ActionType actionType, String userToken, String stationToken) {
-        return CryptoUtils.SHA1(actionType.name() + userToken + stationToken).substring(0, 20).replaceAll("\\+", "");
     }
 }
