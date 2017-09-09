@@ -9,12 +9,14 @@ import com.mini.smartroad.client.track.DriverTrackClientAgent;
 import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.AddressDto;
+import com.mini.smartroad.dto.in.ActionInDto;
 import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.configure.UserPreferencesInDto;
 import com.mini.smartroad.dto.in.login.UserLoginInDto;
 import com.mini.smartroad.dto.in.negotiate.FindStationsInDto;
 import com.mini.smartroad.dto.in.register.UserRegisterInDto;
 import com.mini.smartroad.dto.in.track.UserTrackInDto;
+import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.configure.UserPreferencesOutDto;
 import com.mini.smartroad.dto.out.negotiate.StationOutDto;
 import jade.wrapper.AgentController;
@@ -314,6 +316,22 @@ public class DriverSimulation {
     }
 
     private StationOutDto selectBestStation(List<StationOutDto> stationOutDtos, UserPreferencesOutDto userPreferencesOutDto){
+        return null;
+    }
+
+    private StatusOutDto simulateNegotiateWithStation(StationOutDto stationOutDto){
+        return null;
+    }
+
+    private StatusOutDto simulateGetUsers(String stationToken){
+        return null;
+    }
+
+    private StatusOutDto simulateInviteUser(StationOutDto stationOutDto){
+        return null;
+    }
+
+    private StatusOutDto simulateDoAction(ActionInDto actionInDto){
         return null;
     }
 

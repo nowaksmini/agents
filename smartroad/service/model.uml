@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.model</OriginalElement>
+  <nodes>
+    <node x="297.37499999999994" y="0.0">com.mini.smartroad.model.BaseEntity</node>
+    <node x="249.84999999999994" y="191.0">com.mini.smartroad.model.UserPreferencesEntity</node>
+    <node x="0.0" y="169.0">com.mini.smartroad.model.AddressEntity</node>
+    <node x="14.09583333333336" y="448.0">com.mini.smartroad.model.StationEntity</node>
+    <node x="297.09583333333336" y="492.0">com.mini.smartroad.model.UserEntity</node>
+    <node x="124.85" y="793.0">com.mini.smartroad.model.StationStrategyEntity</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.model.UserEntity" target="com.mini.smartroad.model.BaseEntity">
+      <point x="82.99999999999996" y="-103.5" />
+      <point x="504.5958333333333" y="423.0" />
+      <point x="534.9749999999999" y="423.0" />
+      <point x="534.9749999999999" y="149.0" />
+      <point x="409.37499999999994" y="149.0" />
+      <point x="32.0" y="59.5" />
+    </edge>
+    <edge source="com.mini.smartroad.model.UserPreferencesEntity" target="com.mini.smartroad.model.BaseEntity">
+      <point x="0.0" y="-92.5" />
+      <point x="374.3499999999999" y="149.0" />
+      <point x="377.37499999999994" y="149.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="com.mini.smartroad.model.StationStrategyEntity" target="com.mini.smartroad.model.BaseEntity">
+      <point x="67.66666666666669" y="-147.5" />
+      <point x="294.01666666666665" y="768.0" />
+      <point x="556.5958333333333" y="768.0" />
+      <point x="556.5958333333333" y="139.0" />
+      <point x="441.37499999999994" y="139.0" />
+      <point x="64.0" y="59.5" />
+    </edge>
+    <edge source="com.mini.smartroad.model.AddressEntity" target="com.mini.smartroad.model.BaseEntity">
+      <point x="0.0" y="-114.5" />
+      <point x="106.0" y="139.0" />
+      <point x="313.37499999999994" y="139.0" />
+      <point x="-64.0" y="59.5" />
+    </edge>
+    <edge source="com.mini.smartroad.model.StationEntity" target="com.mini.smartroad.model.BaseEntity">
+      <point x="87.66666666666669" y="-147.5" />
+      <point x="233.26250000000005" y="423.0" />
+      <point x="225.8875" y="423.0" />
+      <point x="225.8875" y="149.0" />
+      <point x="345.37499999999994" y="149.0" />
+      <point x="-32.0" y="59.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7147335423197492" x="628.0" y="452.25657894736844" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

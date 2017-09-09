@@ -3,102 +3,165 @@
   <ID>JAVA</ID>
   <OriginalElement>com.mini.smartroad.dto</OriginalElement>
   <nodes>
-    <node x="1808.0" y="276.0">com.mini.smartroad.dto.in.negotiate.FindStationsInDto</node>
-    <node x="1103.0" y="232.0">com.mini.smartroad.dto.in.configure.UserPreferencesInDto</node>
-    <node x="2374.0" y="177.0">com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto</node>
-    <node x="1094.0" y="879.0">com.mini.smartroad.dto.AddressDto</node>
-    <node x="565.0" y="879.0">com.mini.smartroad.dto.out.configure.UserPreferencesOutDto</node>
-    <node x="900.0" y="1153.0">com.mini.smartroad.dto.in.register.UserRegisterInDto</node>
-    <node x="1349.0" y="1383.0">com.mini.smartroad.dto.in.login.UserLoginInDto</node>
-    <node x="754.0" y="265.0">com.mini.smartroad.dto.in.track.UserTrackInDto</node>
-    <node x="0.0" y="517.0">com.mini.smartroad.dto.out.configure.StationNegotiationStrategyOutDto</node>
-    <node x="259.0" y="221.0">com.mini.smartroad.dto.out.configure.StationPreferencesOutDto</node>
-    <node x="811.0" y="517.0">com.mini.smartroad.dto.out.negotiate.StationOutDto</node>
-    <node x="480.0" y="1153.0">com.mini.smartroad.dto.out.login_register.LoginRegisterStationOutDto</node>
-    <node x="1263.0" y="1153.0">com.mini.smartroad.dto.out.negotiate.FindStationsOutDto</node>
-    <node x="1059.0" y="1383.0">com.mini.smartroad.dto.in.login.StationLoginInDto</node>
-    <node x="406.0" y="1383.0">com.mini.smartroad.dto.out.negotiate.FindUsersOutDto</node>
-    <node x="2068.0" y="276.0">com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto</node>
-    <node x="0.0" y="1153.0">com.mini.smartroad.dto.out.login_register.LoginRegisterUserOutDto</node>
-    <node x="766.0" y="1383.0">com.mini.smartroad.dto.out.StatusOutDto</node>
-    <node x="1558.0" y="276.0">com.mini.smartroad.dto.in.negotiate.FindUsersInDto</node>
-    <node x="0.0" y="1547.0">com.mini.smartroad.dto.out.StatusType</node>
-    <node x="1717.0" y="0.0">com.mini.smartroad.dto.in.BaseInDto</node>
-    <node x="3517.0" y="265.0">com.mini.smartroad.dto.in.negotiate.InviteToGroupInDto</node>
-    <node x="0.0" y="1383.0">com.mini.smartroad.dto.out.negotiate.AskForJoiningGroupOutDto</node>
-    <node x="3109.0" y="243.0">com.mini.smartroad.dto.in.configure.StationPreferencesInDto</node>
-    <node x="0.0" y="879.0">com.mini.smartroad.dto.in.register.StationRegisterInDto</node>
-    <node x="0.0" y="276.0">com.mini.smartroad.dto.in.ActionInDto</node>
+    <node x="1107.0" y="1176.0">com.mini.smartroad.dto.in.negotiate.FindStationsInDto</node>
+    <node x="1466.0" y="1132.0">com.mini.smartroad.dto.in.configure.UserPreferencesInDto</node>
+    <node x="659.0" y="1077.0">com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto</node>
+    <node x="1874.1322115384614" y="0.0">com.mini.smartroad.dto.AddressDto</node>
+    <node x="1432.0" y="693.0">com.mini.smartroad.dto.out.configure.UserPreferencesOutDto</node>
+    <node x="0.0" y="1372.0">com.mini.smartroad.dto.in.register.UserRegisterInDto</node>
+    <node x="411.0" y="1372.0">com.mini.smartroad.dto.in.login.UserLoginInDto</node>
+    <node x="235.0" y="638.0">com.mini.smartroad.dto.out.configure.StationNegotiationStrategyOutDto</node>
+    <node x="1735.0" y="1154.0">com.mini.smartroad.dto.in.track.UserTrackInDto</node>
+    <node x="1197.0" y="693.0">com.mini.smartroad.dto.out.configure.StationPreferencesOutDto</node>
+    <node x="1737.9447115384614" y="234.0">com.mini.smartroad.dto.out.negotiate.StationOutDto</node>
+    <node x="0.0" y="726.0">com.mini.smartroad.dto.out.login_register.LoginRegisterStationOutDto</node>
+    <node x="1701.0" y="737.0">com.mini.smartroad.dto.out.negotiate.FindStationsOutDto</node>
+    <node x="727.0" y="737.0">com.mini.smartroad.dto.out.negotiate.FindUsersOutDto</node>
+    <node x="202.0" y="1372.0">com.mini.smartroad.dto.in.login.StationLoginInDto</node>
+    <node x="901.0" y="1176.0">com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto</node>
+    <node x="962.0" y="704.0">com.mini.smartroad.dto.out.login_register.LoginRegisterUserOutDto</node>
+    <node x="857.5" y="344.0">com.mini.smartroad.dto.out.StatusOutDto</node>
+    <node x="1272.0" y="1176.0">com.mini.smartroad.dto.in.negotiate.FindUsersInDto</node>
+    <node x="898.0" y="55.0">com.mini.smartroad.dto.out.StatusType</node>
+    <node x="926.5" y="955.0">com.mini.smartroad.dto.in.BaseInDto</node>
+    <node x="214.0" y="1165.0">com.mini.smartroad.dto.in.negotiate.InviteToGroupInDto</node>
+    <node x="487.0" y="737.0">com.mini.smartroad.dto.out.negotiate.AskForJoiningGroupOutDto</node>
+    <node x="462.0" y="1143.0">com.mini.smartroad.dto.in.configure.StationPreferencesInDto</node>
+    <node x="1956.9447115384614" y="278.0">com.mini.smartroad.dto.in.register.StationRegisterInDto</node>
+    <node x="0.0" y="1165.0">com.mini.smartroad.dto.in.ActionInDto</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.mini.smartroad.dto.in.configure.UserPreferencesInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-92.5" />
-      <point x="1320.5" y="147.0" />
-      <point x="1775.45" y="147.0" />
-      <point x="-25.049999999999955" y="48.5" />
+    <edge source="com.mini.smartroad.dto.out.login_register.LoginRegisterStationOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="-53.75" y="-48.0" />
+      <point x="53.75" y="548.0" />
+      <point x="863.40625" y="548.0" />
+      <point x="-88.59375" y="37.0" />
     </edge>
-    <edge source="com.mini.smartroad.dto.out.configure.StationPreferencesOutDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-103.5" />
-      <point x="496.5" y="127.0" />
-      <point x="1742.05" y="127.0" />
-      <point x="-58.450000000000045" y="48.5" />
+    <edge source="com.mini.smartroad.dto.out.negotiate.AskForJoiningGroupOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="55.0" y="-37.0" />
+      <point x="652.0" y="598.0" />
+      <point x="922.46875" y="598.0" />
+      <point x="-29.53125" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.register.StationRegisterInDto" target="com.mini.smartroad.dto.AddressDto">
+      <point x="0.0" y="-103.0" />
+      <point x="2053.9447115384614" y="209.0" />
+      <point x="2004.6322115384614" y="209.0" />
+      <point x="43.5" y="92.0" />
     </edge>
     <edge source="com.mini.smartroad.dto.in.ActionInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-48.5" />
-      <point x="119.5" y="117.0" />
-      <point x="1725.35" y="117.0" />
-      <point x="-75.15000000000009" y="48.5" />
+      <point x="0.0" y="-37.0" />
+      <point x="97.0" y="1027.0" />
+      <point x="934.0" y="1027.0" />
+      <point x="-60.0" y="26.0" />
     </edge>
-    <edge source="com.mini.smartroad.dto.in.negotiate.FindStationsInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-48.5" />
-      <point x="1928.0" y="157.0" />
-      <point x="1808.85" y="157.0" />
-      <point x="8.349999999999909" y="48.5" />
+    <edge source="com.mini.smartroad.dto.out.negotiate.FindUsersOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="53.75" y="-37.0" />
+      <point x="888.25" y="618.0" />
+      <point x="946.09375" y="618.0" />
+      <point x="-5.90625" y="37.0" />
     </edge>
-    <edge source="com.mini.smartroad.dto.in.negotiate.FindUsersInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-48.5" />
-      <point x="1673.0" y="157.0" />
-      <point x="1792.15" y="157.0" />
-      <point x="-8.349999999999909" y="48.5" />
+    <edge source="com.mini.smartroad.dto.out.negotiate.FindStationsOutDto" target="com.mini.smartroad.dto.out.negotiate.StationOutDto">
+      <point x="75.0" y="-37.0" />
+      <point x="1888.5" y="618.0" />
+      <point x="1837.4447115384614" y="618.0" />
+      <point x="0.0" y="147.0" />
     </edge>
     <edge source="com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-48.5" />
-      <point x="2211.0" y="147.0" />
-      <point x="1825.55" y="147.0" />
-      <point x="25.049999999999955" y="48.5" />
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="26.0" />
     </edge>
     <edge source="com.mini.smartroad.dto.in.configure.StationPreferencesInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-81.5" />
-      <point x="3303.0" y="127.0" />
-      <point x="1858.95" y="127.0" />
-      <point x="58.450000000000045" y="48.5" />
+      <point x="0.0" y="-59.0" />
+      <point x="550.5" y="1047.0" />
+      <point x="964.0" y="1047.0" />
+      <point x="-30.0" y="26.0" />
     </edge>
-    <edge source="com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-147.5" />
-      <point x="2731.5" y="137.0" />
-      <point x="1842.25" y="137.0" />
-      <point x="41.75" y="48.5" />
+    <edge source="com.mini.smartroad.dto.out.login_register.LoginRegisterUserOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="-53.75" y="-70.0" />
+      <point x="1015.75" y="618.0" />
+      <point x="957.90625" y="618.0" />
+      <point x="5.90625" y="37.0" />
     </edge>
     <edge source="com.mini.smartroad.dto.in.track.UserTrackInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-59.5" />
-      <point x="918.5" y="137.0" />
-      <point x="1758.75" y="137.0" />
-      <point x="-41.75" y="48.5" />
+      <point x="0.0" y="-48.0" />
+      <point x="1842.0" y="1027.0" />
+      <point x="1054.0" y="1027.0" />
+      <point x="60.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.out.configure.UserPreferencesOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="62.25" y="-81.0" />
+      <point x="1618.75" y="568.0" />
+      <point x="1016.96875" y="568.0" />
+      <point x="64.96875" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.out.StatusOutDto" target="com.mini.smartroad.dto.out.StatusType">
+      <point x="47.25" y="-37.0" />
+      <point x="999.25" y="209.0" />
+      <point x="979.0" y="209.0" />
+      <point x="27.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.out.configure.StationNegotiationStrategyOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="58.0" y="-136.0" />
+      <point x="409.0" y="578.0" />
+      <point x="898.84375" y="578.0" />
+      <point x="-53.15625" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.configure.UserPreferencesInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-70.0" />
+      <point x="1590.5" y="1037.0" />
+      <point x="1039.0" y="1037.0" />
+      <point x="45.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.out.negotiate.StationOutDto" target="com.mini.smartroad.dto.AddressDto">
+      <point x="0.0" y="-147.0" />
+      <point x="1837.4447115384614" y="209.0" />
+      <point x="1917.6322115384614" y="209.0" />
+      <point x="-43.5" y="92.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.out.negotiate.FindStationsOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="-75.0" y="-37.0" />
+      <point x="1738.5" y="558.0" />
+      <point x="1028.78125" y="558.0" />
+      <point x="76.78125" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.out.configure.StationPreferencesOutDto" target="com.mini.smartroad.dto.out.StatusOutDto">
+      <point x="-53.75" y="-81.0" />
+      <point x="1250.75" y="598.0" />
+      <point x="981.53125" y="598.0" />
+      <point x="29.53125" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.negotiate.FindUsersInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-26.0" />
+      <point x="1359.0" y="1047.0" />
+      <point x="1024.0" y="1047.0" />
+      <point x="30.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.negotiate.FindStationsInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-26.0" />
+      <point x="1179.5" y="1057.0" />
+      <point x="1009.0" y="1057.0" />
+      <point x="15.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-125.0" />
+      <point x="770.0" y="1057.0" />
+      <point x="979.0" y="1057.0" />
+      <point x="-15.0" y="26.0" />
     </edge>
     <edge source="com.mini.smartroad.dto.in.negotiate.InviteToGroupInDto" target="com.mini.smartroad.dto.in.BaseInDto">
-      <point x="0.0" y="-59.5" />
-      <point x="3663.0" y="117.0" />
-      <point x="1875.6499999999999" y="117.0" />
-      <point x="75.14999999999986" y="48.5" />
+      <point x="0.0" y="-37.0" />
+      <point x="328.0" y="1037.0" />
+      <point x="949.0" y="1037.0" />
+      <point x="-45.0" y="26.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.4" x="1277.5" y="566.75" />
+  <settings layout="Hierarchic Group" zoom="0.4" x="1278.0" y="923.75" />
   <SelectedNodes />
   <Categories>
-    <Category>Fields</Category>
-    <Category>Constructors</Category>
     <Category>Inner Classes</Category>
+    <Category>Fields</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

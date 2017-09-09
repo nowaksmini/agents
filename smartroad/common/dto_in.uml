@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.dto</OriginalElement>
+  <nodes>
+    <node x="1107.0" y="706.0">com.mini.smartroad.dto.in.negotiate.FindStationsInDto</node>
+    <node x="1466.0" y="662.0">com.mini.smartroad.dto.in.configure.UserPreferencesInDto</node>
+    <node x="659.0" y="607.0">com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto</node>
+    <node x="10.0" y="0.0">com.mini.smartroad.dto.AddressDto</node>
+    <node x="0.0" y="902.0">com.mini.smartroad.dto.in.register.UserRegisterInDto</node>
+    <node x="411.0" y="902.0">com.mini.smartroad.dto.in.login.UserLoginInDto</node>
+    <node x="1735.0" y="684.0">com.mini.smartroad.dto.in.track.UserTrackInDto</node>
+    <node x="202.0" y="902.0">com.mini.smartroad.dto.in.login.StationLoginInDto</node>
+    <node x="901.0" y="706.0">com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto</node>
+    <node x="1272.0" y="706.0">com.mini.smartroad.dto.in.negotiate.FindUsersInDto</node>
+    <node x="926.5" y="485.0">com.mini.smartroad.dto.in.BaseInDto</node>
+    <node x="214.0" y="695.0">com.mini.smartroad.dto.in.negotiate.InviteToGroupInDto</node>
+    <node x="462.0" y="673.0">com.mini.smartroad.dto.in.configure.StationPreferencesInDto</node>
+    <node x="0.0" y="234.0">com.mini.smartroad.dto.in.register.StationRegisterInDto</node>
+    <node x="0.0" y="695.0">com.mini.smartroad.dto.in.ActionInDto</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.dto.in.configure.UserPreferencesInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-70.0" />
+      <point x="1590.5" y="567.0" />
+      <point x="1039.0" y="567.0" />
+      <point x="45.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.register.StationRegisterInDto" target="com.mini.smartroad.dto.AddressDto">
+      <point x="0.0" y="-103.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.ActionInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-37.0" />
+      <point x="97.0" y="557.0" />
+      <point x="934.0" y="557.0" />
+      <point x="-60.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.negotiate.FindStationsInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-26.0" />
+      <point x="1179.5" y="587.0" />
+      <point x="1009.0" y="587.0" />
+      <point x="15.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.negotiate.FindUsersInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-26.0" />
+      <point x="1359.0" y="577.0" />
+      <point x="1024.0" y="577.0" />
+      <point x="30.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.configure.StationPreferencesInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-59.0" />
+      <point x="550.5" y="577.0" />
+      <point x="964.0" y="577.0" />
+      <point x="-30.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-125.0" />
+      <point x="770.0" y="587.0" />
+      <point x="979.0" y="587.0" />
+      <point x="-15.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.track.UserTrackInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-48.0" />
+      <point x="1842.0" y="557.0" />
+      <point x="1054.0" y="557.0" />
+      <point x="60.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.dto.in.negotiate.InviteToGroupInDto" target="com.mini.smartroad.dto.in.BaseInDto">
+      <point x="0.0" y="-37.0" />
+      <point x="328.0" y="567.0" />
+      <point x="949.0" y="567.0" />
+      <point x="-45.0" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7063484002031476" x="440.7423784872028" y="397.9115110611193" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -10,6 +10,8 @@ import com.mini.smartroad.dto.in.configure.StationNegotiationStrategyInDto;
 import com.mini.smartroad.dto.in.configure.StationPreferencesInDto;
 import com.mini.smartroad.dto.in.login.StationLoginInDto;
 import com.mini.smartroad.dto.in.register.StationRegisterInDto;
+import com.mini.smartroad.dto.out.StatusOutDto;
+import com.mini.smartroad.dto.out.negotiate.StationOutDto;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 import org.w3c.dom.Document;
@@ -248,5 +250,13 @@ public class StationSimulation {
                     );
             agentControllerLogin.start();
         }
+    }
+
+    private StatusOutDto simulateNegotiateWithUser(String userToken){
+        return null;
+    }
+
+    private StatusOutDto simulateUserCame(String userToken){
+        return null;
     }
 }

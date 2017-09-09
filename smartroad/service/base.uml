@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.base</OriginalElement>
+  <nodes>
+    <node x="305.0" y="0.0">com.mini.smartroad.base.BaseBehaviour</node>
+    <node x="579.0" y="246.5">com.mini.smartroad.base.BaseDoneBehaviour</node>
+    <node x="0.0" y="466.0">com.mini.smartroad.base.BaseAgent</node>
+    <node x="203.0" y="147.0">com.mini.smartroad.base.BaseInteractBehaviour</node>
+    <node x="0.0" y="246.5">com.mini.smartroad.base.BaseStopAgentBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.base.BaseStopAgentBehaviour" target="com.mini.smartroad.base.BaseBehaviour">
+      <point x="0.0" y="-37.5" />
+      <point x="91.5" y="122.0" />
+      <point x="330.3333333333333" y="122.0" />
+      <point x="-50.666666666666686" y="48.5" />
+    </edge>
+    <edge source="com.mini.smartroad.base.BaseInteractBehaviour" target="com.mini.smartroad.base.BaseBehaviour">
+      <point x="0.0" y="-137.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="com.mini.smartroad.base.BaseDoneBehaviour" target="com.mini.smartroad.base.BaseBehaviour">
+      <point x="0.0" y="-37.5" />
+      <point x="656.5" y="122.0" />
+      <point x="431.66666666666663" y="122.0" />
+      <point x="50.66666666666663" y="48.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="305.0" y="358.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

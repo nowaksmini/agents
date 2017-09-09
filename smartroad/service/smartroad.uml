@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad</OriginalElement>
+  <nodes>
+    <node x="127.0" y="0.0">com.mini.smartroad.common</node>
+    <node x="8.0625" y="237.701171875">com.mini.smartroad.model</node>
+    <node x="277.0" y="0.0">com.mini.smartroad.dto</node>
+    <node x="0.0" y="80.0">com.mini.smartroad.GroupRuntimeInfo</node>
+    <node x="215.0" y="318.701171875">com.mini.smartroad.client</node>
+    <node x="213.8125" y="275.0">com.mini.smartroad.service</node>
+    <node x="329.875" y="200.0">com.mini.smartroad.Main</node>
+    <node x="215.0" y="232.701171875">com.mini.smartroad.base</node>
+    <node x="396.0" y="0.0">com.mini.smartroad.DriverRuntimeInfo</node>
+    <node x="296.4203125" y="80.0">com.mini.smartroad.simulation</node>
+    <node x="31.8125" y="317.701171875">com.mini.smartroad.HibernateUtils</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.simulation" target="com.mini.smartroad.simulation">
+      <point x="-51.375" y="15.0" />
+      <point x="313.5453125" y="130.0" />
+      <point x="276.4203125" y="130.0" />
+      <point x="276.4203125" y="102.5" />
+      <point x="-68.5" y="7.5" />
+    </edge>
+    <edge source="com.mini.smartroad.HibernateUtils" target="com.mini.smartroad.model">
+      <point x="0.0" y="-15.0" />
+      <point x="28.75" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.simulation" target="com.mini.smartroad.dto">
+      <point x="-27.400000000000006" y="-15.0" />
+      <point x="337.5203125" y="50.0" />
+      <point x="301.75" y="50.0" />
+      <point x="-24.75" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.Main" target="com.mini.smartroad.DriverRuntimeInfo">
+      <point x="30.80000000000001" y="-15.0" />
+      <point x="399.175" y="180.0" />
+      <point x="497.7765625" y="180.0" />
+      <point x="497.7765625" y="60.0" />
+      <point x="518.5" y="60.0" />
+      <point x="49.0" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.simulation" target="com.mini.smartroad.DriverRuntimeInfo">
+      <point x="54.8" y="-15.0" />
+      <point x="419.7203125" y="60.0" />
+      <point x="469.5" y="60.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.simulation" target="com.mini.smartroad.common">
+      <point x="-54.80000000000001" y="-15.0" />
+      <point x="310.12031249999995" y="60.0" />
+      <point x="224.5" y="60.0" />
+      <point x="32.5" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.Main" target="com.mini.smartroad.simulation">
+      <point x="0.0" y="-15.0" />
+      <point x="368.375" y="160.0" />
+      <point x="382.0453125" y="160.0" />
+      <point x="17.125" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.Main" target="com.mini.smartroad.common">
+      <point x="-15.399999999999977" y="-15.0" />
+      <point x="352.975" y="170.0" />
+      <point x="159.5" y="170.0" />
+      <point x="-32.5" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.Main" target="com.mini.smartroad.GroupRuntimeInfo">
+      <point x="-30.80000000000001" y="-15.0" />
+      <point x="337.575" y="180.0" />
+      <point x="74.5" y="180.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.simulation" target="com.mini.smartroad.Main">
+      <point x="51.375" y="15.0" />
+      <point x="416.2953125" y="170.0" />
+      <point x="383.775" y="170.0" />
+      <point x="15.399999999999977" y="-15.0" />
+    </edge>
+    <edge source="com.mini.smartroad.model" target="com.mini.smartroad.model">
+      <point x="-28.75" y="15.0" />
+      <point x="36.8125" y="287.701171875" />
+      <point x="-11.9375" y="287.701171875" />
+      <point x="-11.9375" y="252.701171875" />
+      <point x="-57.5" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="271.5" y="233.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
