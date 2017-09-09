@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.service.configuration</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">com.mini.smartroad.service.configuration.StationServiceGetPreferencesBehaviour</node>
+    <node x="57.14647628934654" y="363.5329145365558">com.mini.smartroad.service.configuration.DriverServiceGetPreferencesBehaviour</node>
+    <node x="481.0" y="11.0">com.mini.smartroad.service.configuration.StationServiceUpdateStrategyBehaviour</node>
+    <node x="956.4999999999999" y="214.0">com.mini.smartroad.service.configuration.WaitForStationConfigurationBehaviour</node>
+    <node x="580.2500617131575" y="-244.64963383526697">com.mini.smartroad.service.configuration.StationServiceGetStrategyBehaviour</node>
+    <node x="685.8535238191912" y="261.093092048025">com.mini.smartroad.service.configuration.ConfigurationAgent</node>
+    <node x="518.9993646361654" y="363.13711381643924">com.mini.smartroad.service.configuration.DriverServiceUpdatePreferencesBehaviour</node>
+    <node x="5.250061713157493" y="-255.64963383526697">com.mini.smartroad.service.configuration.StationServiceUpdatePreferencesBehaviour</node>
+    <node x="386.9993646361654" y="566.1371138164393">com.mini.smartroad.service.configuration.WaitForDriverConfigurationBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.service.configuration.WaitForStationConfigurationBehaviour" target="com.mini.smartroad.service.configuration.StationServiceGetStrategyBehaviour">
+      <point x="107.625" y="-71.0" />
+      <point x="1208.1603776279712" y="-64.2851970706821" />
+      <point x="824.2500617131575" y="-69.55632354151231" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.configuration.WaitForDriverConfigurationBehaviour" target="com.mini.smartroad.service.configuration.DriverServiceGetPreferencesBehaviour">
+      <point x="-70.25" y="-71.0" />
+      <point x="457.2493646361654" y="546.1371138164393" />
+      <point x="279.4993646361654" y="546.1371138164393" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.configuration.WaitForStationConfigurationBehaviour" target="com.mini.smartroad.service.configuration.StationServiceUpdatePreferencesBehaviour">
+      <point x="35.875" y="-71.0" />
+      <point x="1133.6812298151465" y="-35.287126167426266" />
+      <point x="284.6630781657831" y="-42.658438245700665" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.configuration.WaitForStationConfigurationBehaviour" target="com.mini.smartroad.service.configuration.StationServiceUpdateStrategyBehaviour">
+      <point x="-35.875" y="-71.0" />
+      <point x="1064.125" y="184.0" />
+      <point x="794.5" y="184.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.configuration.WaitForDriverConfigurationBehaviour" target="com.mini.smartroad.service.configuration.DriverServiceUpdatePreferencesBehaviour">
+      <point x="70.25" y="-71.0" />
+      <point x="597.7493646361654" y="546.1371138164393" />
+      <point x="775.4993646361654" y="546.1371138164393" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.configuration.WaitForStationConfigurationBehaviour" target="com.mini.smartroad.service.configuration.StationServiceGetPreferencesBehaviour">
+      <point x="-107.625" y="-71.0" />
+      <point x="992.3749999999999" y="194.0" />
+      <point x="230.5" y="194.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.configuration.ConfigurationAgent" target="com.mini.smartroad.service.configuration.WaitForDriverConfigurationBehaviour">
+      <point x="39.0" y="-26.0" />
+      <point x="804.9571376371164" y="729.3335504037509" />
+      <point x="527.4993646361654" y="733.1371138164393" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.configuration.ConfigurationAgent" target="com.mini.smartroad.service.configuration.WaitForStationConfigurationBehaviour">
+      <point x="-39.0" y="-26.0" />
+      <point x="814.561982648838" y="282.96600677259704" />
+      <point x="964.4210731961449" y="285.05183641573325" />
+      <point x="0.0" y="71.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5794255385576023" x="653.3166657686297" y="448.4304650035023" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.service.action</OriginalElement>
+  <nodes>
+    <node x="1416.7167019027484" y="385.4742776603241">com.mini.smartroad.service.action.WaitForStationActionBehaviour</node>
+    <node x="1098.1493506493507" y="384.0">com.mini.smartroad.service.action.ActionAgent</node>
+    <node x="926.0" y="0.0">com.mini.smartroad.service.action.DriverServiceRejectInvitationBehaviour</node>
+    <node x="484.0" y="0.0">com.mini.smartroad.service.action.DriverServiceMakeGroupBehaviour</node>
+    <node x="1014.0" y="192.0">com.mini.smartroad.service.action.WaitForDriverActionBehaviour</node>
+    <node x="1317.7167019027484" y="193.4742776603241">com.mini.smartroad.service.action.StationServiceConfirmUserCameBehaviour</node>
+    <node x="1388.0" y="0.0">com.mini.smartroad.service.action.DriverServiceAcceptInvitationBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.service.action.WaitForDriverActionBehaviour" target="com.mini.smartroad.service.action.DriverServiceMakeGroupBehaviour">
+      <point x="-88.66666666666669" y="-71.0" />
+      <point x="1058.3333333333333" y="167.0" />
+      <point x="695.0" y="167.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.action.WaitForDriverActionBehaviour" target="com.mini.smartroad.service.action.DriverServiceRejectInvitationBehaviour">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.action.ActionAgent" target="com.mini.smartroad.service.action.WaitForDriverActionBehaviour">
+      <point x="33.5" y="-26.0" />
+      <point x="1200.0822466085986" y="360.27798828797796" />
+      <point x="1147.0" y="359.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.action.WaitForDriverActionBehaviour" target="com.mini.smartroad.service.action.DriverServiceAcceptInvitationBehaviour">
+      <point x="88.66666666666669" y="-71.0" />
+      <point x="1235.6666666666667" y="167.0" />
+      <point x="1611.5" y="167.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.action.ActionAgent" target="com.mini.smartroad.service.action.WaitForStationActionBehaviour">
+      <point x="-33.5" y="-26.0" />
+      <point x="1135.6382231845546" y="553.2542197726489" />
+      <point x="1549.7167019027484" y="552.4742776603241" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.service.action.WaitForStationActionBehaviour" target="com.mini.smartroad.service.action.StationServiceConfirmUserCameBehaviour">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7824797843665767" x="1216.8997588701345" y="278.61281433000346" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
