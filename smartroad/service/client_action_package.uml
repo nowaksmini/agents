@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.client.action</OriginalElement>
+  <nodes>
+    <node x="125.5" y="641.0">com.mini.smartroad.client.action.StationActionClientAgent</node>
+    <node x="876.0" y="124.0">com.mini.smartroad.client.action.DriverClientInformServiceInvitationAcceptedRequestBehaviour</node>
+    <node x="44.0" y="0.0">com.mini.smartroad.client.action.DriverClientMakeGroupResponseBehaviour</node>
+    <node x="385.00000000000006" y="124.0">com.mini.smartroad.client.action.DriverClientInformServiceInvitationRejectedRequestBehaviour</node>
+    <node x="920.0" y="0.0">com.mini.smartroad.client.action.DriverClientInformServiceInvitationAcceptedResponseBehaviour</node>
+    <node x="0.0" y="493.0">com.mini.smartroad.client.action.StationClientInformServiceUserCameRequestBehaviour</node>
+    <node x="0.0" y="124.0">com.mini.smartroad.client.action.DriverClientMakeGroupRequestBehaviour</node>
+    <node x="435.50000000000006" y="0.0">com.mini.smartroad.client.action.DriverClientInformServiceInvitationRejectResponseBehaviour</node>
+    <node x="531.0" y="272.0">com.mini.smartroad.client.action.DriverActionClientAgent</node>
+    <node x="47.0" y="369.0">com.mini.smartroad.client.action.DriverClientInformServiceUserCameResponseBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.client.action.DriverClientMakeGroupRequestBehaviour" target="com.mini.smartroad.client.action.DriverClientMakeGroupResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.action.DriverActionClientAgent" target="com.mini.smartroad.client.action.DriverClientInformServiceInvitationAcceptedRequestBehaviour">
+      <point x="59.66666666666663" y="-26.0" />
+      <point x="680.1666666666667" y="247.0" />
+      <point x="1114.0" y="247.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.action.DriverClientInformServiceInvitationAcceptedRequestBehaviour" target="com.mini.smartroad.client.action.DriverClientInformServiceInvitationAcceptedResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.action.StationActionClientAgent" target="com.mini.smartroad.client.action.StationClientInformServiceUserCameRequestBehaviour">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.action.DriverActionClientAgent" target="com.mini.smartroad.client.action.DriverClientMakeGroupRequestBehaviour">
+      <point x="-59.66666666666663" y="-26.0" />
+      <point x="560.8333333333335" y="247.0" />
+      <point x="182.5" y="247.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.action.DriverClientInformServiceInvitationRejectedRequestBehaviour" target="com.mini.smartroad.client.action.DriverClientInformServiceInvitationRejectResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.action.StationClientInformServiceUserCameRequestBehaviour" target="com.mini.smartroad.client.action.DriverClientInformServiceUserCameResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.action.DriverActionClientAgent" target="com.mini.smartroad.client.action.DriverClientInformServiceInvitationRejectedRequestBehaviour">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6647230320699709" x="676.0" y="346.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

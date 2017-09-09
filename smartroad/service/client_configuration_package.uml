@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.client.configuration</OriginalElement>
+  <nodes>
+    <node x="607.6470588235294" y="-138.1176470588235">com.mini.smartroad.client.configuration.StationClientGetStrategyRequestBehaviour</node>
+    <node x="192.1470588235294" y="-240.1176470588235">com.mini.smartroad.client.configuration.StationClientUpdatePreferencesResponseBehaviour</node>
+    <node x="116.64705882352939" y="-138.1176470588235">com.mini.smartroad.client.configuration.StationClientUpdatePreferencesRequestBehaviour</node>
+    <node x="98.0" y="0.0">com.mini.smartroad.client.configuration.StationClientUpdateStrategyResponseBehaviour</node>
+    <node x="68.5" y="347.0">com.mini.smartroad.client.configuration.DriverClientUpdatePreferencesResponseBehaviour</node>
+    <node x="0.0" y="102.0">com.mini.smartroad.client.configuration.StationClientUpdateStrategyRequestBehaviour</node>
+    <node x="332.0" y="597.0">com.mini.smartroad.client.configuration.DriverConfigurationClientAgent</node>
+    <node x="646.1470588235294" y="-240.1176470588235">com.mini.smartroad.client.configuration.StationClientGetStrategyResponseBehaviour</node>
+    <node x="518.0" y="102.0">com.mini.smartroad.client.configuration.StationClientGetPreferencesRequestBehaviour</node>
+    <node x="816.5" y="250.0">com.mini.smartroad.client.configuration.StationConfigurationClientAgent</node>
+    <node x="471.0" y="449.0">com.mini.smartroad.client.configuration.DriverClientGetPreferencesRequestBehaviour</node>
+    <node x="509.5" y="347.0">com.mini.smartroad.client.configuration.DriverClientGetPreferencesResponseBehaviour</node>
+    <node x="0.0" y="449.0">com.mini.smartroad.client.configuration.DriverClientUpdatePreferencesRequestBehaviour</node>
+    <node x="556.5" y="0.0">com.mini.smartroad.client.configuration.StationClientGetPreferencesResponseBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.client.configuration.DriverClientGetPreferencesRequestBehaviour" target="com.mini.smartroad.client.configuration.DriverClientGetPreferencesResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationConfigurationClientAgent" target="com.mini.smartroad.client.configuration.StationClientUpdatePreferencesRequestBehaviour">
+      <point x="28.0" y="-26.0" />
+      <point x="956.5" y="220.0" />
+      <point x="954.7352941176471" y="-14.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.DriverConfigurationClientAgent" target="com.mini.smartroad.client.configuration.DriverClientUpdatePreferencesRequestBehaviour">
+      <point x="-54.5" y="-26.0" />
+      <point x="386.5" y="572.0" />
+      <point x="225.5" y="572.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.DriverClientUpdatePreferencesRequestBehaviour" target="com.mini.smartroad.client.configuration.DriverClientUpdatePreferencesResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationConfigurationClientAgent" target="com.mini.smartroad.client.configuration.StationClientUpdateStrategyRequestBehaviour">
+      <point x="-84.0" y="-26.0" />
+      <point x="844.5" y="230.0" />
+      <point x="249.0" y="230.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationClientGetPreferencesRequestBehaviour" target="com.mini.smartroad.client.configuration.StationClientGetPreferencesResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationClientUpdatePreferencesRequestBehaviour" target="com.mini.smartroad.client.configuration.StationClientUpdatePreferencesResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationClientGetStrategyRequestBehaviour" target="com.mini.smartroad.client.configuration.StationClientGetStrategyResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationConfigurationClientAgent" target="com.mini.smartroad.client.configuration.StationClientGetStrategyRequestBehaviour">
+      <point x="84.0" y="-26.0" />
+      <point x="1012.5" y="230.0" />
+      <point x="1011.9705882352941" y="-23.882352941176435" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationClientUpdateStrategyRequestBehaviour" target="com.mini.smartroad.client.configuration.StationClientUpdateStrategyResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.StationConfigurationClientAgent" target="com.mini.smartroad.client.configuration.StationClientGetPreferencesRequestBehaviour">
+      <point x="-28.0" y="-26.0" />
+      <point x="900.5" y="220.0" />
+      <point x="706.5" y="220.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.configuration.DriverConfigurationClientAgent" target="com.mini.smartroad.client.configuration.DriverClientGetPreferencesRequestBehaviour">
+      <point x="54.5" y="-26.0" />
+      <point x="495.5" y="572.0" />
+      <point x="656.5" y="572.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6538461538461539" x="983.4117647058823" y="264.4117647058823" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

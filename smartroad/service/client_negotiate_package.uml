@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.client.negotiate</OriginalElement>
+  <nodes>
+    <node x="139.0" y="865.0">com.mini.smartroad.client.negotiate.StationNegotiateClientAgent</node>
+    <node x="1068.0" y="384.0">com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent</node>
+    <node x="418.0000000000001" y="203.0">com.mini.smartroad.client.negotiate.DriverClientAskForJoiningGroupRequestBehaviour</node>
+    <node x="900.5000000000001" y="0.0">com.mini.smartroad.client.negotiate.DriverClientAnswerForInvitationJoiningGroupBehaviour</node>
+    <node x="978.0000000000001" y="669.9999999999998">com.mini.smartroad.client.negotiate.DriverClientFindUsersRequestBehaviour</node>
+    <node x="957.0000000000001" y="192.0">com.mini.smartroad.client.negotiate.DriverClientWaitForRepresentativeAskFoJoiningGroupBehaviour</node>
+    <node x="59.0" y="34.0">com.mini.smartroad.client.negotiate.DriverClientFindStationsResponseBehaviour</node>
+    <node x="1030.0" y="489.99999999999983">com.mini.smartroad.client.negotiate.DriverClientFindUsersResponseBehaviour</node>
+    <node x="42.5" y="673.0">com.mini.smartroad.client.negotiate.StationClientWaitForDriverBecomeRepresentativeBehaviour</node>
+    <node x="509.0000000000001" y="658.9999999999998">com.mini.smartroad.client.negotiate.DriverClientBecomeRepresentativeRequestBehaviour</node>
+    <node x="0.0" y="214.0">com.mini.smartroad.client.negotiate.DriverClientFindStationsRequestBehaviour</node>
+    <node x="566.0000000000001" y="489.99999999999983">com.mini.smartroad.client.negotiate.DriverClientBecomeRepresentativeResponseBehaviour</node>
+    <node x="0.0" y="481.0">com.mini.smartroad.client.negotiate.StationClientBecomeRepresentativeBehaviour</node>
+    <node x="516.5000000000001" y="34.0">com.mini.smartroad.client.negotiate.DriverClientAskForJoiningGroupResponseBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent" target="com.mini.smartroad.client.negotiate.DriverClientFindUsersRequestBehaviour">
+      <point x="78.39999999999998" y="-26.0" />
+      <point x="1332.9714285714285" y="385.4285714285714" />
+      <point x="1331.5714285714287" y="692.8571428571425" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent" target="com.mini.smartroad.client.negotiate.DriverClientFindStationsRequestBehaviour">
+      <point x="-78.39999999999998" y="-26.0" />
+      <point x="1087.6000000000001" y="364.0" />
+      <point x="199.0" y="364.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent" target="com.mini.smartroad.client.negotiate.DriverClientBecomeRepresentativeRequestBehaviour">
+      <point x="39.19999999999999" y="-26.0" />
+      <point x="930.9142857142857" y="384.0" />
+      <point x="930.6428571428573" y="702.8571428571424" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverClientFindUsersRequestBehaviour" target="com.mini.smartroad.client.negotiate.DriverClientFindUsersResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverClientBecomeRepresentativeRequestBehaviour" target="com.mini.smartroad.client.negotiate.DriverClientBecomeRepresentativeResponseBehaviour">
+      <point x="0.0" y="-60.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.StationClientWaitForDriverBecomeRepresentativeBehaviour" target="com.mini.smartroad.client.negotiate.StationClientBecomeRepresentativeBehaviour">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverClientFindStationsRequestBehaviour" target="com.mini.smartroad.client.negotiate.DriverClientFindStationsResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent" target="com.mini.smartroad.client.negotiate.DriverClientAskForJoiningGroupRequestBehaviour">
+      <point x="-39.19999999999999" y="-26.0" />
+      <point x="1126.8000000000002" y="354.0" />
+      <point x="677.5000000000001" y="354.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverClientWaitForRepresentativeAskFoJoiningGroupBehaviour" target="com.mini.smartroad.client.negotiate.DriverClientAnswerForInvitationJoiningGroupBehaviour">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.StationNegotiateClientAgent" target="com.mini.smartroad.client.negotiate.StationClientWaitForDriverBecomeRepresentativeBehaviour">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent" target="com.mini.smartroad.client.negotiate.DriverClientWaitForRepresentativeAskFoJoiningGroupBehaviour">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.negotiate.DriverClientAskForJoiningGroupRequestBehaviour" target="com.mini.smartroad.client.negotiate.DriverClientAskForJoiningGroupResponseBehaviour">
+      <point x="0.0" y="-60.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="1029.4285714285713" y="478.4285714285714" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

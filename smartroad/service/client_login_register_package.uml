@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.client.login_register</OriginalElement>
+  <nodes>
+    <node x="271.0" y="272.0">com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent</node>
+    <node x="448.0" y="11.0">com.mini.smartroad.client.login_register.DriverClientLoginResponseBehaviour</node>
+    <node x="395.0" y="124.0">com.mini.smartroad.client.login_register.DriverClientLoginRequestBehaviour</node>
+    <node x="66.0" y="369.0">com.mini.smartroad.client.login_register.StationClientRegisterResponseBehaviour</node>
+    <node x="0.0" y="124.0">com.mini.smartroad.client.login_register.DriverClientRegisterRequestBehaviour</node>
+    <node x="0.0" y="471.0">com.mini.smartroad.client.login_register.StationClientRegisterRequestBehaviour</node>
+    <node x="288.0" y="619.0">com.mini.smartroad.client.login_register.StationLoginRegisterClientAgent</node>
+    <node x="475.0" y="369.0">com.mini.smartroad.client.login_register.StationClientLoginResponseBehaviour</node>
+    <node x="59.0" y="0.0">com.mini.smartroad.client.login_register.DriverClientRegisterResponseBehaviour</node>
+    <node x="415.0" y="471.0">com.mini.smartroad.client.login_register.StationClientLoginRequestBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.client.login_register.DriverClientLoginRequestBehaviour" target="com.mini.smartroad.client.login_register.DriverClientLoginResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent" target="com.mini.smartroad.client.login_register.DriverClientRegisterRequestBehaviour">
+      <point x="-54.0" y="-26.0" />
+      <point x="325.0" y="247.0" />
+      <point x="187.5" y="247.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.login_register.StationClientLoginRequestBehaviour" target="com.mini.smartroad.client.login_register.StationClientLoginResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.login_register.StationLoginRegisterClientAgent" target="com.mini.smartroad.client.login_register.StationClientLoginRequestBehaviour">
+      <point x="55.5" y="-26.0" />
+      <point x="454.5" y="594.0" />
+      <point x="600.5" y="594.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent" target="com.mini.smartroad.client.login_register.DriverClientLoginRequestBehaviour">
+      <point x="54.0" y="-26.0" />
+      <point x="433.0" y="247.0" />
+      <point x="570.5" y="247.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.login_register.DriverClientRegisterRequestBehaviour" target="com.mini.smartroad.client.login_register.DriverClientRegisterResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.login_register.StationClientRegisterRequestBehaviour" target="com.mini.smartroad.client.login_register.StationClientRegisterResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.login_register.StationLoginRegisterClientAgent" target="com.mini.smartroad.client.login_register.StationClientRegisterRequestBehaviour">
+      <point x="-55.5" y="-26.0" />
+      <point x="343.5" y="594.0" />
+      <point x="197.5" y="594.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8031837916063675" x="393.74054054054056" y="375.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

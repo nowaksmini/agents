@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mini.smartroad.client.track</OriginalElement>
+  <nodes>
+    <node x="0.0" y="102.0">com.mini.smartroad.client.track.DriverClientTrackRequestBehaviour</node>
+    <node x="88.0" y="250.0">com.mini.smartroad.client.track.DriverTrackClientAgent</node>
+    <node x="52.5" y="0.0">com.mini.smartroad.client.track.DriverClientTrackResponseBehaviour</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mini.smartroad.client.track.DriverTrackClientAgent" target="com.mini.smartroad.client.track.DriverClientTrackRequestBehaviour">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="com.mini.smartroad.client.track.DriverClientTrackRequestBehaviour" target="com.mini.smartroad.client.track.DriverClientTrackResponseBehaviour">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="174.5" y="151.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
