@@ -3,16 +3,13 @@ package com.mini.smartroad.dto.in;
 import java.io.Serializable;
 
 public class BaseInDto implements Serializable {
-    protected String userToken;
+    protected String token;
 
-    public String getUserToken() {
-        return userToken;
+    public BaseInDto(String token) {
+        this.token = token;
     }
 
-    @Override
-    public String toString() {
-        return "BaseInDto{" +
-                "userToken='" + userToken + '\'' +
-                '}';
+    public String getToken() {
+        return token;
     }
 }

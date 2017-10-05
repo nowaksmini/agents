@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.dto.AddressDto;
-import com.mini.smartroad.dto.out.StationOutDto;
+import com.mini.smartroad.dto.out.negotiate.StationOutDto;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -91,8 +91,8 @@ public class ActionDialogFragment extends DialogFragment {
         if (stationOutDto != null) {
             stationToken = stationOutDto.getToken();
             String title = stationOutDto.getName();
-            if (!TextUtils.isEmpty(stationOutDto.getFullName())) {
-                title += " - " + stationOutDto.getFullName();
+            if (!TextUtils.isEmpty(stationOutDto.getName())) {
+                title += " - " + stationOutDto.getName();
             }
             stationNameTxt.setText(title);
             buildAddress(stationOutDto);
@@ -184,8 +184,8 @@ public class ActionDialogFragment extends DialogFragment {
     }
 
     private void buildStatistics(StationOutDto stationOutDto) {
-        if (stationOutDto.getLikes() != null && stationOutDto.getLikes() > 0) {
-            for (int i = 0; i < stationOutDto.getLikes(); i++) {
+        if (stationOutDto.getCounter() != null && stationOutDto.getCounter() > 0) {
+            for (int i = 0; i < stationOutDto.getCounter(); i++) {
                 ImageView imageView = new ImageView(getContext());
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(40, LinearLayout.LayoutParams.WRAP_CONTENT);
                 imageView.setLayoutParams(params);
@@ -197,8 +197,8 @@ public class ActionDialogFragment extends DialogFragment {
             likedLabel.setVisibility(View.GONE);
             likesLayout.setVisibility(View.GONE);
         }
-        if (stationOutDto.getConfirms() != null && stationOutDto.getConfirms() > 0) {
-            for (int i = 0; i < stationOutDto.getConfirms(); i++) {
+        if (stationOutDto.getCounter() != null && stationOutDto.getCounter() > 0) {
+            for (int i = 0; i < stationOutDto.getCounter(); i++) {
                 ImageView imageView = new ImageView(getContext());
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(40, LinearLayout.LayoutParams.WRAP_CONTENT);
                 imageView.setLayoutParams(params);
@@ -225,11 +225,11 @@ public class ActionDialogFragment extends DialogFragment {
         if (actionType == null) {
             rejectPanel.setVisibility(View.GONE);
             dislikePanel.setVisibility(View.GONE);
-        } else if (actionType == ActionType.LIKE) {
+        } else if (actionType == ActionType.REPRESENT) {
             rejectPanel.setVisibility(View.GONE);
             likeDescription.setVisibility(View.GONE);
             relikeDescription.setVisibility(View.VISIBLE);
-        } else if (actionType == ActionType.CONFIRM) {
+        } else if (actionType == ActionType.ATTEND) {
             dislikePanel.setVisibility(View.GONE);
             likePanel.setVisibility(View.GONE);
             acceptPanel.setVisibility(View.GONE);
@@ -245,29 +245,15 @@ public class ActionDialogFragment extends DialogFragment {
         likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.startAgentAction(stationToken, ActionType.LIKE, Boolean.TRUE,
+                activity.startAgentAction(stationToken, ActionType.ATTEND, Boolean.TRUE,
                         relikeDescription.getVisibility() == View.VISIBLE);
-                dismiss();
-            }
-        });
-        rejectBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.startAgentAction(stationToken, ActionType.CONFIRM, Boolean.FALSE, Boolean.FALSE);
-                dismiss();
-            }
-        });
-        acceptBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.startAgentAction(stationToken, ActionType.CONFIRM, Boolean.TRUE, Boolean.FALSE);
                 dismiss();
             }
         });
         dislikeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.startAgentAction(stationToken, ActionType.LIKE, Boolean.FALSE, Boolean.FALSE);
+                activity.startAgentAction(stationToken, ActionType.REJECT, Boolean.FALSE, Boolean.FALSE);
                 dismiss();
             }
         });

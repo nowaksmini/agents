@@ -1,6 +1,5 @@
 package com.mini.smartroad;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -14,7 +13,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mini.smartroad.client.user.UserClientAgent;
+import com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent;
 
 import java.util.UUID;
 
@@ -94,8 +93,8 @@ public class RegisterFragment extends Fragment {
     }
 
     private void startAgentRegister(String email, String firstName, String lastName, String password) {
-        ConnectionUtils.startAgent(UserClientAgent.class.getName() + UUID.randomUUID(),
-                UserClientAgent.class, getContext().getApplicationContext(),
+        ConnectionUtils.startAgent(DriverLoginRegisterClientAgent.class.getName() + UUID.randomUUID(),
+                DriverLoginRegisterClientAgent.class, getContext().getApplicationContext(),
                 new Object[]{email, firstName, lastName, password});
     }
 

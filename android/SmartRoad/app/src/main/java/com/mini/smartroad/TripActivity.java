@@ -24,7 +24,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.dto.out.StationOutDto;
 
 import de.greenrobot.event.EventBus;
 
@@ -107,17 +106,17 @@ public class TripActivity extends AppCompatActivity  implements OnMapReadyCallba
         // 52.204667, 20.959245
     }
 
-    private void setMarkerIcon(StationOutDto station, MarkerOptions markerOptions) {
-        if (station.getConfirms() == Utils.CARS_AMOUNT) {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-        } else if (station.getConfirms() + station.getLikes() == Utils.CARS_AMOUNT) {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
-        } else if (station.getConfirms() + station.getLikes() > 0) {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
-        } else {
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-        }
-    }
+//    private void setMarkerIcon(StationOutDto station, MarkerOptions markerOptions) {
+//        if (station.getConfirms() == Utils.CARS_AMOUNT) {
+//            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+//        } else if (station.getConfirms() + station.getLikes() == Utils.CARS_AMOUNT) {
+//            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+//        } else if (station.getConfirms() + station.getLikes() > 0) {
+//            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+//        } else {
+//            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+//        }
+//    }
 
     @Override
     public void onConnectionSuspended(int i) {

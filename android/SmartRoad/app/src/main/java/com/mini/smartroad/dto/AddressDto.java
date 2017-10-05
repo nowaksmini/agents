@@ -11,7 +11,8 @@ public class AddressDto implements Serializable {
     private String extraNumber;
     private String postalCode;
 
-    public AddressDto(String country, String distinct, String city, String street, String number, String extraNumber, String postalCode) {
+    public AddressDto(String country, String distinct, String city, String street,
+                      String number, String extraNumber, String postalCode) {
         this.country = country;
         this.distinct = distinct;
         this.city = city;
@@ -47,18 +48,5 @@ public class AddressDto implements Serializable {
 
     public String getPostalCode() {
         return postalCode;
-    }
-
-    @Override
-    public String toString() {
-        return "AddressDto{" +
-                "country='" + country + '\'' +
-                ", distinct='" + distinct + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", number='" + number + '\'' +
-                ", extraNumber='" + extraNumber + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                '}';
     }
 }

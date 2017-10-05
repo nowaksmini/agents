@@ -12,7 +12,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.BooleanResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -26,18 +25,15 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.mini.smartroad.client.action.ActionClientAgent;
-import com.mini.smartroad.client.search.SearchStationsClientAgent;
 import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.dto.out.FindStationsOutDto;
-import com.mini.smartroad.dto.out.StationOutDto;
+import com.mini.smartroad.dto.out.negotiate.FindStationsOutDto;
+import com.mini.smartroad.dto.out.negotiate.StationOutDto;
 import com.mini.smartroad.events.FailureEvent;
 import com.mini.smartroad.events.FoundStationsEvent;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import de.greenrobot.event.EventBus;
 
@@ -140,10 +136,10 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(new LatLng(station.getLatitude(), station.getLongitude()));
                     markerOptions.title(station.getName());
-                    markerOptions.snippet(station.getFullName());
-                    if (station.getActionType() == ActionType.CONFIRM) {
+                    markerOptions.snippet(station.getEmail());
+                    if (station.getActionType() == ActionType.REPRESENT) {
                         setMarkerIcon(station, markerOptions);
-                    } else if (station.getActionType() == ActionType.LIKE) {
+                    } else if (station.getActionType() == ActionType.ATTEND) {
                         setMarkerIcon(station, markerOptions);
                         markerOptions.alpha(0.8f);
                     } else {
@@ -181,11 +177,11 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
     }
 
     private void setMarkerIcon(StationOutDto station, MarkerOptions markerOptions) {
-        if (station.getConfirms() == Utils.CARS_AMOUNT) {
+        if (station.getCounter() >= station.getMinCarsAmount()) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-        } else if (station.getConfirms() + station.getLikes() == Utils.CARS_AMOUNT) {
+        } else if (station.getCounter() == station.getMinCarsAmount() - 1) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
-        } else if (station.getConfirms() + station.getLikes() > 0) {
+        } else if (station.getCounter() == station.getMinCarsAmount() - 2) {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
         } else {
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));

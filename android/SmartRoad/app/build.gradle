@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
+repositories {
+    mavenCentral()
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
