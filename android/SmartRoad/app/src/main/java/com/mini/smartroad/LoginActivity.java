@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onEvent(UserEvent event) {
-        Intent intent = new Intent(this, SearchActivity.class);
+        Intent intent = new Intent(this, TripActivity.class);
         intent.putExtra(SearchActivity.USER_TOKEN, event.getUserToken());
         startActivity(intent);
     }

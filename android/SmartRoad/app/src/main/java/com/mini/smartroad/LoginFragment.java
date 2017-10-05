@@ -17,11 +17,13 @@ import com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.in.login.UserLoginInDto;
 import com.mini.smartroad.dto.in.register.UserRegisterInDto;
+import com.mini.smartroad.events.UserEvent;
 
 import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class LoginFragment extends Fragment {
 
@@ -89,6 +91,7 @@ public class LoginFragment extends Fragment {
                         new UserLoginInDto(email, password),
                         ArgumentType.USER_LOGIN
                 });
+        EventBus.getDefault().post(new UserEvent("1"));
     }
 
 }

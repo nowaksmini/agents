@@ -16,11 +16,13 @@ import android.widget.Toast;
 import com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.in.register.UserRegisterInDto;
+import com.mini.smartroad.events.UserEvent;
 
 import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class RegisterFragment extends Fragment {
 
@@ -101,6 +103,7 @@ public class RegisterFragment extends Fragment {
                         new UserRegisterInDto(email, firstName, lastName, password),
                         ArgumentType.USER_REGISTER
                 });
+        EventBus.getDefault().post(new UserEvent("1"));
     }
 
     @Override
