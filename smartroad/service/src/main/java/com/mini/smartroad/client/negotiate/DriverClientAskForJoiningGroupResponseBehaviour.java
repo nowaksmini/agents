@@ -14,9 +14,9 @@ public class DriverClientAskForJoiningGroupResponseBehaviour extends BaseStopAge
     @Override
     public void action() {
         super.action();
-        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_USER));
+        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchProtocol(Utils.PROTOCOL_NEGOTIATE + Utils.SUFFIX_RESPONSE));
         if (msg != null) {
-            if (msg.getProtocol().equals(Utils.PROTOCOL_NEGOTIATE + Utils.SUFFIX_RESPONSE)) {
+            if (msg.getOntology().equals(Utils.ONTOLOGY_USER)) {
                 if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
                     logger.info("-------------------ASK USER TO JOIN GROUP START-------------------------");
                     try {

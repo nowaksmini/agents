@@ -4,7 +4,6 @@ import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseInteractBehaviour;
 import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.common.MessageProperties;
-import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.StatusType;

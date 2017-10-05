@@ -18,6 +18,7 @@ public class StationActionClientAgent extends BaseAgent {
                     ActionInDto actionInDto = (ActionInDto) arguments[arguments.length - 2];
                     logger.info("Passed arguments: " + actionInDto);
                     addBehaviour(new StationClientInformServiceUserCameRequestBehaviour(actionInDto));
+                    break;
             }
         }
     }

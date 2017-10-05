@@ -20,9 +20,9 @@ public class DriverClientWaitForRepresentativeAskFoJoiningGroupBehaviour extends
     @Override
     public void action() {
         super.action();
-        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_USER));
+        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchProtocol(Utils.PROTOCOL_NEGOTIATE));
         if (msg != null) {
-            if (msg.getProtocol().equals(Utils.PROTOCOL_NEGOTIATE)) {
+            if (msg.getOntology().equals(Utils.ONTOLOGY_USER)) {
                 try {
                     Serializable contentObject = msg.getContentObject();
                     nextBehaviour = new DriverClientAnswerForInvitationJoiningGroupBehaviour(msg.getSender(), msg.getOntology(), msg.getProtocol() + Utils.SUFFIX_RESPONSE, contentObject);

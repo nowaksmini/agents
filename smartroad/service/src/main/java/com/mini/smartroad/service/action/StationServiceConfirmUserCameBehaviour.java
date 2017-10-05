@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class StationServiceConfirmUserCameBehaviour extends BaseInteractBehaviour {
@@ -114,7 +115,9 @@ public class StationServiceConfirmUserCameBehaviour extends BaseInteractBehaviou
         GroupRuntimeInfo newGroupRuntimeInfo = new GroupRuntimeInfo(stationEntity.getToken(),
                 localDateTimeFrom, localDateTimeTo, 1, currentReward);
         Main.groups.put(stationEntity.getToken(), newGroupRuntimeInfo);
-        Main.currentGroupParticipants.put(stationEntity.getToken(), Collections.singletonList(userEntity.getToken()));
+        List<String> participants = new LinkedList<>();
+        participants.add(userEntity.getToken());
+        Main.currentGroupParticipants.put(stationEntity.getToken(), participants);
         DriverRuntimeInfo driverRuntimeInfo = Main.drivers.get(userToken);
         driverRuntimeInfo.setWantsToNegotiate(false);
         driverRuntimeInfo.setGroupToken(stationEntity.getToken());

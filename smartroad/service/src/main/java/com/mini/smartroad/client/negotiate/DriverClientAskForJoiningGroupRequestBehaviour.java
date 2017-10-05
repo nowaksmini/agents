@@ -3,7 +3,6 @@ package com.mini.smartroad.client.negotiate;
 import com.mini.smartroad.base.BaseAgent;
 import com.mini.smartroad.base.BaseDoneBehaviour;
 import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto;
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;

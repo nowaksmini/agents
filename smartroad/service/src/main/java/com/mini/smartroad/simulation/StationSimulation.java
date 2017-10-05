@@ -3,6 +3,7 @@ package com.mini.smartroad.simulation;
 import com.mini.smartroad.Main;
 import com.mini.smartroad.client.configuration.StationConfigurationClientAgent;
 import com.mini.smartroad.client.login_register.StationLoginRegisterClientAgent;
+import com.mini.smartroad.client.negotiate.StationNegotiateClientAgent;
 import com.mini.smartroad.common.ArgumentType;
 import com.mini.smartroad.dto.AddressDto;
 import com.mini.smartroad.dto.in.BaseInDto;
@@ -181,6 +182,7 @@ public class StationSimulation {
     private void simulateGetStationStrategies() throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
         Document document = Simulation.readXmlDocument("simulation_station_get_strategies.xml");
         NodeList baseInDto = document.getElementsByTagName("BaseInDto");
+        List<String> stationTokens = new LinkedList<>();
         for (int i = 0; i < baseInDto.getLength(); i++) {
             Node item = baseInDto.item(i);
             NodeList childNodes = item.getChildNodes();
@@ -191,6 +193,7 @@ public class StationSimulation {
                 }
             }
             String token = params.get(0);
+            stationTokens.add(token);
             AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
                     (StationConfigurationClientAgent.class.getName() + (5 + 6 * i),
                             StationConfigurationClientAgent.class.getName(),
@@ -200,6 +203,10 @@ public class StationSimulation {
                             }
                     );
             agentControllerLogin.start();
+        }
+
+        for (String stationToken : stationTokens) {
+            startNegotiatingAgent(stationToken);
         }
     }
 
@@ -252,11 +259,20 @@ public class StationSimulation {
         }
     }
 
-    private StatusOutDto simulateNegotiateWithUser(String userToken){
+    private void startNegotiatingAgent(String stationToken) throws StaleProxyException {
+        AgentController agentControllerLogin = Main.getAgentContainer().createNewAgent
+                (StationNegotiateClientAgent.class.getName() + stationToken,
+                        StationNegotiateClientAgent.class.getName(),
+                        null
+                );
+        agentControllerLogin.start();
+    }
+
+    private StatusOutDto simulateNegotiateWithUser(String userToken) {
         return null;
     }
 
-    private StatusOutDto simulateUserCame(String userToken){
+    private StatusOutDto simulateUserCame(String userToken) {
         return null;
     }
 }

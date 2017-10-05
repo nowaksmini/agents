@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class DriverServiceAcceptInvitationBehaviour extends BaseInteractBehaviour {
@@ -51,7 +52,15 @@ public class DriverServiceAcceptInvitationBehaviour extends BaseInteractBehaviou
 
     private StatusOutDto acceptInvitation(ActionInDto actionInDto, ACLMessage aclMessage) {
         StatusOutDto statusOutDto = new StatusOutDto();
-        // TODO
+        statusOutDto.setStatusType(StatusType.OK);
+        List<String> participants = Main.currentGroupParticipants.get(actionInDto.getStationToken());
+        if (participants == null) {
+            participants = new LinkedList<>();
+        }
+        participants.add(actionInDto.getToken());
+        Main.currentGroupParticipants.put(actionInDto.getStationToken(), participants);
+        Main.updateGroups(actionInDto.getStationToken());
+        aclMessage.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
         return statusOutDto;
     }
 

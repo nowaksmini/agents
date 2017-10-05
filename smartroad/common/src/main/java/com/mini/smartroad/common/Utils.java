@@ -32,7 +32,8 @@ public class Utils {
     public static final String TRACKER_SERVICE_AGENT = "com.mini.smartroad.service.track.TrackerAgent";
     public static final String HELPER_SERVICE_AGENT = "com.mini.smartroad.service.helper.HelperAgent";
     public static final String ACTION_SERVICE_AGENT = "com.mini.smartroad.service.action.ActionAgent";
-    // TODO, ACTION
+
+    public static final String NEGOTIATE_STATION_AGENT = "com.mini.smartroad.client.negotiate.StationNegotiateClientAgent";
 
     public static final int LIKE_TIME_DURATION = 1; // in hours
 

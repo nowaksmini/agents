@@ -2,22 +2,27 @@ package com.mini.smartroad.simulation;
 
 import com.mini.smartroad.DriverRuntimeInfo;
 import com.mini.smartroad.Main;
+import com.mini.smartroad.client.action.DriverActionClientAgent;
 import com.mini.smartroad.client.configuration.DriverConfigurationClientAgent;
 import com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent;
 import com.mini.smartroad.client.negotiate.DriverNegotiateClientAgent;
 import com.mini.smartroad.client.track.DriverTrackClientAgent;
 import com.mini.smartroad.common.ActionType;
 import com.mini.smartroad.common.ArgumentType;
+import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.AddressDto;
 import com.mini.smartroad.dto.in.ActionInDto;
 import com.mini.smartroad.dto.in.BaseInDto;
 import com.mini.smartroad.dto.in.configure.UserPreferencesInDto;
 import com.mini.smartroad.dto.in.login.UserLoginInDto;
+import com.mini.smartroad.dto.in.negotiate.AskForJoiningGroupInDto;
 import com.mini.smartroad.dto.in.negotiate.FindStationsInDto;
+import com.mini.smartroad.dto.in.negotiate.FindUsersInDto;
 import com.mini.smartroad.dto.in.register.UserRegisterInDto;
 import com.mini.smartroad.dto.in.track.UserTrackInDto;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.configure.UserPreferencesOutDto;
+import com.mini.smartroad.dto.out.negotiate.FindUsersOutDto;
 import com.mini.smartroad.dto.out.negotiate.StationOutDto;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
@@ -29,10 +34,11 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class DriverSimulation {
+    public static FindUsersOutDto findUsersOutDto = null;
+
     public void start() {
         try {
             simulateRegisterUser();
@@ -48,6 +54,15 @@ public class DriverSimulation {
                 IOException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private void runBaseNegotiatingAgent(String token) throws StaleProxyException {
+        AgentController agentController = Main.getAgentContainer().createNewAgent
+                (DriverNegotiateClientAgent.class.getName() + token,
+                        DriverNegotiateClientAgent.class.getName(),
+                        null
+                );
+        agentController.start();
     }
 
     private void simulateRegisterUser() throws StaleProxyException, IOException, SAXException, ParserConfigurationException {
@@ -117,6 +132,7 @@ public class DriverSimulation {
                 }
             }
             String token = params.get(0);
+            runBaseNegotiatingAgent(token);
             AgentController agentController = Main.getAgentContainer().createNewAgent
                     (DriverConfigurationClientAgent.class.getName() + (1 + 6 * i),
                             DriverConfigurationClientAgent.class.getName(),
@@ -227,6 +243,7 @@ public class DriverSimulation {
     private void simulateGetStations(int iteration) throws StaleProxyException, IOException, SAXException, ParserConfigurationException, InterruptedException {
         Document document = Simulation.readXmlDocument("simulation_driver_get_stations.xml");
         NodeList baseInDto = document.getElementsByTagName("BaseInDto");
+        List<String> userTokens = new LinkedList<>();
         for (int i = 0; i < baseInDto.getLength(); i++) {
             Node item = baseInDto.item(i);
             NodeList childNodes = item.getChildNodes();
@@ -237,8 +254,9 @@ public class DriverSimulation {
                 }
             }
             String token = params.get(0);
+            userTokens.add(token);
             AgentController agentController = Main.getAgentContainer().createNewAgent
-                    (DriverNegotiateClientAgent.class.getName() + (i + 6 * iteration),
+                    (DriverNegotiateClientAgent.class.getName() + UUID.randomUUID(),
                             DriverNegotiateClientAgent.class.getName(),
                             new Object[]{
                                     new FindStationsInDto(token, 20L),
@@ -248,10 +266,10 @@ public class DriverSimulation {
             agentController.start();
         }
         Thread.sleep(3000);
-        simulateBecomeRepresentative();
+        simulateBecomeRepresentative(userTokens.get(0));
     }
 
-    private void simulateBecomeRepresentative() throws IOException, SAXException, ParserConfigurationException {
+    private void simulateBecomeRepresentative(String userToken) throws IOException, SAXException, ParserConfigurationException, StaleProxyException, InterruptedException {
         Document document = Simulation.readXmlDocument("simulation_driver_get_stations_no_groups_response.xml");
         NodeList stationOutDto = document.getElementsByTagName("StationOutDto");
         List<StationOutDto> stationOutDtos = new LinkedList<>();
@@ -298,41 +316,123 @@ public class DriverSimulation {
                     counter, points, minAmountCars, actionType, addressDto);
             stationOutDtos.add(stationOutDto1);
         }
-        selectBestStation(null, null);
+        StationOutDto bestStation = selectBestStation(stationOutDtos,
+                new UserPreferencesOutDto(
+                        33, 66, true,
+                        "Statoil, BP", "Lukoil", null
+                ));
+        sendRequestToStationForBecomingRepresentative(userToken, bestStation);
+        Thread.sleep(5000);
+        formGroup(userToken, bestStation.getToken());
+        Thread.sleep(5000);
+        simulateGetUsers(userToken, bestStation.getToken());
+        Thread.sleep(15000);
+        FindUsersOutDto findUsersOutDto = DriverSimulation.findUsersOutDto;
+        List<String> availableUsers = findUsersOutDto.getAvailableUsers();
+        for (String availableUser : availableUsers) {
+            simulateInviteUser(userToken, bestStation.getToken(), availableUser);
+        }
+        Thread.sleep(10000);
 
-        // TODO process received data obout ststsions
-        // select best one - algorytm
-        // wyślij prośbę do danej stacji benzynowej o zostanie reprezentantem - agent done
-        // dla stacji benzynowej wyślij accepp - agent done
-        // po otrzymaniu accept formuj grupę - nie można formować grupy która już jest - agent done
-        // pytaj CU o agentów userów skłonnych do negocjacji - agent done
-        // wyślij info do userów o negocjacjach - agent done
-        // dostaj akceptację od user-a 1 - agent done
-        // dla stacji benzynowaej która nie spełnia wymagań wyśłij zapytanie o podwyżkę
-        // stacja zraca nową kwotę
-        // stacja informuje CU o zmianie kwoty
-        // stacja potwierdza ze przyjechali ludzie //
-        // rozdanie punktów
+        for (String availableUser : availableUsers) {
+            simulateAnswerForInvitation(availableUser, bestStation.getToken());
+        }
+
+        Thread.sleep(15000);
+
+        System.out.println("-------------CURRENT GROUPS------------");
+        Set<String> groups = Main.groups.keySet();
+        for (String group : groups) {
+            System.out.println("Group: " + group + " " + Main.groups.get(group));
+        }
+        System.out.println("-------------CURRENT GROUP PARTICIPANTS------------");
+        Set<String> participants = Main.currentGroupParticipants.keySet();
+        for (String participant : participants) {
+            System.out.println("Group: " + participant + " " + Arrays.toString(Main.currentGroupParticipants.get(participant).toArray()));
+        }
+        Thread.sleep(10000);
     }
 
-    private StationOutDto selectBestStation(List<StationOutDto> stationOutDtos, UserPreferencesOutDto userPreferencesOutDto){
-        return null;
+    private StationOutDto selectBestStation(List<StationOutDto> stationOutDtos, UserPreferencesOutDto userPreferencesOutDto) {
+        StationOutDto best = stationOutDtos.get(0);
+        for (StationOutDto stationOutDto : stationOutDtos) {
+            double current_beta_s = userPreferencesOutDto.getPreferredStationNames().contains(best.getName()) ?
+                    1.2d : 1d;
+            double new_beta_s = userPreferencesOutDto.getPreferredStationNames().contains(stationOutDto.getName()) ?
+                    1.2d : 1d;
+
+            double current_alpha_s = best.getPoints() / best.getMinCarsAmount() * current_beta_s;
+            double new_alpha_s = stationOutDto.getPoints() / stationOutDto.getMinCarsAmount() * new_beta_s;
+            if (new_alpha_s > current_alpha_s) {
+                best = stationOutDto;
+            } else if (new_alpha_s == current_alpha_s) {
+                if (userPreferencesOutDto.getPreferredStationNames().contains(stationOutDto.getName())) {
+                    best = stationOutDto;
+                }
+            }
+        }
+        return best;
     }
 
-    private StatusOutDto simulateNegotiateWithStation(StationOutDto stationOutDto){
-        return null;
+    private void sendRequestToStationForBecomingRepresentative(String userToken, StationOutDto selectedStation) throws StaleProxyException {
+        AgentController agentController = Main.getAgentContainer().createNewAgent
+                (DriverNegotiateClientAgent.class.getName() + UUID.randomUUID() + '_' + userToken,
+                        DriverNegotiateClientAgent.class.getName(),
+                        new Object[]{
+                                Utils.NEGOTIATE_STATION_AGENT + selectedStation.getToken(),
+                                new BaseInDto(userToken),
+                                ArgumentType.USER_BECOME_REPRESENTATIVE
+                        }
+                );
+        agentController.start();
     }
 
-    private StatusOutDto simulateGetUsers(String stationToken){
-        return null;
+    private void formGroup(String userToken, String stationToken) throws StaleProxyException {
+        AgentController agentController = Main.getAgentContainer().createNewAgent
+                (DriverActionClientAgent.class.getName() + UUID.randomUUID() + '_' + userToken,
+                        DriverActionClientAgent.class.getName(),
+                        new Object[]{
+                                new ActionInDto(userToken, stationToken, ActionType.MAKE_GROUP),
+                                ArgumentType.USER_MAKE_GROUP
+                        }
+                );
+        agentController.start();
     }
 
-    private StatusOutDto simulateInviteUser(StationOutDto stationOutDto){
-        return null;
+    private void simulateGetUsers(String userToken, String stationToken) throws StaleProxyException {
+        AgentController agentController = Main.getAgentContainer().createNewAgent
+                (DriverNegotiateClientAgent.class.getName() + UUID.randomUUID() + '_' + userToken,
+                        DriverNegotiateClientAgent.class.getName(),
+                        new Object[]{
+                                new FindUsersInDto(userToken, stationToken),
+                                ArgumentType.USER_FIND_USERS
+                        }
+                );
+        agentController.start();
     }
 
-    private StatusOutDto simulateDoAction(ActionInDto actionInDto){
-        return null;
+    private void simulateInviteUser(String userToken, String stationToken, String negotiatedToken) throws StaleProxyException {
+        AgentController agentController = Main.getAgentContainer().createNewAgent
+                (DriverNegotiateClientAgent.class.getName() + UUID.randomUUID() + '_' + userToken,
+                        DriverNegotiateClientAgent.class.getName(),
+                        new Object[]{
+                                DriverNegotiateClientAgent.class.getName() + negotiatedToken,
+                                new AskForJoiningGroupInDto(userToken, stationToken),
+                                ArgumentType.USER_NEGOTIATE_WITH_USERS
+                        }
+                );
+        agentController.start();
     }
 
+    private void simulateAnswerForInvitation(String userToken, String stationToken) throws StaleProxyException {
+        AgentController agentController = Main.getAgentContainer().createNewAgent
+                (DriverActionClientAgent.class.getName() + userToken + UUID.randomUUID(),
+                        DriverActionClientAgent.class.getName(),
+                        new Object[]{
+                                new ActionInDto(userToken, stationToken, ActionType.ATTEND),
+                                ArgumentType.USER_ACCEPT_INVITATION
+                        }
+                );
+        agentController.start();
+    }
 }

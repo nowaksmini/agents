@@ -5,6 +5,7 @@ import com.mini.smartroad.base.BaseStopAgentBehaviour;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.dto.out.StatusOutDto;
 import com.mini.smartroad.dto.out.negotiate.FindUsersOutDto;
+import com.mini.smartroad.simulation.DriverSimulation;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
@@ -14,14 +15,15 @@ public class DriverClientFindUsersResponseBehaviour extends BaseStopAgentBehavio
     @Override
     public void action() {
         super.action();
-        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchOntology(Utils.ONTOLOGY_USER));
+        ACLMessage msg = ((BaseAgent) myAgent).receiveMessage(MessageTemplate.MatchProtocol(Utils.PROTOCOL_FIND_USERS + Utils.SUFFIX_RESPONSE));
         if (msg != null) {
-            if (msg.getProtocol().equals(Utils.PROTOCOL_FIND_USERS + Utils.SUFFIX_RESPONSE)) {
+            if (msg.getOntology().equals(Utils.ONTOLOGY_USER)) {
                 if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
                     logger.info("-------------------FIND USERS START-------------------------");
                     try {
                         FindUsersOutDto contentObject = (FindUsersOutDto) msg.getContentObject();
                         logger.info(getAgent().getName() + " FIND USERS success for: \n" + contentObject);
+                        DriverSimulation.findUsersOutDto = contentObject;
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }

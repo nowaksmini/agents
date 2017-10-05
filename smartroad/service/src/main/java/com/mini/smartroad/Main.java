@@ -1,18 +1,22 @@
 package com.mini.smartroad;
 
+import com.mini.smartroad.common.Utils;
+import com.mini.smartroad.model.StationEntity;
+import com.mini.smartroad.model.StationStrategyEntity;
 import com.mini.smartroad.service.action.ActionAgent;
 import com.mini.smartroad.service.configuration.ConfigurationAgent;
 import com.mini.smartroad.service.helper.HelperAgent;
+import com.mini.smartroad.service.login_register.LoginRegisterAgent;
 import com.mini.smartroad.service.track.TrackerAgent;
 import com.mini.smartroad.simulation.Simulation;
-import com.mini.smartroad.common.Utils;
-import com.mini.smartroad.service.login_register.LoginRegisterAgent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +31,46 @@ public class Main {
 
     public static void main(String[] args) throws StaleProxyException {
         startMainContainer();
+    }
+
+    public static void updateGroups(String stationToken) {
+        GroupRuntimeInfo groupRuntimeInfo = groups.get(stationToken);
+        groupRuntimeInfo.setCurrentNumberOfCars(groupRuntimeInfo.getCurrentNumberOfCars() + 1);
+        int currentNumberOfCars = groupRuntimeInfo.getCurrentNumberOfCars();
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        List foundStations = session.createCriteria(StationEntity.class)
+                .add(Restrictions.eq("token", stationToken)).list();
+        StationEntity stationEntity = (StationEntity) foundStations.get(0);
+        StationStrategyEntity stationStrategy = stationEntity.getStationStrategy();
+        Integer points = groupRuntimeInfo.getCurrentReward();
+        if (currentNumberOfCars >= stationStrategy.getGroupSize0()) {
+            if (stationStrategy.getPointsGroupSize0() >= points) {
+                points = stationStrategy.getPointsGroupSize0();
+            }
+        }
+        if (currentNumberOfCars >= stationStrategy.getGroupSize1()) {
+            if (stationStrategy.getPointsGroupSize1() >= points) {
+                points = stationStrategy.getPointsGroupSize1();
+            }
+        }
+        if (currentNumberOfCars >= stationStrategy.getGroupSize2()) {
+            if (stationStrategy.getPointsGroupSize2() >= points) {
+                points = stationStrategy.getPointsGroupSize2();
+            }
+        }
+        if (currentNumberOfCars >= stationStrategy.getGroupSize3()) {
+            if (stationStrategy.getPointsGroupSize3() >= points) {
+                points = stationStrategy.getPointsGroupSize3();
+            }
+        }
+        if (currentNumberOfCars >= stationStrategy.getGroupSize4()) {
+            if (stationStrategy.getPointsGroupSize4() >= points) {
+                points = stationStrategy.getPointsGroupSize4();
+            }
+        }
+        groupRuntimeInfo.setCurrentReward(points);
+        groups.put(stationToken, groupRuntimeInfo);
+        session.close();
     }
 
     private static void startMainContainer() {
