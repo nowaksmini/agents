@@ -266,10 +266,11 @@ public class DriverSimulation {
             agentController.start();
         }
         Thread.sleep(3000);
-        simulateBecomeRepresentative(userTokens.get(0));
+
+        simulateBecomeRepresentative(iteration, userTokens.get(0));
     }
 
-    private void simulateBecomeRepresentative(String userToken) throws IOException, SAXException, ParserConfigurationException, StaleProxyException, InterruptedException {
+    private void simulateBecomeRepresentative(int iteration, String userToken) throws IOException, SAXException, ParserConfigurationException, StaleProxyException, InterruptedException {
         Document document = Simulation.readXmlDocument("simulation_driver_get_stations_no_groups_response.xml");
         NodeList stationOutDto = document.getElementsByTagName("StationOutDto");
         List<StationOutDto> stationOutDtos = new LinkedList<>();
@@ -321,10 +322,12 @@ public class DriverSimulation {
                         33, 66, true,
                         "Statoil, BP", "Lukoil", null
                 ));
-        sendRequestToStationForBecomingRepresentative(userToken, bestStation);
-        Thread.sleep(5000);
-        formGroup(userToken, bestStation.getToken());
-        Thread.sleep(5000);
+        if (iteration == 1) {
+            sendRequestToStationForBecomingRepresentative(userToken, bestStation);
+            Thread.sleep(5000);
+            formGroup(userToken, bestStation.getToken());
+            Thread.sleep(5000);
+        }
         simulateGetUsers(userToken, bestStation.getToken());
         Thread.sleep(15000);
         FindUsersOutDto findUsersOutDto = DriverSimulation.findUsersOutDto;
