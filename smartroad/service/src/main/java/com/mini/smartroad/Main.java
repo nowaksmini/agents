@@ -129,7 +129,7 @@ public class Main {
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }
-        //Simulation.start();
+        Simulation.start();
         runtime.shutDown();
     }
 

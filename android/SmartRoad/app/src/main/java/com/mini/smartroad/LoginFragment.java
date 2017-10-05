@@ -14,6 +14,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent;
+import com.mini.smartroad.common.ArgumentType;
+import com.mini.smartroad.dto.in.login.UserLoginInDto;
+import com.mini.smartroad.dto.in.register.UserRegisterInDto;
 
 import java.util.UUID;
 
@@ -81,7 +84,11 @@ public class LoginFragment extends Fragment {
 
     private void startAgentLogin(String email, String password) {
         ConnectionUtils.startAgent(DriverLoginRegisterClientAgent.class.getName() + UUID.randomUUID(),
-                DriverLoginRegisterClientAgent.class, getContext().getApplicationContext(), new Object[]{email, password});
+                DriverLoginRegisterClientAgent.class, getContext().getApplicationContext(),
+                new Object[]{
+                        new UserLoginInDto(email, password),
+                        ArgumentType.USER_LOGIN
+                });
     }
 
 }

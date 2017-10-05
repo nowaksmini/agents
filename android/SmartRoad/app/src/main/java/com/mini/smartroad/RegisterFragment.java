@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mini.smartroad.client.login_register.DriverLoginRegisterClientAgent;
+import com.mini.smartroad.common.ArgumentType;
+import com.mini.smartroad.dto.in.register.UserRegisterInDto;
 
 import java.util.UUID;
 
@@ -95,7 +97,10 @@ public class RegisterFragment extends Fragment {
     private void startAgentRegister(String email, String firstName, String lastName, String password) {
         ConnectionUtils.startAgent(DriverLoginRegisterClientAgent.class.getName() + UUID.randomUUID(),
                 DriverLoginRegisterClientAgent.class, getContext().getApplicationContext(),
-                new Object[]{email, firstName, lastName, password});
+                new Object[]{
+                        new UserRegisterInDto(email, firstName, lastName, password),
+                        ArgumentType.USER_REGISTER
+                });
     }
 
     @Override

@@ -206,7 +206,7 @@ public class DriverSimulation {
         double latDiff = 0.03;
         int i = 0;
 
-        while (i < 2) {
+        while (i < 20) {
             for (int j = 0; j < driverRuntimeInfos.size(); j++) {
                 Double direction = directions.get(j);
                 DriverRuntimeInfo driverRuntimeInfo = driverRuntimeInfos.get(j);

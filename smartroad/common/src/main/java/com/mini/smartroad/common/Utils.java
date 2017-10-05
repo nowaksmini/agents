@@ -24,7 +24,7 @@ public class Utils {
 
     public static final String SUFFIX_RESPONSE = "-response";
 
-    public static final String IP = "192.168.56.1";
+    public static final String IP = "192.168.56.1"; // 192.168.0.185 192.168.56.1
     public static final String PORT = "1099";
 
     public static final String LOGIN_REGISTER_SERVICE_AGENT = "com.mini.smartroad.service.login_register.LoginRegisterAgent";
