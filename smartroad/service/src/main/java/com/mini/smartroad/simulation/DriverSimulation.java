@@ -238,6 +238,8 @@ public class DriverSimulation {
                 e.printStackTrace();
             }
         }
+
+        Main.giveRewards();
     }
 
     private void simulateGetStations(int iteration) throws StaleProxyException, IOException, SAXException, ParserConfigurationException, InterruptedException {

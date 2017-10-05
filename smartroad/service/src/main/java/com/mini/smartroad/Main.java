@@ -3,6 +3,7 @@ package com.mini.smartroad;
 import com.mini.smartroad.common.Utils;
 import com.mini.smartroad.model.StationEntity;
 import com.mini.smartroad.model.StationStrategyEntity;
+import com.mini.smartroad.model.UserEntity;
 import com.mini.smartroad.service.action.ActionAgent;
 import com.mini.smartroad.service.configuration.ConfigurationAgent;
 import com.mini.smartroad.service.helper.HelperAgent;
@@ -20,6 +21,7 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     private static jade.core.Runtime runtime = jade.core.Runtime.instance();
@@ -71,6 +73,33 @@ public class Main {
         groupRuntimeInfo.setCurrentReward(points);
         groups.put(stationToken, groupRuntimeInfo);
         session.close();
+    }
+
+    public static void giveRewards() {
+        System.out.println("------------------------ REWARD DRIVERS START ------------------------");
+        Set<String> groupTokens = currentGroupParticipants.keySet();
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        for (String groupToken : groupTokens) {
+            GroupRuntimeInfo groupRuntimeInfo = groups.get(groupToken);
+            int currentReward = groupRuntimeInfo.getCurrentReward();
+            List<String> participants = currentGroupParticipants.get(groupToken);
+            for (int i = 0; i < participants.size(); i++) {
+                String userToken = participants.get(i);
+                List foundUsers = session.createCriteria(UserEntity.class)
+                        .add(Restrictions.eq("token", userToken)).list();
+                UserEntity userEntity = (UserEntity) foundUsers.get(0);
+                if (i == 0) {
+                    userEntity.setPoints((int) (currentReward * 1.2d));
+                    System.out.println("reward Driver: " + userEntity.getEmail() + " with points: " + (int) (currentReward * 1.2d));
+                } else {
+                    userEntity.setPoints(currentReward);
+                    System.out.println("reward Driver: " + userEntity.getEmail() + " with points: " + currentReward);
+                }
+                session.save(userEntity);
+            }
+        }
+        session.close();
+        System.out.println("------------------------ REWARD DRIVERS END ------------------------");
     }
 
     private static void startMainContainer() {
